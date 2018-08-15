@@ -290,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/13/适配器模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/反射机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -309,7 +309,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/适配器模式/" itemprop="url">设配器模式</a></h1>
+                <a class="post-title-link" href="/2017/11/11/反射机制/" itemprop="url">反射机制</a></h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T20:13:10+08:00">
-                2017-11-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
+                2017-11-11
               </time>
             
 
@@ -344,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">java设计模式</span>
+                  <a href="/categories/how2j/" itemprop="url" rel="index">
+                    <span itemprop="name">how2j</span>
                   </a>
                 </span>
 
@@ -362,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/适配器模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/适配器模式/" itemprop="commentCount"></span>
+                <a href="/2017/11/11/反射机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/反射机制/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -393,15 +393,17 @@
       
         
           
-          适配器模式要达到的目的：在计算机编程中，适配器模式（有时候也称包装样式或者包装）将一个类的接口适配成用户所期待的。一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。
+          完整教程：how2j
 
-1.类图
-2.具体实例
-Application123456789101112
+备忘
+
+
+类对象 与未实例化对象有区别
+12345Hero c=null;//未实例化的类对象   Class c1=class.forname(className);//类对象Class c2=Hero.class;Class c3=new Hreo.getClass();
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/适配器模式/#more" rel="contents">
+            <a class="btn" href="/2017/11/11/反射机制/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -452,7 +454,7 @@ Application123456789101112
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/装饰模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/数字与字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -471,7 +473,7 @@ Application123456789101112
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/装饰模式/" itemprop="url">装饰模式</a></h1>
+                <a class="post-title-link" href="/2017/11/11/数字与字符串/" itemprop="url">数字与字符串</a></h1>
         
 
         <div class="post-meta">
@@ -506,8 +508,8 @@ Application123456789101112
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">java设计模式</span>
+                  <a href="/categories/how2j/" itemprop="url" rel="index">
+                    <span itemprop="name">how2j</span>
                   </a>
                 </span>
 
@@ -524,8 +526,8 @@ Application123456789101112
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/装饰模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/装饰模式/" itemprop="commentCount"></span>
+                <a href="/2017/11/11/数字与字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/数字与字符串/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -555,15 +557,22 @@ Application123456789101112
       
         
           
-          装饰模式要达到的目的：装饰模式指的是在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。它是通过创建一个包装对象，也就是装饰来包裹真实的对象。
+          完整教程：how2j
 
-1.类图
-2.具体实例
-2.1 Applicationpackage Decorator;12345678910111213141516171
+备忘
+
+
+封装类：所有的基本类型，都有对应的类类型。比如int对应的类是Integer 这种类就叫做封装类
+
+Number类：数字封装类有 Byte,Short,Integer,Long,Float,Double 这些类都是抽象类Number的子类
+
+数字与字符串互转
+
+Ma
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/装饰模式/#more" rel="contents">
+            <a class="btn" href="/2017/11/11/数字与字符串/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -739,6 +748,168 @@ Application123456789101112
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/11/数组/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/装饰模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/装饰模式/" itemprop="url">装饰模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">java设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/装饰模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/装饰模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          装饰模式要达到的目的：装饰模式指的是在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。它是通过创建一个包装对象，也就是装饰来包裹真实的对象。
+
+1.类图
+2.具体实例
+2.1 Applicationpackage Decorator;12345678910111213141516171
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/装饰模式/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -1122,7 +1293,7 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/数字与字符串/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/reprot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -1141,7 +1312,7 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/数字与字符串/" itemprop="url">数字与字符串</a></h1>
+                <a class="post-title-link" href="/2017/10/30/reprot/" itemprop="url">report</a></h1>
         
 
         <div class="post-meta">
@@ -1153,8 +1324,8 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
-                2017-11-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T20:13:10+08:00">
+                2017-10-30
               </time>
             
 
@@ -1164,28 +1335,6 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/how2j/" itemprop="url" rel="index">
-                    <span itemprop="name">how2j</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1194,8 +1343,8 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/数字与字符串/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/数字与字符串/" itemprop="commentCount"></span>
+                <a href="/2017/10/30/reprot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/reprot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1225,186 +1374,13 @@ interpreterhttp://oyhm15net.bkt.clouddn.com/2017-11-15_105315.png
       
         
           
-          完整教程：how2j
+          National Day
 
-备忘
-
-
-封装类：所有的基本类型，都有对应的类类型。比如int对应的类是Integer 这种类就叫做封装类
-
-Number类：数字封装类有 Byte,Short,Integer,Long,Float,Double 这些类都是抽象类Number的子类
-
-数字与字符串互转
-
-Ma
+IntroductionThe aim of this report is to show people’s behavior in National Day.We call countries establish the anniversary of National 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/数字与字符串/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/反射机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DEMO">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HEXO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/11/反射机制/" itemprop="url">反射机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
-                2017-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/how2j/" itemprop="url" rel="index">
-                    <span itemprop="name">how2j</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/11/反射机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/反射机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          完整教程：how2j
-
-备忘
-
-
-类对象 与未实例化对象有区别
-12345Hero c=null;//未实例化的类对象   Class c1=class.forname(className);//类对象Class c2=Hero.class;Class c3=new Hreo.getClass();
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/反射机制/#more" rel="contents">
+            <a class="btn" href="/2017/10/30/reprot/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -1735,7 +1711,7 @@ Your good office is
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/reprot/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/notice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -1754,7 +1730,7 @@ Your good office is
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/30/reprot/" itemprop="url">report</a></h1>
+                <a class="post-title-link" href="/2017/10/30/notice/" itemprop="url">notice</a></h1>
         
 
         <div class="post-meta">
@@ -1785,8 +1761,8 @@ Your good office is
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/30/reprot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/reprot/" itemprop="commentCount"></span>
+                <a href="/2017/10/30/notice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/notice/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1816,13 +1792,11 @@ Your good office is
       
         
           
-          National Day
-
-IntroductionThe aim of this report is to show people’s behavior in National Day.We call countries establish the anniversary of National 
+          Sample Promissory NoteI, Jane Doe, residing at 111 Maple Dr., Los Angeles, CA 90435,hereby promise to pay back, in full, the borrowed amount of $1800p
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/30/reprot/#more" rel="contents">
+            <a class="btn" href="/2017/10/30/notice/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>

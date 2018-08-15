@@ -73,16 +73,13 @@
 
 
 
-<meta name="description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HEXO">
-<meta property="og:url" content="http://yoursite.com/2018/08/15/Java Spring Boot企业微信点餐系统的坑/index.html">
+<meta property="og:title" content="how2j_jpa学习">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/how2j_jpa学习/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
-<meta property="og:updated_time" content="2018-08-15T04:11:31.620Z">
+<meta property="og:updated_time" content="2018-08-15T07:19:50.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HEXO">
-<meta name="twitter:description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
+<meta name="twitter:title" content="how2j_jpa学习">
 
 
 
@@ -112,13 +109,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/15/Java Spring Boot企业微信点餐系统的坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/28/how2j_jpa学习/"/>
 
 
 
 
 
-  <title> | HEXO</title>
+  <title>how2j_jpa学习 | HEXO</title>
   
 
 
@@ -293,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/15/Java Spring Boot企业微信点餐系统的坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/28/how2j_jpa学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -310,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">how2j_jpa学习</h1>
         
 
         <div class="post-meta">
@@ -322,8 +319,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-15T14:44:44+08:00">
-                2018-08-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-28T20:13:10+08:00">
+                2016-07-28
               </time>
             
 
@@ -341,8 +338,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/15/Java Spring Boot企业微信点餐系统的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/15/Java Spring Boot企业微信点餐系统的坑/" itemprop="commentCount"></span>
+                <a href="/2016/07/28/how2j_jpa学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2016/07/28/how2j_jpa学习/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,27 +367,7 @@
       
 
       
-        <h2 id="遇坑集合"><a href="#遇坑集合" class="headerlink" title="遇坑集合"></a>遇坑集合</h2><ul>
-<li>配置数据没设置UTF-8编码(记不住) 导致数据库乱码</li>
-<li>没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错</li>
-<li>忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功</li>
-<li>删除啦默认构造函数导致jpa默写方法失效报错No identifier specified for entity</li>
-<li>还没搞清楚Date怎么自动记录当前时间并提交</li>
-<li>@Id 忘啦设置导致No identifier specified for entity</li>
-<li>@Service 忘啦 报错Error creating bean with name</li>
-<li><p>java.util.Date 测试报错could not execute statement  换成java.sql.Date 并在数据库端更改字符集为utf8 测试sava()成功</p>
-</li>
-<li><p>不等价(测试时遇到的)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ProductInfo&gt;productInfos=<span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//正常错、对</span></span><br><span class="line"> Assert.assertNotEquals(<span class="number">0</span>,productInfos.size());</span><br><span class="line"> <span class="comment">//测试一直对</span></span><br><span class="line"> Aseert.assertNouNull(productInfos);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="好的东西"><a href="#好的东西" class="headerlink" title="好的东西"></a>好的东西</h2><ul>
-<li>lombok插件 +@Date注解=get/set/toString()</li>
-<li>springboot框架注解</li>
-<li>按ctrl+鼠标点方法 可以看到源代码</li>
-<li>统一api接口返回的json格式。</li>
-</ul>
-
+        
       
     </div>
     
@@ -414,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/15/how2j_jpa学习/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/04/28/不写到博客总忘，没办法/" rel="next" title="不写到博客总忘，没办法">
+                <i class="fa fa-chevron-left"></i> 不写到博客总忘，没办法
               </a>
             
           </div>
@@ -424,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/15/springboot进阶之web进阶/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/17/Valine -- 一款极简的评论系统/" rel="prev" title="Valine -- 一款极简的评论系统">
+                Valine -- 一款极简的评论系统 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -481,17 +458,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -565,22 +533,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇坑集合"><span class="nav-number">1.</span> <span class="nav-text">遇坑集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好的东西"><span class="nav-number">2.</span> <span class="nav-text">好的东西</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
