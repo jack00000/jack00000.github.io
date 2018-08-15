@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="大致内容 引入数据库 创建数据库和表 链接数据库 异常处理机制 什么是原子型操作 线程解决Servicedao 对原子型dao统一进行事务管理 为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制  注意：在lesson9向表user插入数据时  1.获得Connection对象conn=DriverManager.getCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无锡实训java_day6">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/无锡实训java_day6/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="大致内容 引入数据库 创建数据库和表 链接数据库 异常处理机制 什么是原子型操作 线程解决Servicedao 对原子型dao统一进行事务管理 为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制  注意：在lesson9向表user插入数据时  1.获得Connection对象conn=DriverManager.getCo">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710105249.png">
+<meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710200352.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710225848.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711071336.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711072841.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711081319.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711132556.png">
+<meta property="og:image" content="http://oy5lsbw4v.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710200352.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:20.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无锡实训java_day6">
+<meta name="twitter:description" content="大致内容 引入数据库 创建数据库和表 链接数据库 异常处理机制 什么是原子型操作 线程解决Servicedao 对原子型dao统一进行事务管理 为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制  注意：在lesson9向表user插入数据时  1.获得Connection对象conn=DriverManager.getCo">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710105249.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/09/无锡实训java_day6/"/>
+
+
+
+
+
+  <title>无锡实训java_day6 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/无锡实训java_day6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">无锡实训java_day6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-09T20:13:10+08:00">
+                2018-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/无锡实训java/" itemprop="url" rel="index">
+                    <span itemprop="name">无锡实训java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/09/无锡实训java_day6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/09/无锡实训java_day6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="大致内容"><a href="#大致内容" class="headerlink" title="大致内容"></a>大致内容</h2><ul>
+<li>引入数据库</li>
+<li>创建数据库和表</li>
+<li>链接数据库</li>
+<li>异常处理机制</li>
+<li>什么是原子型操作</li>
+<li>线程解决Servicedao 对原子型dao统一进行事务管理</li>
+<li><p>为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制</p>
+</li>
+<li><p>注意：在lesson9向表user插入数据时</p>
+</li>
+<li>1.获得Connection对象conn=DriverManager.getConnection(url)</li>
+<li>2.获得PreparedStatement 的对象 statement=conn.prepareStatement(sql);</li>
+<li>3.statement.setString(1, userid);<pre><code>statement.setString(2, name);
+statement.setInt(3, age);
+</code></pre></li>
+<li>4.设置自动提交为false：conn.setAutoCommit(false);</li>
+<li>5.执行更新：statement.executeUpdate();</li>
+</ul>
+<h3 id="问题来啦：在lesson10中老师加入session-，为什么加入session-事务-？"><a href="#问题来啦：在lesson10中老师加入session-，为什么加入session-事务-？" class="headerlink" title="问题来啦：在lesson10中老师加入session ，为什么加入session(事务)？"></a>问题来啦：在lesson10中老师加入session ，为什么加入session(事务)？</h3><ul>
+<li>session完成啦对connetion对象和statement对象的封装，方便调用。</li>
+</ul>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ul>
+<li>create database Student；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">users</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">   id <span class="keyword">int</span>(<span class="number">30</span>)</span> primary key,</span></span><br><span class="line"><span class="function">   userid <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span> unique not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">   usename <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">   age <span class="keyword">int</span> <span class="title">check</span><span class="params">(age&gt;=<span class="number">0</span> and age&lt;<span class="number">100</span>)</span>,</span></span><br><span class="line"><span class="function">   gj <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">INSERT INTO <span class="title">user</span> <span class="params">( id, userid,usename,age,gj )</span></span></span><br><span class="line"><span class="function">                       VALUES</span></span><br><span class="line"><span class="function">                       <span class="params">( <span class="number">1</span>, <span class="string">'001'</span>,<span class="string">'zhangsan'</span>,<span class="number">20</span>,<span class="string">'china'</span> )</span></span>;</span><br><span class="line"></span><br><span class="line">select * from users;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">log_student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">   id <span class="keyword">int</span>(<span class="number">10</span>)</span> primary key,</span></span><br><span class="line"><span class="function">   logname <span class="title">varchar</span><span class="params">(<span class="number">16</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">   logaction <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> not <span class="keyword">null</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">insert into <span class="title">user</span> <span class="params">(logname,logaction)</span><span class="title">values</span><span class="params">(<span class="string">'zhangsan'</span>,<span class="string">'log in'</span>)</span></span>;</span><br><span class="line">select *from log_student;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710105249.png" alt=""></p>
+<h3 id="java链接数据库-事务"><a href="#java链接数据库-事务" class="headerlink" title="java链接数据库/事务/"></a>java链接数据库/事务/</h3><ul>
+<li>基本类库</li>
+<li>第三方jar</li>
+<li>链接数据库</li>
+<li>引入类可能发生异常，不要在main() throws exception</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(com.mysql.jdbc.Driver);<span class="comment">//引入jar 加载相关类库</span></span><br><span class="line">Connection conn=  DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/Student?characterEncoding=YTF-8"</span>,<span class="string">"root"</span>,<span class="string">"linux"</span>);</span><br><span class="line">System.out.println(<span class="string">"链接成功"</span>)；</span><br></pre></td></tr></table></figure>
+<p><img src="http://oxz3x2njl.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710200352.png" alt=""></p>
+<h3 id="异常处理机制-强异常捕获，弱异常抛出。"><a href="#异常处理机制-强异常捕获，弱异常抛出。" class="headerlink" title="异常处理机制:强异常捕获，弱异常抛出。"></a>异常处理机制:强异常捕获，弱异常抛出。</h3><ul>
+<li>强异常捕获，弱异常抛出。解决问题：调用方式 里面处理的异常你你看不到</li>
+<li>throws Expetion() //向下传递</li>
+<li>throw 生成一个炸弹抛出</li>
+<li>try catch   //处理</li>
+<li>强异常：代码编译不通过：eg：Socket socket=new Socket(“localhost”,8080);</li>
+<li>强异常：IOExpetion UnKnownHostExpetion  必须处理，不能传递</li>
+<li><p>弱异常：代码编译可以通过 eg:int a=3/0;</p>
+</li>
+<li><p>异常栈：用内存模型图来理解。</p>
+</li>
+<li><p>RuntimeExpetion</p>
+</li>
+<li>exception 举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Socket socket=<span class="keyword">new</span> Socket(<span class="string">"localhost"</span>,<span class="number">8080</span>);</span><br><span class="line">Connection conn=  DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/Student?characterEncoding=YTF-8"</span>,<span class="string">"root"</span>,<span class="string">"linux"</span>);</span><br><span class="line">System.out.println(<span class="string">"链接成功"</span>)；</span><br><span class="line"></span><br><span class="line">String sql=<span class="string">"insert into users(uesrid,username,age)values(?,?,?)"</span>;</span><br><span class="line"></span><br><span class="line">PreparedStatement statement=conn.PreparedStatement(sql);</span><br><span class="line">statement.setString(<span class="number">1</span>,uesrid);</span><br><span class="line">statement.setString(<span class="number">2</span>,usename);</span><br><span class="line">statement.setInt(<span class="number">3</span>,age);</span><br><span class="line"></span><br><span class="line">statement.executeUpdate();</span><br><span class="line">System.out.println(<span class="string">"插入成功"</span>)；</span><br></pre></td></tr></table></figure>
+<h3 id="重点：-事务机制：多条记录curd出错-保持数据不变-管理conn"><a href="#重点：-事务机制：多条记录curd出错-保持数据不变-管理conn" class="headerlink" title="重点： 事务机制：多条记录curd出错 保持数据不变/管理conn"></a>重点： 事务机制：多条记录curd出错 保持数据不变/管理conn</h3><h3 id="user表与log-student表在事务中有关联-修改表会在log-student表插入记录"><a href="#user表与log-student表在事务中有关联-修改表会在log-student表插入记录" class="headerlink" title="user表与log_student表在事务中有关联 修改表会在log_student表插入记录"></a>user表与log_student表在事务中有关联 修改表会在log_student表插入记录</h3><h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><h3 id="用工厂生成conn对像"><a href="#用工厂生成conn对像" class="headerlink" title="用工厂生成conn对像"></a>用工厂生成conn对像</h3><h3 id="实现类不是原子型操作-提交失败后回滚"><a href="#实现类不是原子型操作-提交失败后回滚" class="headerlink" title="实现类不是原子型操作 提交失败后回滚"></a>实现类不是原子型操作 提交失败后回滚</h3><ul>
+<li>sesion是对connection对象和PreparedStatement对象的封装 ，方便调用。</li>
+<li>service是对多个原子型操作的封装。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">addUser(User u)&#123;</span><br><span class="line">  Session session=SessionFactory.getSession();</span><br><span class="line">  <span class="comment">//Session session1=SessionFactory.getSession();</span></span><br><span class="line">  session.beginTranction();</span><br><span class="line">  String sql=<span class="string">"insert into user(username)values)('')"</span></span><br><span class="line">  PreparedStatement statement=session.getPreparedStatement(sql);</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    statement.setString(<span class="number">1</span>,user.getUserid());</span><br><span class="line">    statement.setString(<span class="number">2</span>,user.getUserid());</span><br><span class="line">    statement.setString(<span class="number">3</span>,user.getUserid());</span><br><span class="line">  &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">    e.prinStackTrace();</span><br><span class="line">    session.rollbackTransaction();<span class="comment">//出错时回滚</span></span><br><span class="line">  &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    session.closeSession();<span class="comment">//关闭事务</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rollbackTransaction()&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">     conn.rollback();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">     <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">     e.printStackTrace();</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">closeSession()&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(state!=<span class="keyword">null</span>)</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    state.close();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">    e.printStackTrace();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">if</span>(conn!=<span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    conn.close();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">    e.printStackTrace();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="以上流程存在问题：对user的操作-和-堆log-student是分开的-他们有事务关联-ServiceDao解决此问题。"><a href="#以上流程存在问题：对user的操作-和-堆log-student是分开的-他们有事务关联-ServiceDao解决此问题。" class="headerlink" title="以上流程存在问题：对user的操作 和 堆log_student是分开的  他们有事务关联   ServiceDao解决此问题。"></a>以上流程存在问题：对user的操作 和 堆log_student是分开的  他们有事务关联   ServiceDao解决此问题。</h3><h3 id="ServiceDao-IService-：按照业务分类原子型dao"><a href="#ServiceDao-IService-：按照业务分类原子型dao" class="headerlink" title="ServiceDao  /IService ：按照业务分类原子型dao"></a>ServiceDao  /IService ：按照业务分类原子型dao</h3><ul>
+<li>对两个表进行操作</li>
+</ul>
+<h3 id="事务控制问题：两个dao-都是-同一个session-实现对两个表的操作-同时失败-同时成功。"><a href="#事务控制问题：两个dao-都是-同一个session-实现对两个表的操作-同时失败-同时成功。" class="headerlink" title="事务控制问题：两个dao 都是 同一个session  实现对两个表的操作 同时失败 同时成功。"></a>事务控制问题：两个dao 都是 同一个session  实现对两个表的操作 同时失败 同时成功。</h3><ul>
+<li>解决方法：在线程中保存session</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span></span>&#123;</span><br><span class="line">  Thread thread=Thread.currentThread();</span><br><span class="line"></span><br><span class="line">  System.out.println(thread.getname() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">  		Thread t=Thread.currentThread();</span><br><span class="line">  		System.out.println(t.getName());</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SessionFactory</span></span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> threadLocal&lt;Session&gt; threadLocal=<span class="keyword">new</span> threadLocal&lt;Session&gt;();</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Session</span><br><span class="line">     &#125;</span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<h3 id="在原子dao不提交，不关闭-在servicedao统一进行提交-事务管理"><a href="#在原子dao不提交，不关闭-在servicedao统一进行提交-事务管理" class="headerlink" title="在原子dao不提交，不关闭  在servicedao统一进行提交(事务管理)"></a>在原子dao不提交，不关闭  在servicedao统一进行提交(事务管理)</h3><ul>
+<li>ServiceDao 对多个表进行操作  uesrdao对单个表进行操作</li>
+<li>单独的dao都没有提交事务，所以在servicedao实现对事务的统一管理</li>
+<li>要单独进行原子型操作，用代理类。</li>
+<li>所以在原子dao不提交，不关闭  在servicedao统一进行提交(事务管理)</li>
+<li>不写userDao事务控制，用代理对象实现以下方法</li>
+<li>解决方法：session.commitTransaction()/rollbackTransaction()/closeSession() 写在代理对象。</li>
+<li>因为如果你在usedao logstudentdao写事务的话，你写ServiceDAO的时候会造成影响，</li>
+<li>比如，userdao处理事务退出啦 logstudentdao处理事务没退出。</li>
+</ul>
+<ul>
+<li>问题举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//伪代码1：对user进行dao操作</span></span><br><span class="line"><span class="keyword">int</span> a=<span class="number">2</span>/<span class="number">0</span>;</span><br><span class="line"><span class="comment">//伪代码2：对logstudent进行dao操作</span></span><br><span class="line">session.commitTransaction();</span><br></pre></td></tr></table></figure>
+<h3 id="实操：登录并实现插入记录到logstudent-完整源码"><a href="#实操：登录并实现插入记录到logstudent-完整源码" class="headerlink" title="实操：登录并实现插入记录到logstudent  完整源码"></a>实操：登录并实现插入记录到logstudent  <a href="https://github.com/jack00000/wuxi_train" target="_blank" rel="noopener">完整源码</a></h3><ul>
+<li>目的：知道为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制</li>
+<li><p>同时成功 同时失败</p>
+</li>
+<li><p>你要懂代理模式，session Service 原子型操作 线程 工厂模式 自定义异常 throw 异常</p>
+</li>
+<li>单例模式确保session是一致的。(老师实现的不是单利模式，是通过工厂判断 从而始终生产一个对象)</li>
+<li>保证conn statement 只有一个</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sessionFactory</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Session <span class="title">getSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Session session=<span class="keyword">null</span>;</span><br><span class="line">		session=threadloacl.get();</span><br><span class="line">		<span class="keyword">if</span>(session==<span class="keyword">null</span>) &#123;</span><br><span class="line">		session=<span class="keyword">new</span> Session(SessionFactory.getConnection());</span><br><span class="line">		threadloacl.set(session);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现"><a href="#目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现" class="headerlink" title="目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现"></a>目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现</h3><ul>
+<li>目前原子型操作(要用代理类)没写</li>
+<li>已完成 不报错时 同时提交  报错时 同时回滚。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RegisterUser</span><span class="params">(User u, LogStudent logstu)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       Thread t=<span class="keyword">new</span> Thread()&#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               <span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">               <span class="keyword">while</span> (i&lt;<span class="number">2</span>)&#123;</span><br><span class="line">                   Session sessionForUesr=SessionFactory.getSession();</span><br><span class="line">                   Session sessionForLog=SessionFactory.getSession();</span><br><span class="line">                   <span class="keyword">if</span>(sessionForLog==sessionForUesr)&#123;</span><br><span class="line">                       System.out.println(<span class="string">"两者的session一样"</span>);</span><br><span class="line">                   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                       System.out.println(<span class="string">"两者的session不一样"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">try</span>&#123;</span><br><span class="line">                       UserDao ud=UserDaoFactory.getUseDao();</span><br><span class="line">                       sessionForUesr=ud.addUser(u);</span><br><span class="line">                       System.out.println(<span class="string">"提交user的信息"</span>);</span><br><span class="line">                       sessionForUesr.commitTransaction();</span><br><span class="line">                       System.out.println(<span class="string">"users表插入成功"</span>);</span><br><span class="line">                       System.out.println();</span><br><span class="line"></span><br><span class="line">                       LogStudentDao lgstu1=LogStudentDaoFactory.getLogStudentDao();</span><br><span class="line">                       sessionForLog=lgstu1.addLogStudent(logstu);</span><br><span class="line">                       System.out.println(<span class="string">"提交log的信息"</span>);</span><br><span class="line">                       sessionForLog.commitTransaction();</span><br><span class="line">                       System.out.println(<span class="string">"log表插入成功"</span>);</span><br><span class="line"></span><br><span class="line">                   &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"></span><br><span class="line">                       sessionForLog.rollbackTransaction();</span><br><span class="line">                       sessionForUesr.rollbackTransaction();</span><br><span class="line">                       System.out.println(<span class="string">"插入失败，已 回滚"</span>);</span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line">                   i+=<span class="number">1</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       t.start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710225848.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711071336.png" alt=""></p>
+<h3 id="把数据改成一个错，一个对，运行结果。"><a href="#把数据改成一个错，一个对，运行结果。" class="headerlink" title="把数据改成一个错，一个对，运行结果。"></a>把数据改成一个错，一个对，运行结果。</h3><p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711072841.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711081319.png" alt=""></p>
+<ul>
+<li>用代理类实现原子性操作（先放着）</li>
+</ul>
+<h3 id="上面的是用addUsers-User-u-返回session对象进行操作-忽略啦session是单例模式。"><a href="#上面的是用addUsers-User-u-返回session对象进行操作-忽略啦session是单例模式。" class="headerlink" title="上面的是用addUsers(User u)返回session对象进行操作  忽略啦session是单例模式。"></a>上面的是用addUsers(User u)返回session对象进行操作  忽略啦session是单例模式。</h3><ul>
+<li>void addUser(User u)再做一遍<a href="https://github.com/jack00000/wuxi_train" target="_blank" rel="noopener">源码</a></li>
+</ul>
+<pre><code class="java"><span class="keyword">try</span>{
+
+
+                                     Session session=SessionFactory.getSession();
+                                     IUserDao user=UserDaoFactory.getUseDao();
+                                     ILogStudentDao log=LogStudentDaoFactory.getLogStudentDao();
+                                     user.addUser(u);
+                                     log.addLogStudent(logstu);
+                                     session.commitTransaction();
+                                     System.out.println(<span class="string">"插入成功"</span>);
+
+                             }<span class="keyword">catch</span> (Exception e){
+
+                                     sessionForLog.rollbackTransaction();
+                                     sessionForUesr.rollbackTransaction();
+                                     System.out.println(<span class="string">"插入失败，已 回滚"</span>);
+
+                             }
+</code></pre>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711132556.png" alt=""></p>
+<ul>
+<li>说白啦就是对一个表dao操作的叠加，理解下图  再以扩散思维理解 事务Service<br><img src="http://oy5lsbw4v.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710200352.png" alt=""></li>
+</ul>
+<h3 id="所有的事务控制不在Servicedao中，而由代理去实现。"><a href="#所有的事务控制不在Servicedao中，而由代理去实现。" class="headerlink" title="所有的事务控制不在Servicedao中，而由代理去实现。"></a>所有的事务控制不在Servicedao中，而由代理去实现。</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/09/无锡实训java_day5/" rel="next" title="无锡实训java_day5">
+                <i class="fa fa-chevron-left"></i> 无锡实训java_day5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/09/hadoop分布式集群搭建/" rel="prev" title="hadoop分布式集群搭建">
+                hadoop分布式集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大致内容"><span class="nav-number">1.</span> <span class="nav-text">大致内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题来啦：在lesson10中老师加入session-，为什么加入session-事务-？"><span class="nav-number">1.1.</span> <span class="nav-text">问题来啦：在lesson10中老师加入session ，为什么加入session(事务)？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.2.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java链接数据库-事务"><span class="nav-number">1.3.</span> <span class="nav-text">java链接数据库/事务/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理机制-强异常捕获，弱异常抛出。"><span class="nav-number">1.4.</span> <span class="nav-text">异常处理机制:强异常捕获，弱异常抛出。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重点：-事务机制：多条记录curd出错-保持数据不变-管理conn"><span class="nav-number">1.5.</span> <span class="nav-text">重点： 事务机制：多条记录curd出错 保持数据不变/管理conn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user表与log-student表在事务中有关联-修改表会在log-student表插入记录"><span class="nav-number">1.6.</span> <span class="nav-text">user表与log_student表在事务中有关联 修改表会在log_student表插入记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实操"><span class="nav-number">2.</span> <span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用工厂生成conn对像"><span class="nav-number">2.1.</span> <span class="nav-text">用工厂生成conn对像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现类不是原子型操作-提交失败后回滚"><span class="nav-number">2.2.</span> <span class="nav-text">实现类不是原子型操作 提交失败后回滚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以上流程存在问题：对user的操作-和-堆log-student是分开的-他们有事务关联-ServiceDao解决此问题。"><span class="nav-number">2.3.</span> <span class="nav-text">以上流程存在问题：对user的操作 和 堆log_student是分开的  他们有事务关联   ServiceDao解决此问题。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServiceDao-IService-：按照业务分类原子型dao"><span class="nav-number">2.4.</span> <span class="nav-text">ServiceDao  /IService ：按照业务分类原子型dao</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务控制问题：两个dao-都是-同一个session-实现对两个表的操作-同时失败-同时成功。"><span class="nav-number">2.5.</span> <span class="nav-text">事务控制问题：两个dao 都是 同一个session  实现对两个表的操作 同时失败 同时成功。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在原子dao不提交，不关闭-在servicedao统一进行提交-事务管理"><span class="nav-number">2.6.</span> <span class="nav-text">在原子dao不提交，不关闭  在servicedao统一进行提交(事务管理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实操：登录并实现插入记录到logstudent-完整源码"><span class="nav-number">2.7.</span> <span class="nav-text">实操：登录并实现插入记录到logstudent  完整源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现"><span class="nav-number">2.8.</span> <span class="nav-text">目前已将两个表的commit操作放入线程并放在啦RegisterServicDao实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把数据改成一个错，一个对，运行结果。"><span class="nav-number">2.9.</span> <span class="nav-text">把数据改成一个错，一个对，运行结果。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上面的是用addUsers-User-u-返回session对象进行操作-忽略啦session是单例模式。"><span class="nav-number">2.10.</span> <span class="nav-text">上面的是用addUsers(User u)返回session对象进行操作  忽略啦session是单例模式。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有的事务控制不在Servicedao中，而由代理去实现。"><span class="nav-number">2.11.</span> <span class="nav-text">所有的事务控制不在Servicedao中，而由代理去实现。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>

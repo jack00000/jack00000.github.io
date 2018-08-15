@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="完整教程：how2j  备忘配置运行  坑1 tomcat的配置 用how2j提供的jdk （我用官网最新的报错） tmall_ssm   坑2 后台配置运行 jre路径改为jdk路径 tmall_ssm admin 前台配置运行 tmall_ssm forehome 8080端口占用 unable to ping server 1099 -&amp;gt; jdk版本与tomacat所需jdk版本不一致">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmall_ssm项目学习">
+<meta property="og:url" content="http://yoursite.com/2018/05/21/tmall_ssm项目学习/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="完整教程：how2j  备忘配置运行  坑1 tomcat的配置 用how2j提供的jdk （我用官网最新的报错） tmall_ssm   坑2 后台配置运行 jre路径改为jdk路径 tmall_ssm admin 前台配置运行 tmall_ssm forehome 8080端口占用 unable to ping server 1099 -&amp;gt; jdk版本与tomacat所需jdk版本不一致">
+<meta property="og:image" content="http://oyiuebawz.bkt.clouddn.com/2018-03-18_160629.png">
+<meta property="og:image" content="http://oyiuebawz.bkt.clouddn.com/2018-03-18_163815.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_170340.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_163958.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_165451.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_210924.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_225211.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_225827.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-05-23_011259.png">
+<meta property="og:image" content="http://stepimagewm.how2j.cn/6041.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:19.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tmall_ssm项目学习">
+<meta name="twitter:description" content="完整教程：how2j  备忘配置运行  坑1 tomcat的配置 用how2j提供的jdk （我用官网最新的报错） tmall_ssm   坑2 后台配置运行 jre路径改为jdk路径 tmall_ssm admin 前台配置运行 tmall_ssm forehome 8080端口占用 unable to ping server 1099 -&amp;gt; jdk版本与tomacat所需jdk版本不一致">
+<meta name="twitter:image" content="http://oyiuebawz.bkt.clouddn.com/2018-03-18_160629.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/21/tmall_ssm项目学习/"/>
+
+
+
+
+
+  <title>tmall_ssm项目学习 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/tmall_ssm项目学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tmall_ssm项目学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-21T20:13:10+08:00">
+                2018-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实验项目/" itemprop="url" rel="index">
+                    <span itemprop="name">实验项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/21/tmall_ssm项目学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/21/tmall_ssm项目学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3>完整教程：<a href="http://how2j.cn/k/tmall_ssm/tmall_ssm-1402/1402.html" target="_blank" rel="noopener">how2j</a></h3>
+
+<h2 id="备忘"><a href="#备忘" class="headerlink" title="备忘"></a>备忘</h2><p></p><h3>配置运行</h3><p></p>
+<ul>
+<li>坑1 tomcat的配置 用how2j提供的jdk （我用官网最新的报错） tmall_ssm<br><img src="http://oyiuebawz.bkt.clouddn.com/2018-03-18_160629.png" alt=""><br><img src="http://oyiuebawz.bkt.clouddn.com/2018-03-18_163815.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_170340.png" alt=""></li>
+</ul>
+<ul>
+<li>坑2 后台配置运行 jre路径改为jdk路径 tmall_ssm admin<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_163958.png" alt=""></li>
+<li>前台配置运行 tmall_ssm forehome<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-03-18_165451.png" alt=""></li>
+<li><a href="http://how2j.cn/k/tomcat/tomcat-portfix/545.html" target="_blank" rel="noopener">8080端口占用</a></li>
+<li>unable to ping server 1099 -&gt; jdk版本与tomacat所需jdk版本不一致   <a href="http://how2j.cn/k/tomcat/tomcat-faq/1132.html#step4480" target="_blank" rel="noopener">tomcat的配置错误姐姐方法</a></li>
+<li>maven项目构建不成功，除以上问题还有各种各样的花式错误，这次我idea，jdk，tomcat全部下载安装最新版 并配置环境变量。demo一次成功<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_210924.png" alt=""></li>
+<li>新建maven项目 无resource java文件夹解决方法<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_225211.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-05-22_225827.png" alt=""></li>
+<li>autowired 报错等级  <a href="http://how2j.cn/k/idea/idea-autowired/1391.html" target="_blank" rel="noopener">解决方法</a><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-05-23_011259.png" alt=""></li>
+</ul>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><h3 id="1-数据库设计："><a href="#1-数据库设计：" class="headerlink" title="1.数据库设计："></a>1.数据库设计：</h3><ul>
+<li>一共9张表 一进后台 商品得分类<code>分类表</code> 如吃穿住行  然后看属性<code>属性表</code> 如颜色 价格  再看具体产品<code>产品表</code>  下单时 一类产品对应一个订单项<code>订单项表</code>  多个订单项组成订单<code>订单表</code>   <code>属性值表</code>（有点困惑 ，放在一起没问题啊） 有买卖就有哦名家<code>评价表</code>  <code>产品图片表</code>（有点困惑 应该属于产品信息一类，而产品详情是属性和属性值）  最后一个就是用<code>用户表</code>啦。。。</li>
+<li>表之间的关系 （用来设置主键 外键 注意 多对多绝对能拆成多对一对多之类的，不要有多对多出现） 盗张图<br><img src="http://stepimagewm.how2j.cn/6041.png" alt=""></li>
+<li>表的属性项   通常建表的注意事项：id属性必有 id int(11) not null auto_increment / 初始属性值default null / 主键约束 primary key（id） 外键约束 constraint  约束名 foreign key（cid）reference 外键坐在的表 （id）/ 结尾设置字符格式 engine=innodb default charset=utf8;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">user categroy表对别的属性只有一对多</span><br><span class="line"><span class="function">create table <span class="title">user</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  id <span class="keyword">int</span>(<span class="number">11</span>)</span> not <span class="keyword">null</span> auto_increment,</span></span><br><span class="line"><span class="function">  name <span class="title">varchar2</span><span class="params">(<span class="number">255</span>)</span> <span class="keyword">default</span> <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">  password <span class="title">varchar2</span><span class="params">(<span class="number">255</span>)</span> <span class="keyword">default</span> <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">  primary <span class="title">key</span> <span class="params">(id)</span></span></span><br><span class="line"><span class="function">  )engine</span>=innodb <span class="keyword">default</span> charset=utf8;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">category</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  id <span class="keyword">int</span>(<span class="number">11</span>)</span> not nul auto_increment,</span></span><br><span class="line"><span class="function">  name <span class="title">varchar2</span><span class="params">(<span class="number">225</span>)</span> <span class="keyword">default</span> <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">  prinary <span class="title">key</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function">  )engine</span>=innodb <span class="keyword">default</span> charset=utf8;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">proprety</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  id <span class="keyword">int</span>(<span class="number">11</span>)</span> not <span class="keyword">null</span> auto_increment,</span></span><br><span class="line"><span class="function">  cid <span class="title">int</span><span class="params">(<span class="number">11</span>)</span> <span class="keyword">default</span> <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">  name <span class="title">varchar2</span><span class="params">(<span class="number">225</span>)</span> <span class="keyword">default</span> <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">  constraint fuck_property_categroy foreign <span class="title">key</span><span class="params">(cid)</span> reference <span class="title">category</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function">  )  engine</span>=innodb <span class="keyword">default</span> charset=utf8;</span><br><span class="line"></span><br><span class="line">以管窥豹。。。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-导入数据库文件"><a href="#2-导入数据库文件" class="headerlink" title="2.导入数据库文件"></a>2.<a href="https://jack00000.github.io/2018/03/18/cmd%20%E6%93%8D%E4%BD%9Cmysql%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="noopener">导入数据库文件</a></h3><h3 id="3-写后台-CURD-分页-数据渲染到界面显示基本原理"><a href="#3-写后台-CURD-分页-数据渲染到界面显示基本原理" class="headerlink" title="3.写后台 CURD +分页  数据渲染到界面显示基本原理"></a>3.写后台 CURD +分页  <a href="https://jack00000.github.io/2018/03/18/%E5%90%8E%E5%8F%B0%E6%9F%A5%E8%AF%A2/" target="_blank" rel="noopener">数据渲染到界面显示基本原理</a></h3><h4 id="3-1-遇到直接问题-那些配置文件-知道作用-但不知道整个怎么写-无法新建自己写配置文件-自己写的-报错搞死人"><a href="#3-1-遇到直接问题-那些配置文件-知道作用-但不知道整个怎么写-无法新建自己写配置文件-自己写的-报错搞死人" class="headerlink" title="3.1 遇到直接问题  那些配置文件 知道作用 但不知道整个怎么写 无法新建自己写配置文件  自己写的 报错搞死人"></a>3.1 遇到直接问题  那些配置文件 知道作用 但不知道整个怎么写 无法新建自己写配置文件  自己写的 报错搞死人</h4><h4 id="3-2-慢慢来-第一个配置文件-log4j-properties-需要懂的基本点"><a href="#3-2-慢慢来-第一个配置文件-log4j-properties-需要懂的基本点" class="headerlink" title="3.2 慢慢来 第一个配置文件  log4j.properties   需要懂的基本点"></a>3.2 慢慢来 第一个配置文件  log4j.properties   需要懂的基本点</h4><ul>
+<li>log4j.rootLogger=ERROR, stdout   //error  意思是低于error级别不log  stdout  是输出到控制台  R则是滚动输出到文件</li>
+<li>log4j.logger.com.how2java.tmall=TRACE  // com.how2java是唯一标示名  不知道啥意思 结果是控制台每条信息 第一个就是trace</li>
+<li>下面是控制台输出设置</li>
+<li>log4j.appender.stdout=org.apache.log4j.ConsoleAppender</li>
+<li>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</li>
+<li>log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n  //文件格式</li>
+<li>下面是文件基本信息如：文件名是example.log,文件最大100k, 最多滚动5个文件    输出设置</li>
+<li>log4j.appender.R=org.apache.log4j.RollingFileAppender</li>
+<li>log4j.appender.R.File=example.log  //文件在项目根目录文件夹下</li>
+<li>log4j.appender.R.MaxFileSize=100KB</li>
+<li>log4j.appender.R.MaxBackupIndex=5</li>
+<li>下面是文件输出设置 （与控制台大同小异）</li>
+<li>log4j.appender.R.layout=org.apache.log4j.PatternLayout</li>
+<li>log4j.appender.R.layout.ConversionPattern=%p %t %c - %m%n</li>
+<li><a href="http://how2j.cn/k/log4j/log4j-config/1082.html#step4162" target="_blank" rel="noopener">how2j的完整教程</a>  <a href="https://jack00000.github.io/2018/03/18/Log4j/" target="_blank" rel="noopener">自己学的时候写的</a></li>
+</ul>
+<h4 id="3-3-第二个配置文件-jdbc-properties-jdbc-主要信息-肯定为了使用方便才这样搞"><a href="#3-3-第二个配置文件-jdbc-properties-jdbc-主要信息-肯定为了使用方便才这样搞" class="headerlink" title="3.3 第二个配置文件 jdbc.properties   jdbc 主要信息 肯定为了使用方便才这样搞"></a>3.3 第二个配置文件 jdbc.properties   jdbc 主要信息 肯定为了使用方便才这样搞</h4><ul>
+<li>root  //账号</li>
+<li>admin //密码</li>
+<li>jdbc.driver=com.mysql.jdbc.Driver  //依赖包</li>
+<li>jdbc.url=jdbc:mysql://localhost:3306/tmall_ssm?useUnicode=true&amp;characterEncoding=utf8  //记不住  tmall_ssm数据库名</li>
+</ul>
+<h4 id="3-4-第三个配置文件-applicationContext-xml"><a href="#3-4-第三个配置文件-applicationContext-xml" class="headerlink" title="3.4 第三个配置文件 applicationContext.xml"></a>3.4 第三个配置文件 applicationContext.xml</h4><ul>
+<li>1.文件头<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">       xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">       xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">       xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd</span></span><br><span class="line"><span class="string">     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>1、xmlns=”<a href="http://www.springframework.org/schema/beans&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/beans&quot;</a><br>声明xml文件默认的命名空间，表示未使用其他命名空间的所有标签的默认命名空间。</p>
+<p>2、xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>声明XML Schema 实例，声明后就可以使用 schemaLocation 属性了</p>
+<p>3、xmlns:aop=”<a href="http://www.springframework.org/schema/aop&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/aop&quot;</a><br>声明前缀为aop的命名空间，后面的URL用于标示命名空间的地址不会被解析器用于查找信息。其惟一的作用是赋予命名空间一个惟一的名称。当命名空间被定义在元素的开始标签中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。</p>
+<p>4、xsi:schemaLocation=”<br><a href="http://www.springframework.org/schema/beans" target="_blank" rel="noopener">http://www.springframework.org/schema/beans</a> <a href="http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" target="_blank" rel="noopener">http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</a><br>这个从命名可以看出个大概，指定Schema的位置这个属性必须结合命名空间使用。这个属性有两个值，第一个值表示需要使用的命名空间。第二个值表示供命名空间使用的 XML schema 的位置</p>
+<ul>
+<li><p>2.启动注解识别</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:annotation-config /&gt;</span><br><span class="line">    &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.how2java.tmall.service"</span> /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.导入数据库配置文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:property——placeholder location=<span class="string">"classpath:jdbc.properties"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol>
+<li>配置数据库连接池  //记不住+1<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot; init-method=&quot;init&quot; destroy-method=&quot;close&quot;&gt;</span><br><span class="line">    &lt;!-- 基本属性 url、user、password --&gt;</span><br><span class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置初始化大小、最小、最大 --&gt;</span><br><span class="line">    &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置获取连接等待超时的时间 --&gt;</span><br><span class="line">    &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --&gt;</span><br><span class="line">    &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --&gt;</span><br><span class="line">    &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT 1&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 打开PSCache，并且指定每个连接上PSCache的大小 --&gt;</span><br><span class="line">    &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot;</span><br><span class="line">              value=&quot;20&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>5.Mybatis的SessionFactory配置  // 现在的目的是自己另外新建也能搞出来，想自己打配置文件现在不能</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSession"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"com.how2java.tmall.pojo"</span> /&gt;</span> //包名换成自己的</span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath:mapper/*.xml"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--分页插件，目前先注释，后面重构的时候才会使用</span></span><br><span class="line"><span class="comment">    &lt;property name="plugins"&gt;</span></span><br><span class="line"><span class="comment">        &lt;array&gt;</span></span><br><span class="line"><span class="comment">            &lt;bean class="com.github.pagehelper.PageInterceptor"&gt;</span></span><br><span class="line"><span class="comment">                &lt;property name="properties"&gt;</span></span><br><span class="line"><span class="comment">                    &lt;value&gt;</span></span><br><span class="line"><span class="comment">                    &lt;/value&gt;</span></span><br><span class="line"><span class="comment">                &lt;/property&gt;</span></span><br><span class="line"><span class="comment">            &lt;/bean&gt;</span></span><br><span class="line"><span class="comment">        &lt;/array&gt;</span></span><br><span class="line"><span class="comment">    &lt;/property&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.<!--Mybatis的Mapper文件识别--></p>
+</li>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.how2java.tmall.mapper"</span>/&gt;</span>  //包名换</span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">#### 3.5 第四个配置文件  pom.xml 配置相关jar包 自己看着改 <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.how2java.tmall<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tmall_ssm<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>`</code><br>-<br>-<br>-</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/13/用fluxion插件实现wifi钓鱼/" rel="next" title="用fluxion插件实现wifi钓鱼">
+                <i class="fa fa-chevron-left"></i> 用fluxion插件实现wifi钓鱼
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/22/tmall_ssm项目学习_1/" rel="prev" title="tmall_ssm项目学习_1">
+                tmall_ssm项目学习_1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">完整教程：how2j</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备忘"><span class="nav-number"></span> <span class="nav-text">备忘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">配置运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实操"><span class="nav-number"></span> <span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数据库设计："><span class="nav-number">1.</span> <span class="nav-text">1.数据库设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-导入数据库文件"><span class="nav-number">2.</span> <span class="nav-text">2.导入数据库文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-写后台-CURD-分页-数据渲染到界面显示基本原理"><span class="nav-number">3.</span> <span class="nav-text">3.写后台 CURD +分页  数据渲染到界面显示基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-遇到直接问题-那些配置文件-知道作用-但不知道整个怎么写-无法新建自己写配置文件-自己写的-报错搞死人"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 遇到直接问题  那些配置文件 知道作用 但不知道整个怎么写 无法新建自己写配置文件  自己写的 报错搞死人</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-慢慢来-第一个配置文件-log4j-properties-需要懂的基本点"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 慢慢来 第一个配置文件  log4j.properties   需要懂的基本点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-第二个配置文件-jdbc-properties-jdbc-主要信息-肯定为了使用方便才这样搞"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 第二个配置文件 jdbc.properties   jdbc 主要信息 肯定为了使用方便才这样搞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-第三个配置文件-applicationContext-xml"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 第三个配置文件 applicationContext.xml</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>

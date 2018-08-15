@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="大致内容 所有新建的类(string类 int类 等)继承java.lang.Object  会拥有一些基础方法(eg:equals()  hashCode() 方法  区别对象) Student s=new Student(); Student s1=new Student(); s.hashCode()!=s1.hashCode() s!=s1(正真辨别真伪) 要使s=equals(s1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无锡实训java_day4">
+<meta property="og:url" content="http://yoursite.com/2018/07/06/无锡实训java_day4/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="大致内容 所有新建的类(string类 int类 等)继承java.lang.Object  会拥有一些基础方法(eg:equals()  hashCode() 方法  区别对象) Student s=new Student(); Student s1=new Student(); s.hashCode()!=s1.hashCode() s!=s1(正真辨别真伪) 要使s=equals(s1)">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180706161601.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180707110305.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:20.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无锡实训java_day4">
+<meta name="twitter:description" content="大致内容 所有新建的类(string类 int类 等)继承java.lang.Object  会拥有一些基础方法(eg:equals()  hashCode() 方法  区别对象) Student s=new Student(); Student s1=new Student(); s.hashCode()!=s1.hashCode() s!=s1(正真辨别真伪) 要使s=equals(s1)">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180706161601.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/06/无锡实训java_day4/"/>
+
+
+
+
+
+  <title>无锡实训java_day4 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/06/无锡实训java_day4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">无锡实训java_day4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-06T20:13:10+08:00">
+                2018-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/无锡实训java/" itemprop="url" rel="index">
+                    <span itemprop="name">无锡实训java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/06/无锡实训java_day4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/06/无锡实训java_day4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="大致内容"><a href="#大致内容" class="headerlink" title="大致内容"></a>大致内容</h3><ul>
+<li>所有新建的类(string类 int类 等)继承java.lang.Object  会拥有一些基础方法(eg:equals()  hashCode() 方法  区别对象)</li>
+<li>Student s=new Student(); Student s1=new Student(); s.hashCode()!=s1.hashCode() s!=s1(正真辨别真伪)</li>
+<li>要使s=equals(s1)   Student类里面重写equal()</li>
+<li>要使s.hashCode()=s1.hashCode() 重写hashCode()</li>
+<li>extends 不能接final修饰的类（特点：方法不能重写）</li>
+<li>修饰常量 final static  （static  目的是只生成一份拷贝）</li>
+<li><p>缺省的适配器模式</p>
+</li>
+<li><p>继承抽象类与继承一般父类区别（抽象类就是方法的精简版  具体完整功能由继承的类实现）</p>
+</li>
+<li>抽象类继承抽象类？允许有抽象方法  非抽象方法  把 继承抽象类扩展想一下就明白啦</li>
+<li>非抽象类继承抽象类：不允许有抽象方法</li>
+<li><p>目的：遗留方法等待实现</p>
+</li>
+<li><p>接口(定义规范用的) 与抽象类的区别：接口类里面只有方法名  比抽象类更精简。</p>
+</li>
+<li>一般类 extends 抽象类 implement 接口类  会发生什么？注意 抽象方法 非抽象方法 在不同类的存在情况。</li>
+<li>在类中使用其他类常量调用(常量所在的包不同)：improt导入类  类.属性   String m=s.ip调用</li>
+<li>另一种导入方法：improve static 包名.类.*  可直接  属性   eg：String m=ip;调用</li>
+<li><p>接口(接口是一种规范)的多继承 ：一般类/抽象类 implement 接口1 ，接口2  </p>
+</li>
+<li><p>DAO设计模式：模型层model  接口层IDAO（只有方法名）   实现层DAO(链接数据库实现接口层)  工厂层Factory(用来返回接口)</p>
+</li>
+<li>业务层IServiceDao(包含多个c/u/r/d) tool层(工具类)</li>
+<li>接口类型可以指向子类对象   类比 父类指向子类   </li>
+<li>何用？方便调用用子类方法。</li>
+<li>原来如何调用(耦合度太高)vs 现在如何调用(用工厂实现 类比 继承与工厂模式 想 接口与工厂模式) 即通过接口调用实现类方法。</li>
+<li><p>List<student> findStudentBySurname(Stringname); //list  容器存储多个对象 每个对象包含多个属性  。</student></p>
+</li>
+<li><p>spring替代Factory层。hibernate代替实现层。</p>
+</li>
+<li>无参数的构造方法是默认的，但是如果你创造了一个带有参数的构造方法，那么无参的构造方法必须显式的写出来，否则会编译失败</li>
+<li><p>无参构造方法是为了反射服务的：反射会调用无参构造方法 找到set get 方法 完成属性的调用。</p>
+</li>
+<li><p>代理模式(静态代理 动态代理 )</p>
+</li>
+<li>数据多啦用对象保存  对象多啦用 数组/集合保存  eg:List<obeject></obeject></li>
+<li>ArrayList(地址数组方式存储)  List(地址链表方式存储)</li>
+<li>ArrayList  模拟数据库</li>
+<li><p>多个线程调用同一个对象 数据不安全问题  博客有写 站内搜。</p>
+</li>
+<li><p>集合的查询方法  ： while循环 ：迭代器(Iterator<student>ite=list.iterator();)  for循环：for(Student s:list){}</student></p>
+</li>
+<li>泛型(规定容器里面放的东西)：List<student> list=new ArrayList<student>();</student></student></li>
+<li>对象(包含数据)过来怎么排序  ?工具类 eg：StudentComprator   </li>
+<li>深复制 浅复制 (复制list&lt;&gt;再排序  不要飘絮原来的list&lt;&gt;)</li>
+<li>Collections.sort(list_age,new StudentComparator())  对容器的对象排序</li>
+<li>角色 权限 eg：addStudent() 拦截 可以在内部写逻辑 但不好</li>
+<li>代理类解决 ：它和实现类同时实现同一个接口  eg:StudentDaoProxy 类  implement IStudentDao   在代理类中调用实现类方法之前 之后都可以设置限制。</li>
+<li><p>让实现类成为它的关联对象  就可以改实现类的方法addStudent()</p>
+</li>
+<li><p>Factory调用代理类 不是实现类</p>
+</li>
+<li><p>强异常try catch 弱异常 throws RuntimeException(“权限不够”)</p>
+</li>
+</ul>
+<h3 id="要使s-equals-s1-Student类里面重写父类Object的equal-方法"><a href="#要使s-equals-s1-Student类里面重写父类Object的equal-方法" class="headerlink" title="要使s=equals(s1) Student类里面重写父类Object的equal() 方法"></a>要使s=equals(s1) Student类里面重写父类Object的equal() 方法</h3><ul>
+<li>此时，s.equals(s1)=true;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">  <span class="keyword">boolean</span> flag=<span class="keyword">false</span>;</span><br><span class="line">  Student s=<span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Student) s=(Student)obj;</span><br><span class="line">  flag=<span class="keyword">this</span>.id==s.getId()?<span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="要使s-hashCode-s1-hashCode-重写hashCode"><a href="#要使s-hashCode-s1-hashCode-重写hashCode" class="headerlink" title="要使s.hashCode()=s1.hashCode() 重写hashCode()"></a>要使s.hashCode()=s1.hashCode() 重写hashCode()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对象-包含数据-过来怎么排序-工具类-eg：StudentComprator"><a href="#对象-包含数据-过来怎么排序-工具类-eg：StudentComprator" class="headerlink" title="对象(包含数据)过来怎么排序  ?工具类 eg：StudentComprator"></a>对象(包含数据)过来怎么排序  ?工具类 eg：StudentComprator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentComprator</span> <span class="title">implement</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="静态代理从方法层进行拦截-最细致。"><a href="#静态代理从方法层进行拦截-最细致。" class="headerlink" title="静态代理从方法层进行拦截 最细致。"></a>静态代理从方法层进行拦截 最细致。</h3><h3 id="用代理类实现权限控制"><a href="#用代理类实现权限控制" class="headerlink" title="用代理类实现权限控制:"></a>用代理类实现权限控制:</h3><ul>
+<li>简而言之（内存模型图 解释很清晰）：将堆区实现类对象通过工厂赋给接口类对象，然后将这个接口类对象赋给代理类里面的定义的 接口类对象  此时 代理类对象中的 接口属性指向堆区实现类对象，则可以在代理类中操作实现类的方法。</li>
+<li>总结一点，要实现一个类操控另一个类，想方设法实现关联（上面是间接关联） 直接在A类中的构造函数传入B类的对象并赋给类的B对象属性 则是直接关联。</li>
+<li>思路：实现类 implement 接口 -&gt; 代理类 implement 同一个接口-&gt;  让代理类关联接口类（实现类也行 但工厂模式Factory.getInstance()返回的是接口类对象 一般通过接口对象调用实现类方法 ）  从而通过代理类的 实现类对象引用访问接口类并对实现类的方法进行限制。</li>
+<li>思考：在工厂中把实现类对象赋给接口对象的好处？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentDaoProxy</span> <span class="keyword">implements</span> <span class="title">IStudentDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> IStudentDao sd;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">StudentDaoProxy</span><span class="params">(IStudentDao sd)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.sd = sd;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Student <span class="title">getStudentById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="comment">//sd.getAllStudentOrderByAge(id);</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"你在调用方法之前就可以判断你要的规则"</span>);</span><br><span class="line">		User u=Application.getUser();</span><br><span class="line">		<span class="keyword">if</span>(u==<span class="keyword">null</span>||!u.getRole().equals(<span class="string">"admin"</span>))</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"权限不够"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="comment">//if(1!=1) return;</span></span><br><span class="line">		sd.addStudent(s);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"你在调用方法之后就可以判断你要的规则"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delStudentById</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStudent</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudentBySurname</span><span class="params">(String surname)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudentByAges</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getALLStudents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getAllStudentOrderByAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentDao</span> <span class="keyword">implements</span> <span class="title">IStudentDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> List&lt;Student&gt; list=<span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">  <span class="comment">//静态块模拟数据库</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		list.add(<span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">"lisi"</span>,<span class="number">24</span>));</span><br><span class="line">		list.add(<span class="keyword">new</span> Student(<span class="number">2</span>,<span class="string">"lisi"</span>,<span class="number">22</span>));</span><br><span class="line">		list.add(<span class="keyword">new</span> Student(<span class="number">3</span>,<span class="string">"lisi"</span>,<span class="number">25</span>));</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Student <span class="title">getStudentById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">         list.add(s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delStudentById</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStudent</span><span class="params">(Student s)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudentBySurname</span><span class="params">(String surname)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudentByAges</span><span class="params">(<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">		List&lt;Student&gt; list=<span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="comment">//list.su</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getALLStudents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getAllStudentOrderByAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">		List&lt;Student&gt; list_age=<span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">		list_age.addAll(list);</span><br><span class="line"></span><br><span class="line">		Collections.sort(list_age, <span class="keyword">new</span> StudentComprator());</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> list_age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  IStudentDao <span class="title">getStudentDaoInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> StudentDao();</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IStudentDao <span class="title">getStudentDaoProxyInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">new</span> StudentDaoProxy(Factory.getStudentDaoInstance());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*值得注意的是 在Factory类中return StudentDao 返回类型是接口</span></span><br><span class="line"><span class="comment">- 且 new StudentDaoProxy(Factory.getStudentDaoInstance()); 方法传入的对象是接口类对象  </span></span><br><span class="line"><span class="comment">- Factory返回的都是接口类对象(父类对象) 结合 继承+工厂模式理解。*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  IStudentDao <span class="title">getStudentDaoInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> StudentDao();</span><br><span class="line">&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IStudentDao <span class="title">getStudentDaoProxyInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StudentDaoProxy(Factory.getStudentDaoInstance());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//StudentDao sd=new StudentDao();</span></span><br><span class="line">		IStudentDao id=Factory.getStudentDaoProxyInstance();</span><br><span class="line"></span><br><span class="line">		id.addStudent(<span class="keyword">new</span> Student(<span class="number">5</span>,<span class="string">"liuer"</span>,<span class="number">60</span>));</span><br><span class="line">		<span class="comment">//List&lt;Student&gt; list=id.findStudentByAges(10, 15);</span></span><br><span class="line"></span><br><span class="line">		Scanner scan=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//scan.</span></span><br><span class="line">		<span class="comment">//id.</span></span><br><span class="line">    <span class="comment">/*output:</span></span><br><span class="line"><span class="comment">    你在调用方法之前就可以判断你要的规则</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    你在调用方法之后就可以判断你要的规则*/</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180706161601.png" alt=""></p>
+<h3 id="设计Usr类-实现登录-存储对象到Aplication-调用Student类的方法-设置相应权限-能调用方法的限制"><a href="#设计Usr类-实现登录-存储对象到Aplication-调用Student类的方法-设置相应权限-能调用方法的限制" class="headerlink" title="设计Usr类 实现登录 存储对象到Aplication  调用Student类的方法  设置相应权限  能调用方法的限制"></a>设计Usr类 实现登录 存储对象到Aplication  调用Student类的方法  设置相应权限  能调用方法的限制</h3><ul>
+<li>eg:Usr.role=”admin” 则可以调用addStudent() 实现增加对象。</li>
+<li>代码太多就不全贴啦：总之，记住：1.用工厂生产子类对象 2.静态方法可以这样电泳Application.setUser();/Factory.getInstance()</li>
+<li>代理类通过关联实现类（这是目的，实际关联的是接口类） 从而对其方法进行限制  关联是间接关联(因为代理类实际关联的是接口类 )</li>
+<li>完整项目放在 <a href="https://github.com/jack00000/wuxi_train" target="_blank" rel="noopener">github</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> whgc.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> whgc.DAO.StudentDao;</span><br><span class="line"><span class="keyword">import</span> whgc.Factory.Factory;</span><br><span class="line"><span class="keyword">import</span> whgc.IDAO.IStudentDao;</span><br><span class="line"><span class="keyword">import</span> whgc.IServiceDao.IRegisterDao;</span><br><span class="line"><span class="keyword">import</span> whgc.model.Student;</span><br><span class="line"><span class="keyword">import</span> whgc.model.User;</span><br><span class="line"><span class="keyword">import</span> whgc.util.Application;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//输出原来学生信息</span></span><br><span class="line">		System.out.println(<span class="string">"输出原来所有学生信息"</span>);</span><br><span class="line">		IStudentDao iso=Factory.getStudentDaoInstance();</span><br><span class="line">		List&lt;Student&gt;list=iso.getAllStudentOrderByAge();</span><br><span class="line">		<span class="keyword">for</span>(Student s:list)&#123;</span><br><span class="line">			System.out.println(<span class="string">"学生的年龄"</span>+s.getAge()+<span class="string">"  "</span>+<span class="string">"学生的姓名"</span>+s.getName()+<span class="string">" "</span>+<span class="string">"学生id"</span>+s.getId());</span><br><span class="line">		&#125;</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"请输入用户名和密码以及具有的权限"</span>);</span><br><span class="line">		User u=<span class="keyword">new</span> User();</span><br><span class="line">		Scanner scan=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String role=scan.next();</span><br><span class="line">		String password=scan.next();</span><br><span class="line">		String permision=scan.next();</span><br><span class="line">		u.setRole(role);</span><br><span class="line">		u.setPassword(password);</span><br><span class="line">		u.setPremision(permision);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//相当于把输入数据存在数据库(这里是放在一个类的属性user里面的)</span></span><br><span class="line">		Application a=<span class="keyword">new</span> Application();</span><br><span class="line">		a.setUser(u);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"输出Application里的user"</span>+Application.getUser());</span><br><span class="line">		<span class="comment">//获取登录接口实例，调用实现类方法</span></span><br><span class="line">		IRegisterDao ir=Factory.getRegisterInstance();</span><br><span class="line">		<span class="keyword">if</span>(ir.Register())&#123;</span><br><span class="line">			Student s=<span class="keyword">new</span> Student(<span class="number">4</span>,<span class="string">"fangjun"</span>,<span class="number">21</span>);</span><br><span class="line">			IStudentDao iso1=Factory.getStudentDaoProxyInstance();</span><br><span class="line">			iso1.addStudent(s);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            IStudentDao ios2=Factory.getStudentDaoInstance();</span><br><span class="line">			List&lt;Student&gt;list2= ios2.getList();</span><br><span class="line">			<span class="keyword">for</span>(Student student:list2)&#123;</span><br><span class="line">				System.out.println(<span class="string">"学生的年龄"</span>+student.getAge()+<span class="string">"  "</span>+<span class="string">"学生的姓名"</span>+student.getName()+<span class="string">" "</span>+<span class="string">"学生id"</span>+student.getId());</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"登录失败"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*output：</span></span><br><span class="line"><span class="comment">输出原来所有学生信息</span></span><br><span class="line"><span class="comment">学生的年龄22  学生的姓名lisi 学生id2</span></span><br><span class="line"><span class="comment">学生的年龄24  学生的姓名lisi 学生id1</span></span><br><span class="line"><span class="comment">学生的年龄25  学生的姓名lisi 学生id3</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">请输入用户名和密码以及具有的权限</span></span><br><span class="line"><span class="comment">admin</span></span><br><span class="line"><span class="comment">123456</span></span><br><span class="line"><span class="comment">add</span></span><br><span class="line"><span class="comment">输出Application里的userwhgc.model.User@1d44bcfa</span></span><br><span class="line"><span class="comment">输出Application的user的所有信息: admin  123456  add</span></span><br><span class="line"><span class="comment">登录成功</span></span><br><span class="line"><span class="comment">你拥有的权限是add</span></span><br><span class="line"><span class="comment">你可以对Student对象进行的操作add</span></span><br><span class="line"><span class="comment">学生的年龄24  学生的姓名lisi 学生id1</span></span><br><span class="line"><span class="comment">学生的年龄22  学生的姓名lisi 学生id2</span></span><br><span class="line"><span class="comment">学生的年龄25  学生的姓名lisi 学生id3</span></span><br><span class="line"><span class="comment">学生的年龄21  学生的姓名fangjun 学生id4</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Process finished with exit code 0 */</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180707110305.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/05/无锡实训java_day3/" rel="next" title="无锡实训java_day3">
+                <i class="fa fa-chevron-left"></i> 无锡实训java_day3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/07/docker的安装与使用/" rel="prev" title="docker的安装与使用">
+                docker的安装与使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#大致内容"><span class="nav-number">1.</span> <span class="nav-text">大致内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要使s-equals-s1-Student类里面重写父类Object的equal-方法"><span class="nav-number">2.</span> <span class="nav-text">要使s=equals(s1) Student类里面重写父类Object的equal() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要使s-hashCode-s1-hashCode-重写hashCode"><span class="nav-number">3.</span> <span class="nav-text">要使s.hashCode()=s1.hashCode() 重写hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象-包含数据-过来怎么排序-工具类-eg：StudentComprator"><span class="nav-number">4.</span> <span class="nav-text">对象(包含数据)过来怎么排序  ?工具类 eg：StudentComprator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态代理从方法层进行拦截-最细致。"><span class="nav-number">5.</span> <span class="nav-text">静态代理从方法层进行拦截 最细致。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用代理类实现权限控制"><span class="nav-number">6.</span> <span class="nav-text">用代理类实现权限控制:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计Usr类-实现登录-存储对象到Aplication-调用Student类的方法-设置相应权限-能调用方法的限制"><span class="nav-number">7.</span> <span class="nav-text">设计Usr类 实现登录 存储对象到Aplication  调用Student类的方法  设置相应权限  能调用方法的限制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>

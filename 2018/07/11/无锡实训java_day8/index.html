@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="大致内容 如何让工厂模式同时创建其关联模式实现通用 解决创建一个对象时 把其关联对象也创建好。 代理对象解决事务管理 权限的控制 自定义注解 反射机制 两个文件 ：factory.Properties和ApplicationContext.xml。 通用：不出现任何类  通过字符串  在堆区的大Class对象找到方法，并调用。 工厂层 事务 代理 全部动态即通用设计。 动态工厂(动态生产实现类对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无锡实训java_day8">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/无锡实训java_day8/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="大致内容 如何让工厂模式同时创建其关联模式实现通用 解决创建一个对象时 把其关联对象也创建好。 代理对象解决事务管理 权限的控制 自定义注解 反射机制 两个文件 ：factory.Properties和ApplicationContext.xml。 通用：不出现任何类  通过字符串  在堆区的大Class对象找到方法，并调用。 工厂层 事务 代理 全部动态即通用设计。 动态工厂(动态生产实现类对象">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180715141455.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180715145546.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:20.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无锡实训java_day8">
+<meta name="twitter:description" content="大致内容 如何让工厂模式同时创建其关联模式实现通用 解决创建一个对象时 把其关联对象也创建好。 代理对象解决事务管理 权限的控制 自定义注解 反射机制 两个文件 ：factory.Properties和ApplicationContext.xml。 通用：不出现任何类  通过字符串  在堆区的大Class对象找到方法，并调用。 工厂层 事务 代理 全部动态即通用设计。 动态工厂(动态生产实现类对象">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180715141455.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/无锡实训java_day8/"/>
+
+
+
+
+
+  <title>无锡实训java_day8 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/无锡实训java_day8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">无锡实训java_day8</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-11T20:13:10+08:00">
+                2018-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/无锡实训java/" itemprop="url" rel="index">
+                    <span itemprop="name">无锡实训java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/11/无锡实训java_day8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/11/无锡实训java_day8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="大致内容"><a href="#大致内容" class="headerlink" title="大致内容"></a>大致内容</h2><ul>
+<li>如何让工厂模式同时创建其关联模式实现通用</li>
+<li>解决创建一个对象时 把其关联对象也创建好。</li>
+<li>代理对象解决事务管理</li>
+<li>权限的控制</li>
+<li>自定义注解</li>
+<li>反射机制</li>
+<li>两个文件 ：factory.Properties和ApplicationContext.xml。</li>
+<li>通用：不出现任何类  通过字符串  在堆区的大Class对象找到方法，并调用。</li>
+<li>工厂层 事务 代理 全部动态即通用设计。</li>
+<li>动态工厂(动态生产实现类对象和代理类对象赋给实现类接口)</li>
+<li>通过MyInnvactionHandler类 根据注解 选择不同处理方式handler，生成代理类对象时引入处理方式。</li>
+<li>返回类型Object，需要具体类型自己换 eg:(IRegisterServiceDao)Factory.getProxyInstance(“RegisterServiceDao”);</li>
+</ul>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><ul>
+<li>封装类的结构信息</li>
+<li>Student s=new Student();</li>
+<li>1  硬盘-静态方法区</li>
+<li>2  堆区创建封装啦这个类的信息的对象  继承信息 父类方法   大Class对象</li>
+</ul>
+<h3 id="3种得到大Class对象的方法"><a href="#3种得到大Class对象的方法" class="headerlink" title="3种得到大Class对象的方法"></a>3种得到大Class对象的方法</h3><ul>
+<li>Class c1=Student.class;//获得大Class对象</li>
+<li>Class c2=s.getClass();</li>
+<li>Class c3=Class.forName(“com.whgc.model.Student”)//最通用，不用创建对象</li>
+</ul>
+<h3 id="大Class封装啦所有信息-类的信息的对象-继承信息-父类方法-注释方法-只要是这个类improt的其他类-在大Class对象中都可以找到"><a href="#大Class封装啦所有信息-类的信息的对象-继承信息-父类方法-注释方法-只要是这个类improt的其他类-在大Class对象中都可以找到" class="headerlink" title="大Class封装啦所有信息(类的信息的对象  继承信息 父类方法  注释方法 只要是这个类improt的其他类 在大Class对象中都可以找到)"></a>大Class封装啦所有信息(类的信息的对象  继承信息 父类方法  注释方法 只要是这个类improt的其他类 在大Class对象中都可以找到)</h3><ul>
+<li>Field(成员变量)  Constructor(构造方法)  Method(成员方法)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PrivilegeAnnotation p=	m.getDeclaredAnnotation(PrivilegeAnnotation.class);</span><br><span class="line">```        </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">Class c3=Class.forName(<span class="string">"com.whgc.model.Student"</span>)；</span><br><span class="line">Method[] methods=c3.</span><br></pre></td></tr></table></figure>
+<h3 id="自定义注释-通过反射实现：字符串在大Class里面找-：-通过方法提供属性"><a href="#自定义注释-通过反射实现：字符串在大Class里面找-：-通过方法提供属性" class="headerlink" title="自定义注释(通过反射实现：字符串在大Class里面找)： 通过方法提供属性"></a>自定义注释(通过反射实现：字符串在大Class里面找)： 通过方法提供属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 注释在引用类的表现方式：类当方法用，方法当属性引用</span><br><span class="line">- 默认注解</span><br><span class="line">- @Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">- @Target(ElementType.METHOD)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> PrivilegeAnnotation &#123;</span><br><span class="line">         <span class="function"><span class="keyword">boolean</span> <span class="title">isValidate</span><span class="params">()</span></span>;</span><br><span class="line">         String[] roles();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentDao</span> <span class="keyword">implements</span> <span class="title">IStudentTDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//类当方法用，方法当属性引用</span></span><br><span class="line">    <span class="meta">@PrivilegeAnnotation</span>(isValidate=<span class="keyword">true</span>,roles = &#123;<span class="string">"admin"</span>,<span class="string">"teacher"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"addStudent"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="java框架：权限的控制-反射机制-实现权限管理-事务控制session"><a href="#java框架：权限的控制-反射机制-实现权限管理-事务控制session" class="headerlink" title="java框架：权限的控制 (反射机制 实现权限管理) 事务控制session"></a>java框架：权限的控制 (反射机制 实现权限管理) 事务控制session</h3><h3 id="ApplicationContext-xml"><a href="#ApplicationContext-xml" class="headerlink" title="ApplicationContext.xml"></a>ApplicationContext.xml</h3><ul>
+<li>类似factory.prppretise  用于根据id创建对象。</li>
+<li>区别：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id="userdao" class="org.whgc.UserDao"&gt;&lt;/bean&gt;</span><br><span class="line"><span class="comment">//属性所关联的对象也搞啦</span></span><br><span class="line">&lt;bean id="registerDao" class="org.whgc.RegisterDao"&gt;&lt;/bean&gt;</span><br><span class="line">&lt;property &gt;&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><h3 id="反射机制-完整源码"><a href="#反射机制-完整源码" class="headerlink" title="反射机制 完整源码"></a>反射机制 <a href="https://github.com/jack00000/wuxi_train" target="_blank" rel="noopener">完整源码</a></h3><ul>
+<li>根本是通过字符串拼接在堆区的大class对象找到所需要的方法。</li>
+<li>获取大class对象有三种方法</li>
+<li>newInstance()创建大Class对象实例</li>
+<li>getDeclaredMethods()获取其方法</li>
+<li>invoke()调用其方法</li>
+<li>全程没有创建一个对象，却完成啦创建对象可以完成的所有操作，更改Class.forName()就可已完成对一个类对象的操作。达到通用的目的。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 反射:主要作用于访问一个类的私有字段和私有方法</span></span><br><span class="line"><span class="comment"> * 使用流程1(已知类的字段以及方法):</span></span><br><span class="line"><span class="comment"> *         A:获取对象Class</span></span><br><span class="line"><span class="comment"> *         B:实例化对象</span></span><br><span class="line"><span class="comment"> *         C:根据字段名反射私有字段  class.getDeclaredField(字段名)</span></span><br><span class="line"><span class="comment"> *         D:打开允许访问的开关 setAccessible(true);</span></span><br><span class="line"><span class="comment"> *         E:赋值(set): name.set(dog, "二哈");  访问(get):    name.get(dog)</span></span><br><span class="line"><span class="comment"> *         F:根据方法名反射私有方法cls.getDeclaredMethod("eat", String.class, String.class);</span></span><br><span class="line"><span class="comment"> *         G:打开开关</span></span><br><span class="line"><span class="comment"> *         H:访问私有方法  m2.invoke(dog, "阿拉斯加", "全家桶");</span></span><br><span class="line"><span class="comment"> * 使用流程2(不知道类的字段及方法):</span></span><br><span class="line"><span class="comment"> *         A:获取对象Class</span></span><br><span class="line"><span class="comment"> *         B:根据Class反射所有的字段名称以及类型(循环Field[]得出字段名以及字段类型)</span></span><br><span class="line"><span class="comment"> *         C:根据Class反射构造方法</span></span><br><span class="line"><span class="comment"> *         D:根据构造方法创建对象(object类型)</span></span><br><span class="line"><span class="comment"> *         E:根据B中得到的字段名称和类型分别定义Field并打开开关然后给私有字段赋值 Field name = cls.getDeclaredField("name");</span></span><br><span class="line"><span class="comment"> *         F:访问私有字段</span></span><br><span class="line"><span class="comment"> *         G:反射私有方法(也可以反射Method[]数组 循环得出方法名等,类似反射字段数组)</span></span><br><span class="line"><span class="comment"> *         H:打开开关并访问私有方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">   main()&#123;</span><br><span class="line">     Class c1=Student.class;<span class="comment">//获得大Class对象</span></span><br><span class="line">       Student s=<span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">"王五"</span>);</span><br><span class="line">       Class c2=s.getClass();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Class c3=Class.forName(<span class="string">"com.whgc.model.Student"</span>);</span><br><span class="line">           <span class="comment">//大Class可以创建对象</span></span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               Object o=c3.newInstance();</span><br><span class="line">           &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//获取其中的method信息</span></span><br><span class="line">           Method[] methods=c3.getMethods();</span><br><span class="line">           <span class="keyword">for</span>(Method m1:methods)&#123;</span><br><span class="line">               System.out.println(m1.getName());</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//获取其中的成员变量信息</span></span><br><span class="line">           Field[] fields=c3.getFields();</span><br><span class="line">           <span class="keyword">for</span>(Field field:fields)&#123;</span><br><span class="line">               System.out.println(field.getName());</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//有趣的例子</span></span><br><span class="line">           <span class="comment">//id-----对象   StudentDao 属性cd ----CardDao  文件实现关联</span></span><br><span class="line">           <span class="comment">//文件配置  id=20</span></span><br><span class="line">           s.setId(<span class="number">20</span>);<span class="comment">//不通用</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">//通用方法</span></span><br><span class="line">           <span class="comment">//没有出现类</span></span><br><span class="line">           <span class="comment">//依赖注入</span></span><br><span class="line">           <span class="comment">//在堆区中，使用大Class对象通过属性得到方法并运行d</span></span><br><span class="line">           <span class="comment">//特点没有新建类 所有类都可以用</span></span><br><span class="line">           <span class="comment">//换类 改Class.forName("com..........")</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">//通过字符串实现方法自动运行</span></span><br><span class="line">           String fieldname1=<span class="string">"id"</span>;<span class="comment">//在大Class对象通过id找到get set方法 并运行</span></span><br><span class="line">           String methodname1=<span class="string">"set"</span>+fieldname1.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase()+fieldname1.substring(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">           System.out.println(methodname1);</span><br><span class="line">           Method m2=<span class="keyword">null</span>;</span><br><span class="line">           <span class="keyword">for</span>(Method m1:methods)&#123;</span><br><span class="line">               <span class="keyword">if</span>(m1.getName().equals(methodname1))&#123;</span><br><span class="line">                   m2=m1;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment">     output:</span></span><br><span class="line"><span class="comment">           Picked up _JAVA_OPTIONS:   -Dawt.useSystemAAFontSettings=gasp</span></span><br><span class="line"><span class="comment">           java.lang.InstantiationException: com.whgc.model.Student</span></span><br><span class="line"><span class="comment">           setId</span></span><br><span class="line"><span class="comment">           at java.lang.Class.newInstance(Class.java:427)</span></span><br><span class="line"><span class="comment">           getName</span></span><br><span class="line"><span class="comment">           setName</span></span><br><span class="line"><span class="comment">           at com.whgc.test.Test.main(Test.java:19)</span></span><br><span class="line"><span class="comment">           getId</span></span><br><span class="line"><span class="comment">           Caused by: java.lang.NoSuchMethodException: com.whgc.model.Student.&lt;init&gt;()</span></span><br><span class="line"><span class="comment">           wait</span></span><br><span class="line"><span class="comment">           wait</span></span><br><span class="line"><span class="comment">           at java.lang.Class.getConstructor0(Class.java:3082)</span></span><br><span class="line"><span class="comment">           wait</span></span><br><span class="line"><span class="comment">           equals</span></span><br><span class="line"><span class="comment">           at java.lang.Class.newInstance(Class.java:412)</span></span><br><span class="line"><span class="comment">           toString</span></span><br><span class="line"><span class="comment">           ... 1 more</span></span><br><span class="line"><span class="comment">           hashCode</span></span><br><span class="line"><span class="comment">           getClass</span></span><br><span class="line"><span class="comment">           notify</span></span><br><span class="line"><span class="comment">           notifyAll</span></span><br><span class="line"><span class="comment">           setId</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">           Process finished with exit code 0</span></span><br><span class="line"><span class="comment">   */</span></span><br></pre></td></tr></table></figure>
+<h3 id="用反射实现通用工厂方法-需配合配置文件"><a href="#用反射实现通用工厂方法-需配合配置文件" class="headerlink" title="用反射实现通用工厂方法(需配合配置文件)"></a>用反射实现通用工厂方法(需配合配置文件)</h3><ul>
+<li>需要配置文件factory.proprieties(就是ssm中的ApplicationContext.xml)。</li>
+<li>通过静态块把配置文件key value 传给 Properties对象 props</li>
+<li>在factory.proprieties中key可以随便写，为什么？</li>
+<li>传入字符串通过key获得value（类字符串）用于创建对象</li>
+<li>通过key获得value（类字符串）用于创建对象,创建实现类dao对象并返回，全程没有出现某个具体类的创建，实现啦通用工厂。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">  <span class="comment">//....</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">getInstance</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">    String value=props.getProperty(name);</span><br><span class="line">    object=Class.forName(value).newInstance();</span><br><span class="line">  &#125;   </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">  <span class="comment">//文件+键值实现通用工厂</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties props=<span class="keyword">new</span> Properties();</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        ResourceBundle rb=ResourceBundle.getBundle(<span class="string">"factory"</span>);</span><br><span class="line"></span><br><span class="line">        Enumeration enumeration=rb.getKeys();<span class="comment">//类似迭代器</span></span><br><span class="line">        <span class="keyword">while</span> (enumeration.hasMoreElements())&#123;</span><br><span class="line">            String key=enumeration.nextElement().toString();</span><br><span class="line">            String value=rb.getString(key);</span><br><span class="line">            props.setProperty(key,value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getInstance</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        Object object=<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        String value=props.getProperty(name);</span><br><span class="line">        System.out.println(props);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            object=Class.forName(value).newInstance();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test1</span></span>&#123;</span><br><span class="line">  main()&#123;</span><br><span class="line">		IStudentDao id=(IStudentDao)Factory.getInstance(<span class="string">"studentdao"</span>);</span><br><span class="line">		id.addStudent();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   factory.proprieties:</span></span><br><span class="line"><span class="comment">   studentdao=org.whgc.dao.StudentDao</span></span><br><span class="line"><span class="comment">   userdao=org.whgc.dao.UserDao</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* output：</span></span><br><span class="line"><span class="comment">        Picked up _JAVA_OPTIONS:   -Dawt.useSystemAAFontSettings=gasp</span></span><br><span class="line"><span class="comment">       &#123;studentdao=com.whgc.dao.StudentDao&#125;</span></span><br><span class="line"><span class="comment">       studentdao</span></span><br><span class="line"><span class="comment">       addStudent</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       Process finished with exit code 0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">### 如何自定义注释 使用注释 注释何用 反射调用方法时如何加载注释。</span><br><span class="line">- 注解与其他类在形式上不同</span><br><span class="line">- 注解类上的默认注解是啥？</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> PrivilegeAnnotation &#123;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span>  <span class="title">isValidate</span><span class="params">()</span></span>;</span><br><span class="line">	String[] roles();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="如何在其他类方法中使用注解"><a href="#如何在其他类方法中使用注解" class="headerlink" title="如何在其他类方法中使用注解"></a>如何在其他类方法中使用注解</h3><ul>
+<li>注解类引入时当方法用，方法当属性用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StudentDao</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">	<span class="meta">@PrivilegeAnnotation</span>(isValidate=<span class="keyword">true</span>,roles= &#123;<span class="string">"admin"</span>,<span class="string">"teacher"</span>&#125;)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"addStudent"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注解何用：权限控制-事务控制用session-封装啦Connection对象和statement对象"><a href="#注解何用：权限控制-事务控制用session-封装啦Connection对象和statement对象" class="headerlink" title="注解何用：权限控制 事务控制用session(封装啦Connection对象和statement对象)"></a>注解何用：权限控制 事务控制用session(封装啦Connection对象和statement对象)</h3><ul>
+<li>反射调用方法时如何加载注释 实现权限控制。</li>
+<li>加载注释，得到roles进行判断。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">  main()&#123;</span><br><span class="line">     Object o = <span class="keyword">null</span>;</span><br><span class="line">     Class c = forName(<span class="string">"com.whgc.dao.StudentDao"</span>);</span><br><span class="line">     o=c.newInstance();</span><br><span class="line">    Method[] methods = c.getDeclaredMethods();</span><br><span class="line">                <span class="keyword">for</span> (Method m1 : methods) &#123;</span><br><span class="line">                    <span class="comment">//找有没有带注释的方法</span></span><br><span class="line">                    PrivilegeAnnotation p = m1.getDeclaredAnnotation(PrivilegeAnnotation.class);</span><br><span class="line">                    <span class="keyword">if</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        System.out.println(p);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            m1.invoke(o, <span class="keyword">null</span>);</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        m1.invoke(o,<span class="keyword">null</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*  output:</span></span><br><span class="line"><span class="comment">Picked up _JAVA_OPTIONS:   -Dawt.useSystemAAFontSettings=gasp</span></span><br><span class="line"><span class="comment">@com.whgc.util.PrivilegeAnnotation(isValidate=true, roles=[admin, teacher])</span></span><br><span class="line"><span class="comment">addStudent</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Process finished with exit code 0*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="用反射实现通用代理-如何自定义异常-使用异常"><a href="#用反射实现通用代理-如何自定义异常-使用异常" class="headerlink" title="用反射实现通用代理 如何自定义异常 使用异常"></a>用反射实现通用代理 如何自定义异常 使用异常</h3><ul>
+<li>如何自定义异常</li>
+<li>使用自定义异常</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySqlException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">	<span class="comment">//private String message;</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MySqlException</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(message);</span><br><span class="line">		<span class="comment">//this.message = message;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> newMyException(<span class="string">"error"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="解释一波ApplicationContext-xml和factory-properties的区别。"><a href="#解释一波ApplicationContext-xml和factory-properties的区别。" class="headerlink" title="解释一波ApplicationContext.xml和factory.properties的区别。"></a>解释一波ApplicationContext.xml和factory.properties的区别。</h3><ul>
+<li>factory文件只能通过实现类字符串找到其实现类。</li>
+<li>ApplicationContext文件能通过实现类字符串找到其实现类并找到与其关联的类。</li>
+<li>ApplicationContext文件要完成他的工作必须导第三方jar包。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">factory.properties：</span><br><span class="line">studentdao=org.whgc.dao.StudentDao</span><br><span class="line">userdao=org.whgc.dao.UserDao</span><br><span class="line"></span><br><span class="line">ApplicationContext.xml：</span><br><span class="line">&lt;Beans&gt;</span><br><span class="line">&lt;bean id="userdao" class="org.whgc.dao.UserDao"&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=<span class="string">"registerdao"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.whgc.servicedao.RegisterServiceDao"</span>&gt;</span><br><span class="line"><span class="comment">//&lt;property name="iud" ref="userdao"&gt;&lt;/property&gt;</span></span><br><span class="line">&lt;property name="U" ref="userdao"&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;/Beans&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="ApplicationContext-xml的使用与factory-properties不同。"><a href="#ApplicationContext-xml的使用与factory-properties不同。" class="headerlink" title="ApplicationContext.xml的使用与factory.properties不同。"></a>ApplicationContext.xml的使用与factory.properties不同。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Properties props=<span class="keyword">new</span> Properties();</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    ResourceBundle rb=ResourceBundle.getBundle(<span class="string">"factory"</span>);</span><br><span class="line"></span><br><span class="line">    Enumeration enumeration=rb.getKeys();<span class="comment">//类似迭代器</span></span><br><span class="line">    <span class="keyword">while</span> (enumeration.hasMoreElements())&#123;</span><br><span class="line">        String key=enumeration.nextElement().toString();</span><br><span class="line">        String value=rb.getString(key);</span><br><span class="line">        props.setProperty(key,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">String value=props.getProperty(name)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*---------------------------*/</span></span><br><span class="line">ApplicationContext context=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line"></span><br><span class="line">        IUserDao iud=(IUserDao) context.getBean(<span class="string">"userdao"</span>);</span><br><span class="line">        iud.print();</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        IRegisterServiceDao isd=(IRegisterServiceDao)context.getBean(<span class="string">"RegisterServiceDao"</span>);</span><br><span class="line"></span><br><span class="line">        isd.Register();</span><br><span class="line">```   </span><br><span class="line">```text     </span><br><span class="line">        <span class="comment">/* output:</span></span><br><span class="line"><span class="comment">                userdao 's print Method is invoked.......</span></span><br><span class="line"><span class="comment">                登录</span></span><br><span class="line"><span class="comment">                Process finished with exit code 0</span></span><br><span class="line"><span class="comment">        */</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180715141455.png" alt="">   </p>
+<h3 id="现在来实现动态代理-所有类的可以使用的生产代理类的方法-并用MyInnvactionHandler类加权限控制"><a href="#现在来实现动态代理-所有类的可以使用的生产代理类的方法-并用MyInnvactionHandler类加权限控制" class="headerlink" title="现在来实现动态代理(所有类的可以使用的生产代理类的方法) 并用MyInnvactionHandler类加权限控制"></a>现在来实现动态代理(所有类的可以使用的生产代理类的方法) 并用MyInnvactionHandler类加权限控制</h3><ul>
+<li><a href="https://github.com/jack00000/wuxi_train/tree/master/SystemManagerPro" target="_blank" rel="noopener">完整源码</a></li>
+<li>全程没有new 新建对象。</li>
+<li>关键：MyInnvactionHandler类 和Factory的getProxyInstance(String name)方法。</li>
+<li>有啥用？写一个=写啦无数个，效率高。</li>
+<li>顺便温习下通用工厂 动态代理还是用工厂实现</li>
+<li>如此，我们的工厂就两个通用方法：通用生产实现类对象的方法 &amp; 通用生成实现类代理类的方法。</li>
+<li>如果用的是ApplicationContext.xml文件的话，不用static块啦。</li>
+<li>MyInnvactionHandler类用于对代理类加处理方式eg:权限控制。</li>
+<li>iud-&gt;u  和RegisterServiceDao中的getU()有关？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1.传入实体类字符串到Factory的getProxyInstance(String name)方法中</span></span><br><span class="line"><span class="comment">         2.通过实体类字符串找到实体类位置</span></span><br><span class="line"><span class="comment">         3.创建大Class对象(配置文件不同，找的方式也不同。ApplicationContext.xml更方便)。</span></span><br><span class="line"><span class="comment">         4.新建MyInnvactionHandler对象handler并传入实体类对象实现关联。</span></span><br><span class="line"><span class="comment">         5.在MyInnvactionHandler类中定义invoke()方法传入需要重写的 实现类对象， 需重写的方法，对象数组Object[] args(这个什么鬼？)</span></span><br><span class="line"><span class="comment">         6.将 实现类加载器，实现类接口类型，handler对象作为参数传入java.lang.reflect.Proxy的newProxyInstance()方法。</span></span><br><span class="line"><span class="comment">         7.将生成的代理类对象返回给调用getProxyINstance()所要赋给的对象。</span></span><br><span class="line"><span class="comment">         8.如何使用代理类对象？看实现类有那些方法就行。</span></span><br><span class="line"><span class="comment">         9.当调用代理类的任意方法时都会调用这个方法invoke()，用到了反射，在这儿是管理权限的关键</span></span><br><span class="line"><span class="comment">         10.动态代理没有具体类和具体重写方法，看的有点懵逼。</span></span><br><span class="line"><span class="comment">         11.MyInnvactionHandler implements InvocationHandler</span></span><br><span class="line"><span class="comment">         12.重写java.lang.reflect.InvocationHandler的invoke()方法。</span></span><br><span class="line"><span class="comment">         13.MyInnvactionHandler就是代理类。就这样理解把</span></span><br><span class="line"><span class="comment">         14.代理类权限控制不是重写方法，是根据注释决定合适能调用被代理方法。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Object object=<span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//创建实现类</span></span><br><span class="line">Object target=getInstance(name);</span><br><span class="line"><span class="comment">//将实现类对象传入代理类</span></span><br><span class="line">MyInnvactionHandler handler=<span class="keyword">new</span> MyInnvactionHandler(target);</span><br><span class="line"><span class="comment">//生产代理类并将实体类对象传给代理类，建立关联，方法属性：类加载器 接口类型  处理方式</span></span><br><span class="line">object=java.lang.reflect.Proxy.newProxyInstance(target.getClass().getClassLoader(),</span><br><span class="line">    target.getClass().getInterfaces(),handler);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> object;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyInnvactionHandler</span></span>&#123;</span><br><span class="line">  <span class="comment">//实现类</span></span><br><span class="line">    <span class="keyword">private</span> Object target;</span><br><span class="line">    <span class="comment">//通过构造函数传进来 代理与实现关联</span></span><br><span class="line">    <span class="comment">//工厂创建代理类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyInnvactionHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidate</span><span class="params">(String[] roles,String role)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag=<span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行的句柄，当调用代理类的任意方法时都会调用这个方法，用到了反射，在这儿是管理权限的关键</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">      Object result=<span class="keyword">null</span>;</span><br><span class="line">       <span class="comment">//根据method获得target实现类的method</span></span><br><span class="line">       Method m1=target.getClass().getDeclaredMethod(method.getName(),method.getParameterTypes());<span class="comment">//方法名 参数类型</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">//加权限  找方法的注释</span></span><br><span class="line">       PrivilegeAnnotation privilegeAnnotation=m1.getDeclaredAnnotation(PrivilegeAnnotation.class);</span><br><span class="line"></span><br><span class="line">       Session session=SessionFactory.getSession();</span><br><span class="line">       session.beginTransaction();</span><br><span class="line">       result=method.invoke(target,args);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//为空则不需要权限控制</span></span><br><span class="line">       <span class="comment">//取注释</span></span><br><span class="line">       <span class="keyword">if</span>(privilegeAnnotation==<span class="keyword">null</span>)&#123;</span><br><span class="line">           <span class="comment">//调用实现类方法</span></span><br><span class="line">           result=method.invoke(target,args);</span><br><span class="line">       &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">boolean</span> flag=privilegeAnnotation.isValidate();</span><br><span class="line">           <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">               result=method.invoke(target,args);</span><br><span class="line">               System.out.println(<span class="string">"sssssssss2"</span>);</span><br><span class="line">           &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="comment">//获取使用方法的角色信息</span></span><br><span class="line">               String role=Application.getU().getRole();</span><br><span class="line">               <span class="comment">//获取方法注释的角色信息</span></span><br><span class="line">               String[] roles=privilegeAnnotation.roles();</span><br><span class="line">               <span class="comment">//看role是否在roles里面。</span></span><br><span class="line">               <span class="keyword">boolean</span> flag1=isValidate(roles,role);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">               <span class="keyword">if</span>(flag1)&#123;</span><br><span class="line">                   System.out.println(<span class="string">"sssssssss1"</span>);</span><br><span class="line">                   result=method.invoke(target,args);</span><br><span class="line">               &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                   <span class="keyword">throw</span>  <span class="keyword">new</span> MySqlException(<span class="string">"权限不够"</span>);</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Properties   props=<span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line"></span><br><span class="line">		ResourceBundle rb=ResourceBundle.getBundle(<span class="string">"factory"</span>);</span><br><span class="line">		<span class="comment">//rb.</span></span><br><span class="line"></span><br><span class="line">	    Enumeration&lt;String&gt; enumers= rb.getKeys();</span><br><span class="line">	    <span class="keyword">while</span>(enumers.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">	    	String key=enumers.nextElement();</span><br><span class="line">	    	String value=rb.getString(key);</span><br><span class="line">	    	props.setProperty(key, value);</span><br><span class="line">			System.out.println(key+value);</span><br><span class="line"></span><br><span class="line">	    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//dao 提供不带参数的构造方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getInstance</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		Object object=<span class="keyword">null</span>;</span><br><span class="line">		String value=props.getProperty(name);</span><br><span class="line">		System.out.println(value);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			object=Class.forName(value).newInstance();</span><br><span class="line">			System.out.println(object.getClass().getName());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InstantiationException | IllegalAccessException | ClassNotFoundException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//通用事务方法 实现权限控制</span></span><br><span class="line">	<span class="comment">//创建动态代理。创建代理类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getProxyInstance</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		Object object=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建实现类</span></span><br><span class="line">		Object target=getInstance(name);</span><br><span class="line">		<span class="comment">//将实现类对象传入代理类</span></span><br><span class="line">		MyInnvactionHandler handler=<span class="keyword">new</span> MyInnvactionHandler(target);</span><br><span class="line">		<span class="comment">//类加载器 接口类型  处理方式</span></span><br><span class="line">		object=java.lang.reflect.Proxy.newProxyInstance(target.getClass().getClassLoader(),</span><br><span class="line">				target.getClass().getInterfaces(),handler);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test3</span></span>&#123;</span><br><span class="line">  main()&#123;</span><br><span class="line">    User u=<span class="keyword">new</span> User(<span class="string">"admin"</span>);</span><br><span class="line">       Application.setU(u);</span><br><span class="line">       IRegisterServiceDao ird=(IRegisterServiceDao)Factory.getProxyInstance(<span class="string">"RegisterServiceDao"</span>);</span><br><span class="line">       ird.Register();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180715145546.png" alt=""></p>
+<h3 id="动态代理实现权限控制-简易版思路"><a href="#动态代理实现权限控制-简易版思路" class="headerlink" title="动态代理实现权限控制(简易版思路)"></a>动态代理实现权限控制(简易版思路)</h3><ul>
+<li>1.新建对象并设置role ，存入Application类的user对象。</li>
+<li>2.在MyInnvactionHandler类中引入实现类对象并获得方法注释roles与Application中的role做比较。</li>
+<li>3.如果role在roles[]中 则可以调用该方法，反之则抛出异常。</li>
+</ul>
+<h3 id="反射机制实现事务控制"><a href="#反射机制实现事务控制" class="headerlink" title="反射机制实现事务控制"></a>反射机制实现事务控制</h3><ul>
+<li>1.对ServiceDao实现权限控制</li>
+<li>2.然后在里面写事务不就完成啦对事务的控制。</li>
+<li>3.权限控制包括：一般方法控制，事务控制等。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/开发宿舍管理系统day_1/" rel="next" title="开发宿舍管理系统day_1">
+                <i class="fa fa-chevron-left"></i> 开发宿舍管理系统day_1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/13/deepin拯救教程/" rel="prev" title="deepin拯救教程">
+                deepin拯救教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大致内容"><span class="nav-number">1.</span> <span class="nav-text">大致内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射"><span class="nav-number">1.1.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3种得到大Class对象的方法"><span class="nav-number">1.2.</span> <span class="nav-text">3种得到大Class对象的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大Class封装啦所有信息-类的信息的对象-继承信息-父类方法-注释方法-只要是这个类improt的其他类-在大Class对象中都可以找到"><span class="nav-number">1.3.</span> <span class="nav-text">大Class封装啦所有信息(类的信息的对象  继承信息 父类方法  注释方法 只要是这个类improt的其他类 在大Class对象中都可以找到)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注释-通过反射实现：字符串在大Class里面找-：-通过方法提供属性"><span class="nav-number">1.4.</span> <span class="nav-text">自定义注释(通过反射实现：字符串在大Class里面找)： 通过方法提供属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java框架：权限的控制-反射机制-实现权限管理-事务控制session"><span class="nav-number">1.5.</span> <span class="nav-text">java框架：权限的控制 (反射机制 实现权限管理) 事务控制session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContext-xml"><span class="nav-number">1.6.</span> <span class="nav-text">ApplicationContext.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实操"><span class="nav-number">2.</span> <span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射机制-完整源码"><span class="nav-number">2.1.</span> <span class="nav-text">反射机制 完整源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用反射实现通用工厂方法-需配合配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">用反射实现通用工厂方法(需配合配置文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在其他类方法中使用注解"><span class="nav-number">2.3.</span> <span class="nav-text">如何在其他类方法中使用注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解何用：权限控制-事务控制用session-封装啦Connection对象和statement对象"><span class="nav-number">2.4.</span> <span class="nav-text">注解何用：权限控制 事务控制用session(封装啦Connection对象和statement对象)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用反射实现通用代理-如何自定义异常-使用异常"><span class="nav-number">2.5.</span> <span class="nav-text">用反射实现通用代理 如何自定义异常 使用异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释一波ApplicationContext-xml和factory-properties的区别。"><span class="nav-number">2.6.</span> <span class="nav-text">解释一波ApplicationContext.xml和factory.properties的区别。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContext-xml的使用与factory-properties不同。"><span class="nav-number">2.7.</span> <span class="nav-text">ApplicationContext.xml的使用与factory.properties不同。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现在来实现动态代理-所有类的可以使用的生产代理类的方法-并用MyInnvactionHandler类加权限控制"><span class="nav-number">2.8.</span> <span class="nav-text">现在来实现动态代理(所有类的可以使用的生产代理类的方法) 并用MyInnvactionHandler类加权限控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态代理实现权限控制-简易版思路"><span class="nav-number">2.9.</span> <span class="nav-text">动态代理实现权限控制(简易版思路)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射机制实现事务控制"><span class="nav-number">2.10.</span> <span class="nav-text">反射机制实现事务控制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="完整源码 # -*- coding: utf-8 -*- import pygame from pygame.locals import * import time import random  &quot;&quot;&quot; 1. 搭建游戏界面，主要是完成窗口和背景图的显示 2. 通过键盘操作，获取游戏事件 3. 在游戏窗口显示飞机，并实现按左右键控制飞机左右移动 4. 实现按空格键飞机发射子弹 5. 显示敌人飞机 6">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python实现飞机大战">
+<meta property="og:url" content="http://yoursite.com/2018/07/20/python实现飞机大战/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="完整源码 # -*- coding: utf-8 -*- import pygame from pygame.locals import * import time import random  &quot;&quot;&quot; 1. 搭建游戏界面，主要是完成窗口和背景图的显示 2. 通过键盘操作，获取游戏事件 3. 在游戏窗口显示飞机，并实现按左右键控制飞机左右移动 4. 实现按空格键飞机发射子弹 5. 显示敌人飞机 6">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180720184730.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:19.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python实现飞机大战">
+<meta name="twitter:description" content="完整源码 # -*- coding: utf-8 -*- import pygame from pygame.locals import * import time import random  &quot;&quot;&quot; 1. 搭建游戏界面，主要是完成窗口和背景图的显示 2. 通过键盘操作，获取游戏事件 3. 在游戏窗口显示飞机，并实现按左右键控制飞机左右移动 4. 实现按空格键飞机发射子弹 5. 显示敌人飞机 6">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180720184730.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/20/python实现飞机大战/"/>
+
+
+
+
+
+  <title>python实现飞机大战 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Suche
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/python实现飞机大战/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python实现飞机大战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T20:13:10+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/无锡实训python/" itemprop="url" rel="index">
+                    <span itemprop="name">无锡实训python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/20/python实现飞机大战/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/20/python实现飞机大战/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="完整源码"><a href="#完整源码" class="headerlink" title="完整源码"></a><a href="https://github.com/jack00000/wuxi_train/tree/master/flyG" target="_blank" rel="noopener">完整源码</a></h2><p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180720184730.png" alt=""></p>
+<pre><code class="python"><span class="comment"># -*- coding: utf-8 -*-</span>
+<span class="keyword">import</span> pygame
+<span class="keyword">from</span> pygame.locals <span class="keyword">import</span> *
+<span class="keyword">import</span> time
+<span class="keyword">import</span> random
+
+<span class="string">"""</span>
+<span class="string">1. 搭建游戏界面，主要是完成窗口和背景图的显示</span>
+<span class="string">2. 通过键盘操作，获取游戏事件</span>
+<span class="string">3. 在游戏窗口显示飞机，并实现按左右键控制飞机左右移动</span>
+<span class="string">4. 实现按空格键飞机发射子弹</span>
+<span class="string">5. 显示敌人飞机</span>
+<span class="string">6. 优化敌机发射的子弹</span>
+<span class="string">7. 让敌机移动</span>
+<span class="string">8. 敌机发射子弹</span>
+<span class="string">9. 玩家子弹射中敌机，敌机爆炸</span>
+<span class="string">"""</span>
+
+
+<span class="comment"># 创建飞机基类</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Plane</span><span class="params">(object)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        <span class="comment"># 设置飞机的默认位置</span>
+        self.x = x
+        self.y = y
+        <span class="comment"># 设置要显示内容的窗口</span>
+        self.screen = screen
+        <span class="comment"># 用来存储飞机发射的子弹</span>
+        self.bullet_list = []
+
+
+<span class="comment"># 创建英雄飞机类</span>
+<span class="class"><span class="keyword">class</span> <span class="title">HeroPlane</span><span class="params">(Plane)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        <span class="comment"># 继承父类的init方法</span>
+        super(HeroPlane, self).__init__(x, y, screen)
+        self.image = pygame.image.load(<span class="string">'image/fj5.png'</span>)
+
+        self.image_boom_list = []
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/hero_blowup_n1.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/hero_blowup_n2.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/hero_blowup_n3.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/hero_blowup_n4.png'</span>))
+        <span class="comment"># 用于判断敌机是否爆炸</span>
+        self.boom = <span class="keyword">False</span>
+        <span class="comment"># 选取敌机爆炸的图片索引</span>
+        self.image_boom_index = <span class="number">0</span>
+        <span class="comment"># 爆炸图片切换的间隔</span>
+
+        self.num = <span class="number">1</span>
+        self.left = <span class="keyword">False</span>
+        self.right = <span class="keyword">False</span>
+        self.up = <span class="keyword">False</span>
+        self.down = <span class="keyword">False</span>
+
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> self.left:
+            self.x -= <span class="number">3</span>
+            <span class="keyword">if</span> self.x &lt; <span class="number">-20</span>:
+                self.left = <span class="keyword">False</span>
+                self.right = <span class="keyword">True</span>
+                self.up = <span class="keyword">False</span>
+                self.down = <span class="keyword">False</span>
+
+        <span class="keyword">if</span> self.right:
+            self.x += <span class="number">3</span>
+            <span class="keyword">if</span> self.x &gt; <span class="number">300</span>:
+                self.left = <span class="keyword">True</span>
+                self.right = <span class="keyword">False</span>
+                self.up = <span class="keyword">False</span>
+                self.down = <span class="keyword">False</span>
+
+        <span class="keyword">if</span> self.up:
+            self.y -= <span class="number">3</span>
+            <span class="keyword">if</span> self.y &lt; <span class="number">0</span>:
+                self.left = <span class="keyword">False</span>
+                self.right = <span class="keyword">False</span>
+                self.up = <span class="keyword">False</span>
+                self.down = <span class="keyword">True</span>
+
+        <span class="keyword">if</span> self.down:
+            self.y += <span class="number">3</span>
+            <span class="keyword">if</span> self.y &gt; <span class="number">600</span>:
+                self.left = <span class="keyword">False</span>
+                self.right = <span class="keyword">False</span>
+                self.up = <span class="keyword">True</span>
+                self.down = <span class="keyword">False</span>
+
+
+        <span class="keyword">if</span> <span class="keyword">not</span> self.boom:
+            self.screen.blit(self.image, (self.x, self.y))
+
+            <span class="comment"># 如果子弹越界，先将子弹对象从列表中删除</span>
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                <span class="keyword">if</span> bullet.judge():
+                    self.bullet_list.remove(bullet)
+
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                bullet.display()
+                bullet.move()
+        <span class="keyword">else</span>:
+            <span class="keyword">if</span> self.image_boom_index &lt; len(self.image_boom_list):
+                <span class="keyword">if</span> self.num % <span class="number">5</span> == <span class="number">0</span>:
+                    self.screen.blit(self.image_boom_list[self.image_boom_index], (self.x, self.y))
+                    self.image_boom_index += <span class="number">1</span>
+                self.num += <span class="number">1</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move_left</span><span class="params">(self)</span>:</span>
+            self.left = <span class="keyword">True</span>
+            self.right = <span class="keyword">False</span>
+            self.up = <span class="keyword">False</span>
+            self.down = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move_right</span><span class="params">(self)</span>:</span>
+            self.right = <span class="keyword">True</span>
+            self.left = <span class="keyword">False</span>
+            self.up = <span class="keyword">False</span>
+            self.down = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move_up</span><span class="params">(self)</span>:</span>
+            self.right = <span class="keyword">False</span>
+            self.left = <span class="keyword">False</span>
+            self.up = <span class="keyword">True</span>
+            self.down = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move_down</span><span class="params">(self)</span>:</span>
+            self.right = <span class="keyword">False</span>
+            self.left = <span class="keyword">False</span>
+            self.up = <span class="keyword">False</span>
+            self.down = <span class="keyword">True</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">stop</span><span class="params">(self)</span>:</span>
+        self.right = <span class="keyword">False</span>
+        self.left = <span class="keyword">False</span>
+        self.up = <span class="keyword">False</span>
+        self.down = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot</span><span class="params">(self)</span>:</span>
+        bullet = Bullet(self.x, self.y, self.screen)
+        self.bullet_list.append(bullet)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot_by</span><span class="params">(self, bullet)</span>:</span>
+        x1 = self.x + self.image.get_rect().width
+        y1 = self.y + self.image.get_rect().height
+        <span class="keyword">if</span> bullet.x &lt; x1 <span class="keyword">and</span> bullet.x &gt; self.x <span class="keyword">and</span> bullet.y &lt; y1 <span class="keyword">and</span> bullet.y &gt; self.y:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+
+<span class="comment"># 创建子弹类</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Bullet</span><span class="params">(object)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        self.x = x + <span class="number">50</span>
+        self.y = y - <span class="number">40</span>
+        self.screen = screen
+        self.image = pygame.image.load(<span class="string">'image/zd10.png'</span>)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        self.screen.blit(self.image, (self.x, self.y))
+
+    <span class="comment"># 修改子弹的位置，在窗口显示为动态的移动</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span>
+        self.y -= <span class="number">4</span>
+
+    <span class="comment"># 判断子弹是否越界</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">judge</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> self.y &lt; <span class="number">0</span>:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot_by</span><span class="params">(self, bullet)</span>:</span>
+        x1 = self.x + self.image.get_rect().width
+        y1 = self.y + self.image.get_rect().height
+        <span class="keyword">if</span> bullet.x &lt; x1 <span class="keyword">and</span> bullet.x &gt; self.x <span class="keyword">and</span> bullet.y &lt; y1 <span class="keyword">and</span> bullet.y &gt; self.y:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+
+<span class="comment"># 创建敌人飞机类</span>
+<span class="class"><span class="keyword">class</span> <span class="title">EnemyPlane</span><span class="params">(Plane)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        super(EnemyPlane, self).__init__(x, y, screen)
+        self.image = pygame.image.load(<span class="string">'image/fj3.png'</span>)
+        <span class="comment"># 将敌机爆炸图片放入到列表，动态显示爆炸效果</span>
+        self.image_boom_list = []
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy0_down1.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy0_down2.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy0_down3.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy0_down4.png'</span>))
+        <span class="comment"># 存储敌机发射的子弹</span>
+        self.bullet_list = []
+        <span class="comment"># 指定敌机开始的飞行方向</span>
+        self.direction = <span class="string">'right'</span>
+        <span class="comment"># 用于判断敌机是否爆炸</span>
+        self.boom = <span class="keyword">False</span>
+        <span class="comment"># 选取敌机爆炸的图片索引</span>
+        self.image_boom_index = <span class="number">0</span>
+        <span class="comment"># 爆炸图片切换的间隔</span>
+        self.num = <span class="number">1</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> self.boom:
+            self.screen.blit(self.image, (self.x, self.y))
+
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                <span class="keyword">if</span> bullet.judge():
+                    self.bullet_list.remove(bullet)
+
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                bullet.display()
+                bullet.move()
+            self.move()
+            self.shoot()
+        <span class="keyword">else</span>:
+            <span class="keyword">if</span> self.image_boom_index &lt; len(self.image_boom_list):
+                <span class="keyword">if</span> self.num % <span class="number">5</span> == <span class="number">0</span>:
+                    self.screen.blit(self.image_boom_list[self.image_boom_index], (self.x, self.y))
+                    self.image_boom_index += <span class="number">1</span>
+                self.num += <span class="number">1</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span>
+        <span class="comment"># 如果方向是向右，就往右走</span>
+        <span class="keyword">if</span> self.direction == <span class="string">'right'</span>:
+            self.x += <span class="number">2</span>
+        <span class="comment"># 如果方向是向左，就往左走</span>
+        <span class="keyword">if</span> self.direction == <span class="string">'left'</span>:
+            self.x -= <span class="number">2</span>
+        <span class="comment"># 如果到达右边的边界，则向左走</span>
+        <span class="keyword">if</span> self.x &gt; <span class="number">350</span>:
+            self.direction = <span class="string">'left'</span>
+        <span class="comment"># 如果到达左边的边界，则向右走</span>
+        <span class="keyword">if</span> self.x &lt; <span class="number">0</span>:
+            self.direction = <span class="string">'right'</span>
+        self.y += <span class="number">1</span>
+
+    <span class="comment"># 敌机发射子弹，在1-75个整数中，随机取数字，只有数字为25才发射子弹</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot</span><span class="params">(self)</span>:</span>
+        num = random.randint(<span class="number">1</span>, <span class="number">75</span>)
+        <span class="keyword">if</span> num == <span class="number">25</span>:
+            bullet = EnemyBullet(self.x, self.y, self.screen)
+            self.bullet_list.append(bullet)
+
+    <span class="comment"># 检查敌机是否被子弹bullet (x, y)击中</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot_by</span><span class="params">(self, bullet)</span>:</span>
+        x1 = self.x + self.image.get_rect().width
+        y1 = self.y + self.image.get_rect().height
+        <span class="keyword">if</span> bullet.x &lt; x1 <span class="keyword">and</span> bullet.x &gt; self.x <span class="keyword">and</span> bullet.y &lt; y1 <span class="keyword">and</span> bullet.y &gt; self.y:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">SEnemyPlane</span><span class="params">(Plane)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        super(SEnemyPlane, self).__init__(x, y, screen)
+        self.image = pygame.image.load(<span class="string">'image/fj6.png'</span>)
+        <span class="comment"># 将敌机爆炸图片放入到列表，动态显示爆炸效果</span>
+        self.image_boom_list = []
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy1_down1.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy1_down2.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy1_down3.png'</span>))
+        self.image_boom_list.append(pygame.image.load(<span class="string">'image/enemy1_down4.png'</span>))
+        <span class="comment"># 存储敌机发射的子弹</span>
+        self.bullet_list = []
+        <span class="comment"># 指定敌机开始的飞行方向</span>
+        self.direction = <span class="string">'right'</span>
+        <span class="comment"># 用于判断敌机是否爆炸</span>
+        self.boom = <span class="keyword">False</span>
+        <span class="comment"># 选取敌机爆炸的图片索引</span>
+        self.image_boom_index = <span class="number">0</span>
+        <span class="comment"># 爆炸图片切换的间隔</span>
+        self.num = <span class="number">1</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> self.boom:
+            self.screen.blit(self.image, (self.x, self.y))
+
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                <span class="keyword">if</span> bullet.judge():
+                    self.bullet_list.remove(bullet)
+
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> self.bullet_list:
+                bullet.display()
+                bullet.move()
+            self.move()
+            self.shoot()
+        <span class="keyword">else</span>:
+            <span class="keyword">if</span> self.image_boom_index &lt; len(self.image_boom_list):
+                <span class="keyword">if</span> self.num % <span class="number">5</span> == <span class="number">0</span>:
+                    self.screen.blit(self.image_boom_list[self.image_boom_index], (self.x, self.y))
+                    self.image_boom_index += <span class="number">1</span>
+                self.num += <span class="number">1</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span>
+        <span class="comment"># 如果方向是向右，就往右走</span>
+        <span class="keyword">if</span> self.direction == <span class="string">'right'</span>:
+            self.x += <span class="number">2</span>
+        <span class="comment"># 如果方向是向左，就往左走</span>
+        <span class="keyword">if</span> self.direction == <span class="string">'left'</span>:
+            self.x -= <span class="number">2</span>
+        <span class="comment"># 如果到达右边的边界，则向左走</span>
+        <span class="keyword">if</span> self.x &gt; <span class="number">350</span>:
+            self.direction = <span class="string">'left'</span>
+        <span class="comment"># 如果到达左边的边界，则向右走</span>
+        <span class="keyword">if</span> self.x &lt; <span class="number">0</span>:
+            self.direction = <span class="string">'right'</span>
+        self.y += <span class="number">1</span>
+
+    <span class="comment"># 敌机发射子弹，在1-75个整数中，随机取数字，只有数字为25才发射子弹</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot</span><span class="params">(self)</span>:</span>
+        num = random.randint(<span class="number">1</span>, <span class="number">100</span>)
+        <span class="keyword">if</span> num == <span class="number">25</span>:
+            bullet = SEnemyBullet(self.x, self.y, self.screen)
+            self.bullet_list.append(bullet)
+
+    <span class="comment"># 检查敌机是否被子弹bullet (x, y)击中</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">shoot_by</span><span class="params">(self, bullet)</span>:</span>
+        x1 = self.x + self.image.get_rect().width
+        y1 = self.y + self.image.get_rect().height
+        <span class="keyword">if</span> bullet.x &lt; x1 <span class="keyword">and</span> bullet.x &gt; self.x <span class="keyword">and</span> bullet.y &lt; y1 <span class="keyword">and</span> bullet.y &gt; self.y:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">EnemyBullet</span><span class="params">(object)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        self.x = x + <span class="number">30</span>
+        self.y = y + <span class="number">60</span>
+        self.screen = screen
+        self.image = pygame.image.load(<span class="string">'image/zd7.png'</span>)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        self.screen.blit(self.image, (self.x, self.y))
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span>
+        self.y += <span class="number">2</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">judge</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> self.y &gt; <span class="number">700</span>:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">SEnemyBullet</span><span class="params">(object)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y, screen)</span>:</span>
+        self.x = x + <span class="number">30</span>
+        self.y = y + <span class="number">60</span>
+        self.screen = screen
+        self.image = pygame.image.load(<span class="string">'image/zd8.png'</span>)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span>
+        self.screen.blit(self.image, (self.x, self.y))
+
+    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self)</span>:</span>
+        self.y += <span class="number">3</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">judge</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> self.y &gt; <span class="number">700</span>:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+
+
+enemy_plane_list = []
+
+
+<span class="function"><span class="keyword">def</span> <span class="title">add_enemy_plane</span><span class="params">(screen)</span>:</span>
+    num = random.randint(<span class="number">0</span>, <span class="number">500</span>)
+    x = random.randrange(<span class="number">0</span>, <span class="number">395</span>, <span class="number">50</span>)
+    <span class="keyword">if</span> num &lt; <span class="number">3</span>:
+        enemy_plane = EnemyPlane(x, <span class="number">0</span>, screen)
+        enemy_plane_list.append(enemy_plane)
+    <span class="keyword">if</span> num == <span class="number">4</span>:
+        enemy_plane = SEnemyPlane(x, <span class="number">0</span>, screen)
+        enemy_plane_list.append(enemy_plane)
+    <span class="keyword">return</span> enemy_plane_list
+
+
+<span class="function"><span class="keyword">def</span> <span class="title">remove_enemy_plane</span><span class="params">(screen)</span>:</span>
+    <span class="keyword">for</span> enemy_plane <span class="keyword">in</span> enemy_plane_list:
+        <span class="keyword">if</span> enemy_plane.y &gt; <span class="number">700</span>:
+            enemy_plane_list.remove(enemy_plane)
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">SB</span><span class="params">(pygame.sprite.Sprite)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,image_name,speed = <span class="number">1</span>)</span>:</span>
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(image_name)
+        self.rect = self.image.get_rect()
+        self.speed = speed
+    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self)</span>:</span>
+        self.rect.y += self.speed
+        <span class="keyword">if</span> self.rect.y &gt;= <span class="number">700</span>:
+            self.rect.y = <span class="number">-700</span>
+
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    <span class="comment"># 创建一个windows窗口用来显示游戏内容</span>
+    screen = pygame.display.set_mode((<span class="number">395</span>, <span class="number">700</span>))
+    pygame.display.set_caption(<span class="string">'雷电2018'</span>)
+
+    groups_bg = pygame.sprite.Group()
+    bg = SB(<span class="string">'image/bj2.jpg'</span>)
+    bg1 = SB(<span class="string">'image/bj2.jpg'</span>)
+    bg1.rect.y = <span class="number">-700</span>
+    groups_bg.add(bg,bg1)
+
+
+
+    <span class="comment"># 创建一个飞机对象</span>
+    hero_plane = HeroPlane(<span class="number">145</span>, <span class="number">550</span>, screen)
+
+    <span class="comment"># 创建一个敌机对象</span>
+    enemy_plane = EnemyPlane(<span class="number">0</span>, <span class="number">0</span>, screen)
+
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+
+        groups_bg.update()
+        groups_bg.draw(screen)
+
+
+
+        <span class="comment"># 将飞机对象放到背景图像上显示</span>
+        hero_plane.display()
+
+        enemy_plane_list = add_enemy_plane(screen)
+
+        <span class="comment"># 遍历所有英雄飞机发射的子弹，判断是否能射中敌机</span>
+
+        <span class="keyword">for</span> bullet <span class="keyword">in</span> hero_plane.bullet_list:
+            <span class="keyword">for</span> enemy_plane <span class="keyword">in</span> enemy_plane_list:
+                <span class="keyword">if</span> enemy_plane.shoot_by(bullet):
+                    enemy_plane.boom = <span class="keyword">True</span>
+
+        <span class="keyword">for</span> enemy_plane <span class="keyword">in</span> enemy_plane_list:
+            <span class="keyword">for</span> bullet <span class="keyword">in</span> enemy_plane.bullet_list:
+                <span class="keyword">if</span> hero_plane.shoot_by(bullet):
+                    hero_plane.boom = <span class="keyword">True</span>
+        <span class="keyword">if</span> hero_plane.boom == <span class="keyword">True</span>:
+            gameover = pygame.image.load(<span class="string">'image/gameover.jpg'</span>)
+            screen.blit(gameover, (<span class="number">50</span>, <span class="number">300</span>))
+
+
+        <span class="keyword">for</span> enemy_plane <span class="keyword">in</span> enemy_plane_list:
+            enemy_plane.display()
+
+        remove_enemy_plane(screen)
+
+        <span class="comment"># 通过键盘获取游戏事件</span>
+        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():
+            <span class="comment"># 如果点击了退出按钮，则退出游戏</span>
+            <span class="keyword">if</span> event.type == QUIT:
+                print(<span class="string">'exit'</span>)
+                exit()
+
+            <span class="comment"># 判断键盘是否按下了键</span>
+            <span class="keyword">elif</span> event.type == KEYDOWN:
+                <span class="comment"># 如果按键是a或者是&lt;-键，则控制飞机向左移动</span>
+                <span class="keyword">if</span> event.key == K_a <span class="keyword">or</span> event.key == K_LEFT:
+                    hero_plane.move_left()
+                    print(<span class="string">'left'</span>)
+                <span class="keyword">if</span> event.key == K_w <span class="keyword">or</span> event.key == K_UP:
+                    hero_plane.move_up()
+                    print(<span class="string">'up'</span>)
+                <span class="keyword">if</span> event.key == K_s <span class="keyword">or</span> event.key == K_DOWN:
+                    hero_plane.move_down()
+                    print(<span class="string">'down'</span>)
+                <span class="comment"># 如果按键是d或者是-&gt;键，则控制飞机向右移动</span>
+                <span class="keyword">elif</span> event.key == K_d <span class="keyword">or</span> event.key == K_RIGHT:
+                    hero_plane.move_right()
+                    print(<span class="string">'right'</span>)
+                <span class="comment"># 如果按键是Esc则停止移动</span>
+                <span class="keyword">elif</span> event.key == K_ESCAPE:
+                    hero_plane.stop()
+                <span class="comment"># 如果按键是空格键，则飞机发射子弹</span>
+                <span class="keyword">elif</span> event.key == K_SPACE:
+                    hero_plane.shoot()
+                    print(<span class="string">'space'</span>)
+
+        <span class="comment"># 通过延迟的方式，来降低while循环的循环速度，从而降低cpu占用率</span>
+        time.sleep(<span class="number">0.01</span>)
+
+        <span class="comment"># 更新需要显示的内容</span>
+        pygame.display.update()
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/20/自己写框架/" rel="next" title="自己写框架">
+                <i class="fa fa-chevron-left"></i> 自己写框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/20/deepin(linux)连接云服务器/" rel="prev" title="deepin(linux)连接云服务器">
+                deepin(linux)连接云服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#完整源码"><span class="nav-number">1.</span> <span class="nav-text">完整源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>
