@@ -76,13 +76,17 @@
 <meta name="description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Spring Boot企业微信点餐系统的坑">
-<meta property="og:url" content="http://yoursite.com/2018/07/28/Java Spring Boot企业微信点餐系统的坑/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/Java Spring Boot企业微信点餐系统的坑/index.html">
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
-<meta property="og:updated_time" content="2018-08-15T07:19:53.661Z">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-17_124538.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-17_133806.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-18_153504.png">
+<meta property="og:updated_time" content="2018-08-18T07:53:00.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Spring Boot企业微信点餐系统的坑">
 <meta name="twitter:description" content="遇坑集合 配置数据没设置UTF-8编码(记不住) 导致数据库乱码 没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错 忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功 删除啦默认构造函数导致jpa默写方法失效报错No identifier specified">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-17_124538.png">
 
 
 
@@ -112,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/28/Java Spring Boot企业微信点餐系统的坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/16/Java Spring Boot企业微信点餐系统的坑/"/>
 
 
 
@@ -293,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/Java Spring Boot企业微信点餐系统的坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/Java Spring Boot企业微信点餐系统的坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -322,8 +326,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-28T20:13:10+08:00">
-                2018-07-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T20:13:10+08:00">
+                2018-08-16
               </time>
             
 
@@ -341,8 +345,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/28/Java Spring Boot企业微信点餐系统的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/28/Java Spring Boot企业微信点餐系统的坑/" itemprop="commentCount"></span>
+                <a href="/2018/08/16/Java Spring Boot企业微信点餐系统的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/16/Java Spring Boot企业微信点餐系统的坑/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,17 +379,71 @@
 <li>没有设置spring-boot-starter-parent版本与教程一致  导致jpa.findOne()等方法报错</li>
 <li>忘记写@Runner(SpringRunner.class)+@SpringBootTest注解导致测试类方法一直不成功</li>
 <li>删除啦默认构造函数导致jpa默写方法失效报错No identifier specified for entity</li>
-<li>还没搞清楚Date怎么自动记录当前时间并提交</li>
+<li>还没搞清楚Date怎么自动记录当前时间并提交(已懂：不是通过注解实现的 是sql语句。。。。)</li>
 <li>@Id 忘啦设置导致No identifier specified for entity</li>
 <li>@Service 忘啦 报错Error creating bean with name</li>
-<li><p>java.util.Date 测试报错could not execute statement  换成java.sql.Date 并在数据库端更改字符集为utf8 测试sava()成功</p>
-</li>
-<li><p>不等价(测试时遇到的)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ProductInfo&gt;productInfos=<span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//正常错、对</span></span><br><span class="line"> Assert.assertNotEquals(<span class="number">0</span>,productInfos.size());</span><br><span class="line"> <span class="comment">//测试一直对</span></span><br><span class="line"> Aseert.assertNouNull(productInfos);</span><br></pre></td></tr></table></figure>
+<li>java.util.Date 测试报错could not execute statement  换成java.sql.Date 并在数据库端更改字符集为utf8 测试sava()成功</li>
+<li>自动生成创建时间 不能用java.sql.Date 又改回来</li>
+<li>enums  枚举类中没有构造方法 会报错  需要@Getter 不需要set方法</li>
+<li>把Data当字段 应该Date  @Data 是注解</li>
+<li>Page<ordermaster> findByBuyerOpenid(String buyerOpenid, Pageable pageable); (在jpa中加个这方法 花式报错 说参数不对)</ordermaster></li>
+<li>不等价(测试时遇到的)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ProductInfo&gt;productInfos=<span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//正常错、对</span></span><br><span class="line"> Assert.assertNotEquals(<span class="number">0</span>,productInfos.size());</span><br><span class="line"> <span class="comment">//测试一直对</span></span><br><span class="line"> Aseert.assertNouNull(productInfos);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h3 id="用注解实现创建时间-更新时间-字段-教程"><a href="#用注解实现创建时间-更新时间-字段-教程" class="headerlink" title="用注解实现创建时间 更新时间 字段 教程"></a>用注解实现创建时间 更新时间 字段 <a href="https://blog.csdn.net/qq_14945847/article/details/79671123" target="_blank" rel="noopener">教程</a></h3><ul>
+<li>@EntityListeners</li>
+<li>@CreatedDate</li>
+<li>@LastModifiedDate</li>
+<li>@EnableJpaAuditing</li>
+<li>缺一不可</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EntityListeners</span>(AuditingEntityListener.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductCategory</span> </span>&#123;</span><br><span class="line">  <span class="meta">@CreatedDate</span></span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"create_time"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@LastModifiedDate</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"update_time"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date updateTime;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//启动类加注解</span></span><br><span class="line"><span class="meta">@EnableJpaAuditing</span></span><br></pre></td></tr></table></figure>
+<h3 id="用注解实现表之间的关系-（eg-插入一列ProductInfo数据-必须先指定一个ProductCategory）教程"><a href="#用注解实现表之间的关系-（eg-插入一列ProductInfo数据-必须先指定一个ProductCategory）教程" class="headerlink" title="用注解实现表之间的关系 （eg:插入一列ProductInfo数据 必须先指定一个ProductCategory）教程"></a>用注解实现表之间的关系 （eg:插入一列ProductInfo数据 必须先指定一个ProductCategory）<a href="https://blog.csdn.net/qq_39158142/article/details/80523103" target="_blank" rel="noopener">教程</a></h3><p>-</p>
+<ul>
+<li>@OneToOne</li>
+<li>@ManyToOne</li>
+<li>@OneToMany</li>
+<li>@ManyToMany</li>
+<li>@Column（name = “自定义字段名”，length = “自定义长度”，nullable = “是否可以空”，unique = “是否唯一”，columnDefinition = “自定义该字段的类型和长度”）</li>
+<li>@Transient 表示该属性并非一个到数据库表的字段的映射</li>
+</ul>
+<h3 id="OneToOne关系映射"><a href="#OneToOne关系映射" class="headerlink" title="OneToOne关系映射"></a>OneToOne关系映射</h3><h3 id="OneToMany-ManyToOneOneToOne关系映射"><a href="#OneToMany-ManyToOneOneToOne关系映射" class="headerlink" title="OneToMany/ManyToOneOneToOne关系映射"></a>OneToMany/ManyToOneOneToOne关系映射</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ProductInfo</span></span><br><span class="line"><span class="meta">@ManyToOne</span></span><br><span class="line"><span class="keyword">private</span> ProductCategory productCategory;</span><br><span class="line"><span class="comment">//ProductCategory</span></span><br><span class="line"><span class="comment">//categoryType是关联属性 两个表都有</span></span><br><span class="line"><span class="comment">//上面单方管理有问题 下面没问题</span></span><br><span class="line"><span class="meta">@OneToMany</span></span><br><span class="line">List&lt;ProductInfo&gt; productInfoList;</span><br></pre></td></tr></table></figure>
+<h3 id="ManyToMany关系映射"><a href="#ManyToMany关系映射" class="headerlink" title="ManyToMany关系映射"></a>ManyToMany关系映射</h3><h3 id="jpa自定义sql实现复杂查询"><a href="#jpa自定义sql实现复杂查询" class="headerlink" title="jpa自定义sql实现复杂查询"></a>jpa自定义sql实现复杂查询</h3><ul>
+<li>自定义 select * from product_category 可以</li>
+<li>下面sql语句数据库可以查出来 程序测试不同  未解决。</li>
+<li>网上说：Select后面没有别名！！！</li>
+<li>靠 多表关联查询不能有*吗？</li>
+<li>select a.category_id ,b.product_id from Product_category a inner join Product_info b on a.category_type=b.category_type</li>
+<li>测试通过。。。。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//jpa中学原生sql</span></span><br><span class="line"><span class="meta">@Query</span>(value=<span class="string">"select a.* ,b.* from Product_category a inner join Product_info b on a.category_type=b.category_type"</span>, nativeQuery = <span class="keyword">true</span>)</span><br><span class="line"><span class="function">List&lt;Object&gt; <span class="title">testsql</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-08-17_124538.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-08-17_133806.png" alt=""></p>
+<h3 id="引错包-导致Page-分页参数错误"><a href="#引错包-导致Page-分页参数错误" class="headerlink" title="引错包 导致Page 分页参数错误"></a>引错包 导致Page 分页参数错误</h3><ul>
+<li>应该是import org.springframework.data.domain.Pageable;</li>
+<li>而不是import java.awt.print.Pageable;</li>
+<li>更正后测试通过</li>
+</ul>
+<h3 id="数据库sql建表-一直存在的误区"><a href="#数据库sql建表-一直存在的误区" class="headerlink" title="数据库sql建表 一直存在的误区"></a>数据库sql建表 一直存在的误区</h3><ul>
+<li>CONSTRAINT fk_property_category FOREIGN KEY (cid) REFERENCES category (id)</li>
+<li>只是建立外键约束 不一定是 一对多/一对一</li>
+<li>意思是 property表中cid指向category表的id 两者一样 ，在property表插入数据，其cid的值必须在category的id中存在，否则插入失败。</li>
+<li>一对多等表之间的关系在实体类中体现。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dormitory</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> id;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">int</span> size;</span><br><span class="line">  <span class="keyword">private</span> List&lt;Student&gt; students;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">int</span> did;<span class="comment">//外键字段</span></span><br><span class="line">  String name;</span><br><span class="line">  <span class="keyword">private</span> Dormitory dormitory;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一个表的外键一定是另一个表的主键吗-of-cource-个毛"><a href="#一个表的外键一定是另一个表的主键吗-of-cource-个毛" class="headerlink" title="一个表的外键一定是另一个表的主键吗?  of cource!个毛"></a>一个表的外键一定是另一个表的主键吗?  of cource!个毛</h3><ul>
+<li>网上两种说法：1.对，2.不一定是主键，但必须是维一索引，主键是维一索引。 <a href="https://blog.csdn.net/haydenyu/article/details/78018782" target="_blank" rel="noopener">区别</a></li>
+<li>主键可以有多个 主键约束（PRIMARY KEY） 唯一性约束（UNIQUE）  唯一索引（INDEX）</li>
+<li>放弃jpa建表 用原生sql建表</li>
+</ul>
+<h3 id="jpa-建立外键约束-教程"><a href="#jpa-建立外键约束-教程" class="headerlink" title="jpa 建立外键约束 教程"></a>jpa 建立外键约束 <a href="https://blog.csdn.net/huaishuming/article/details/53427491" target="_blank" rel="noopener">教程</a></h3><ul>
+<li>@JoinColumn(name = “tid”,foreignKey = @ForeignKey(name = “none”,value = ConstraintMode.NO_CONSTRAINT))</li>
+<li>name值会在创建数据库自动创建外键tid字段。(所以实体类不用声明外键字段)</li>
+<li>目前问题：外键自动创建啦 但不管插什么都是空</li>
+</ul>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-08-18_153504.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ManyToOne</span></span><br><span class="line"><span class="meta">@JoinColumn</span>(name = <span class="string">"tid"</span>,foreignKey = <span class="meta">@ForeignKey</span>(name = <span class="string">"none"</span>,value = ConstraintMode.NO_CONSTRAINT))</span><br><span class="line"><span class="keyword">private</span> Teacher teacher;</span><br><span class="line"></span><br><span class="line"><span class="meta">@OneToMany</span>(mappedBy = <span class="string">"teacher"</span>)</span><br><span class="line"><span class="meta">@org</span>.hibernate.annotations.ForeignKey(name = <span class="string">"none"</span>)</span><br><span class="line"><span class="keyword">private</span> List&lt;Student&gt; students;</span><br></pre></td></tr></table></figure>
 <h2 id="好的东西"><a href="#好的东西" class="headerlink" title="好的东西"></a>好的东西</h2><ul>
-<li>lombok插件 +@Date注解=get/set/toString()</li>
+<li>lombok插件 +@Data注解=get/set/toString()</li>
 <li>springboot框架注解</li>
 <li>按ctrl+鼠标点方法 可以看到源代码</li>
 <li>统一api接口返回的json格式。</li>
@@ -414,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/28/2小时入门springboot/" rel="next" title="2小时入门springboot">
-                <i class="fa fa-chevron-left"></i> 2小时入门springboot
+              <a href="/2018/08/15/前端恶补原生js_jquery_es6/" rel="next" title="前端恶补原生js_jquery_es6">
+                <i class="fa fa-chevron-left"></i> 前端恶补原生js_jquery_es6
               </a>
             
           </div>
@@ -423,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/02/私有云owncloud的docker搭建方式/" rel="prev" title="私有云owncloud的docker搭建方式">
-                私有云owncloud的docker搭建方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">278</span>
+                  <span class="site-state-item-count">279</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -575,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇坑集合"><span class="nav-number">1.</span> <span class="nav-text">遇坑集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好的东西"><span class="nav-number">2.</span> <span class="nav-text">好的东西</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇坑集合"><span class="nav-number">1.</span> <span class="nav-text">遇坑集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用注解实现创建时间-更新时间-字段-教程"><span class="nav-number">1.1.</span> <span class="nav-text">用注解实现创建时间 更新时间 字段 教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用注解实现表之间的关系-（eg-插入一列ProductInfo数据-必须先指定一个ProductCategory）教程"><span class="nav-number">1.2.</span> <span class="nav-text">用注解实现表之间的关系 （eg:插入一列ProductInfo数据 必须先指定一个ProductCategory）教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToOne关系映射"><span class="nav-number">1.3.</span> <span class="nav-text">OneToOne关系映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToMany-ManyToOneOneToOne关系映射"><span class="nav-number">1.4.</span> <span class="nav-text">OneToMany/ManyToOneOneToOne关系映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ManyToMany关系映射"><span class="nav-number">1.5.</span> <span class="nav-text">ManyToMany关系映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jpa自定义sql实现复杂查询"><span class="nav-number">1.6.</span> <span class="nav-text">jpa自定义sql实现复杂查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引错包-导致Page-分页参数错误"><span class="nav-number">1.7.</span> <span class="nav-text">引错包 导致Page 分页参数错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库sql建表-一直存在的误区"><span class="nav-number">1.8.</span> <span class="nav-text">数据库sql建表 一直存在的误区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个表的外键一定是另一个表的主键吗-of-cource-个毛"><span class="nav-number">1.9.</span> <span class="nav-text">一个表的外键一定是另一个表的主键吗?  of cource!个毛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jpa-建立外键约束-教程"><span class="nav-number">1.10.</span> <span class="nav-text">jpa 建立外键约束 教程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好的东西"><span class="nav-number">2.</span> <span class="nav-text">好的东西</span></a></li></ol></div>
             
 
           </div>
