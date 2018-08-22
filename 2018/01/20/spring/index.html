@@ -73,20 +73,20 @@
 
 
 
-<meta name="description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经被注入好相关值了，直接使用即可。  spring给对象注入属性  spring给对象注入其他对象">
+<meta name="description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象 Spring容器作为超级大工厂，负责创建、管理所有的Java对象，这些Java对象被称为Bean。  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring">
 <meta property="og:url" content="http://yoursite.com/2018/01/20/spring/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经被注入好相关值了，直接使用即可。  spring给对象注入属性  spring给对象注入其他对象">
+<meta property="og:description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象 Spring容器作为超级大工厂，负责创建、管理所有的Java对象，这些Java对象被称为Bean。  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_191800.png">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_193305.png">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_194235.png">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_195052.png">
-<meta property="og:updated_time" content="2018-08-15T06:20:19.899Z">
+<meta property="og:updated_time" content="2018-08-20T13:07:20.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring">
-<meta name="twitter:description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经被注入好相关值了，直接使用即可。  spring给对象注入属性  spring给对象注入其他对象">
+<meta name="twitter:description" content="完整教程：how2j  备忘   IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象 Spring容器作为超级大工厂，负责创建、管理所有的Java对象，这些Java对象被称为Bean。  DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经">
 <meta name="twitter:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_191800.png">
 
 
@@ -402,9 +402,12 @@
 <h3>备忘</h3>
 
 <ul>
-<li><p>IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象</p>
+<li>IOC 反转控制 是Spring的基础，Inversion Of Control .简单说就是创建对象由以前的程序员自己new 构造方法来调用，变成了交由Spring创建对象</li>
+<li><p>Spring容器作为超级大工厂，负责创建、管理所有的Java对象，这些Java对象被称为Bean。</p>
 </li>
 <li><p>DI 依赖注入 Dependency Inject. 简单地说就是拿到的对象的属性，已经被注入好相关值了，直接使用即可。</p>
+</li>
+<li><p>Spring容器管理容器中Bean之间的依赖关系，Spring使用一种被称为”依赖注入”的方式来管理Bean之间的依赖关系。</p>
 </li>
 <li><p>spring给对象注入属性<br><img src="http://oxz3x2njl.bkt.clouddn.com/2018-01-26_191800.png" alt=""></p>
 </li>
@@ -446,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/20/Struts/" rel="next" title="Struts">
-                <i class="fa fa-chevron-left"></i> Struts
+              <a href="/2018/01/19/用esp8266黑掉别人的wifi/" rel="next" title="用esp8266黑掉别人的wifi">
+                <i class="fa fa-chevron-left"></i> 用esp8266黑掉别人的wifi
               </a>
             
           </div>
@@ -456,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/29/产品页面/" rel="prev" title="tmall_产品页面">
-                tmall_产品页面 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/20/Struts/" rel="prev" title="Struts">
+                Struts <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +545,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">279</span>
+                  <span class="site-state-item-count">280</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
