@@ -82,8 +82,9 @@
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-30_113820.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-31_125919.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-08-31_140117.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-09-04_121616.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018-09-03_103132.png">
-<meta property="og:updated_time" content="2018-09-03T04:42:01.398Z">
+<meta property="og:updated_time" content="2018-09-04T04:25:46.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssm框架剖析">
 <meta name="twitter:description" content="SSM=spring+springMVC+mybatis demo how2j 1.主要配置文件web.xml(maven项目自带) applicationContext.xml springMVC.xml 2.有些项目有如jdbc.properties 等.properties文件 这些文件是供xml使用的属性值文件。 3.方法与sql映射配置文件eg:Category.xml 可以由注解代替。">
@@ -181,7 +182,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -189,7 +190,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-            Über
+            About
           </a>
         </li>
       
@@ -205,7 +206,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -213,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -240,7 +241,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-            Suche
+            Search
           </a>
         </li>
       
@@ -325,7 +326,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T20:13:10+08:00">
                 2018-08-21
@@ -479,12 +480,12 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CategoryMapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deleteByPrimaryKey</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(Category record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insertSelective</span><span class="params">(Category record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Category&gt; <span class="title">selectByExample</span><span class="params">(CategoryExample example)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Category <span class="title">selectByPrimaryKey</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKeySelective</span><span class="params">(Category record)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKey</span><span class="params">(Category record)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List <span class="title">list</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        CategoryExample example =<span class="keyword">new</span> CategoryExample();</span><br><span class="line">        <span class="comment">//设置根据id字段查询</span></span><br><span class="line">        example.createCriteria().andIdEqualTo(id);</span><br><span class="line">        example.setOrderByClause(<span class="string">"id desc"</span>);</span><br><span class="line">        <span class="keyword">return</span> categoryMapper.selectByExample(example);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="mybatis生成的项目-启动慢问题-一直不成功。"><a href="#mybatis生成的项目-启动慢问题-一直不成功。" class="headerlink" title="mybatis生成的项目 启动慢问题 一直不成功。"></a>mybatis生成的项目 启动慢问题 一直不成功。</h3><ul>
-<li>At least one JAR was scanned for TLDs yet contained no TLDs</li>
+<h3 id="mybatis生成的项目-启动慢问题-一直不成功。At-least-one-JAR-was-scanned-for-TLDs-yet-contained-no-TLDs"><a href="#mybatis生成的项目-启动慢问题-一直不成功。At-least-one-JAR-was-scanned-for-TLDs-yet-contained-no-TLDs" class="headerlink" title="mybatis生成的项目 启动慢问题 一直不成功。At least one JAR was scanned for TLDs yet contained no TLDs"></a>mybatis生成的项目 启动慢问题 一直不成功。At least one JAR was scanned for TLDs yet contained no TLDs</h3><ul>
 <li>尝试1：改tomcat配置文件何去掉jsp中的注解  <a href="https://blog.csdn.net/suyu_yuan/article/details/51283039" target="_blank" rel="noopener">教程</a></li>
 <li>尝试2：改jre配置文件 <a href="https://blog.csdn.net/m0_37602175/article/details/80327422" target="_blank" rel="noopener">教程</a></li>
 <li>No TLD files were found in resource path</li>
 <li>什么是TLD?-&gt;标签库描述文件，如要在JSP页面中实现JSP标签，必须首先定义实现标签的类，然后在标签库描述文件（TLD）中将写好的类映射成jsp标签,最后在JSP文件中使用定义好的标签，就可以生成动态的JSP内容</li>
+<li>等啦几天，最终自己好啦。what fuck？<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2018-09-04_121616.png" alt=""></li>
 </ul>
 <h3 id="Maven打包报错-No-sources-to-compile-等一下就好"><a href="#Maven打包报错-No-sources-to-compile-等一下就好" class="headerlink" title="Maven打包报错 No sources to compile  等一下就好"></a>Maven打包报错 No sources to compile  等一下就好</h3><ul>
 <li>网上说不是Maven项目造成的 扯淡</li>
@@ -504,7 +505,7 @@
 <li>3.发现自己改啦server.xml 端口号设置为8888 而8888端口被占用啦 netstat -apn|grep 8888</li>
 <li>4.所以要看启动日志。tomcat start并不代表就成功啦。。。</li>
 </ul>
-<h3 id="mysql数据库-中文乱码问题-靠谱教程"><a href="#mysql数据库-中文乱码问题-靠谱教程" class="headerlink" title="mysql数据库 中文乱码问题 靠谱教程"></a>mysql数据库 中文乱码问题 <a href="https://www.cnblogs.com/forget406/p/5475902.html" target="_blank" rel="noopener">靠谱教程</a></h3><h4 id="what？"><a href="#what？" class="headerlink" title="what？"></a>what？</h4><ul>
+<h3 id="win10下-mysql数据库-中文乱码问题-靠谱教程-linux默认utf8"><a href="#win10下-mysql数据库-中文乱码问题-靠谱教程-linux默认utf8" class="headerlink" title="win10下 mysql数据库 中文乱码问题 靠谱教程 linux默认utf8"></a>win10下 mysql数据库 中文乱码问题 <a href="https://www.cnblogs.com/forget406/p/5475902.html" target="_blank" rel="noopener">靠谱教程</a> linux默认utf8</h3><h4 id="what？"><a href="#what？" class="headerlink" title="what？"></a>what？</h4><ul>
 <li>1.我cmd创建数据库 CREATE DATABASE tmall_ssm DEFAULT CHARACTER SET utf8;</li>
 <li>插入时，cmd查看数据库乱码，链接软件查看乱码</li>
 <li>2.我cmd创建数据库 CREATE DATABASE tmall_ssm  (默认编码是lanti)</li>
@@ -559,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/21/后端框架原理学习/" rel="next" title="后端框架原理学习(官网+how2j方式)">
-                <i class="fa fa-chevron-left"></i> 后端框架原理学习(官网+how2j方式)
+              <a href="/2018/08/16/Java Spring Boot企业微信点餐系统的坑/" rel="next" title="Java Spring Boot企业微信点餐系统的坑">
+                <i class="fa fa-chevron-left"></i> Java Spring Boot企业微信点餐系统的坑
               </a>
             
           </div>
@@ -568,6 +569,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/后端框架原理学习/" rel="prev" title="后端框架原理学习(官网+how2j方式)">
+                后端框架原理学习(官网+how2j方式) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -624,10 +629,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -651,8 +656,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">280</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -663,7 +668,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
@@ -674,7 +679,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
@@ -716,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSM-spring-springMVC-mybatis-demo-how2j"><span class="nav-number">1.</span> <span class="nav-text">SSM=spring+springMVC+mybatis demo how2j</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web-xml-项目启动第一个加载的配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">web.xml 项目启动第一个加载的配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applicationContext-xml"><span class="nav-number">1.2.</span> <span class="nav-text">applicationContext.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC-xml"><span class="nav-number">1.3.</span> <span class="nav-text">springMVC.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-xml-以上3个配置没问题-再报错-多半包没导"><span class="nav-number">1.4.</span> <span class="nav-text">pom.xml 以上3个配置没问题 再报错 多半包没导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题记录"><span class="nav-number">1.5.</span> <span class="nav-text">问题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jsp-中文乱码声明与c标签使用"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.jsp 中文乱码声明与c标签使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-后台没有收到form表单提交的数据"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.后台没有收到form表单提交的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-单独说一下文件上传-eg-图片"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.单独说一下文件上传 eg:图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文乱码问题"><span class="nav-number">1.5.4.</span> <span class="nav-text">中文乱码问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页如何实现的-limit函数方式-每点一次页标都会改变-start-，-count-再次从数据库-session-一级缓存-sessionFactory-二级缓存-查询数据"><span class="nav-number">1.5.5.</span> <span class="nav-text">分页如何实现的 limit函数方式(每点一次页标都会改变 #{start}，#{count} 再次从数据库/session(一级缓存) sessionFactory(二级缓存)查询数据)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-pageHelper分页插件来实现。"><span class="nav-number">1.5.6.</span> <span class="nav-text">使用 pageHelper分页插件来实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动生成bean-mapper-mapper-xml-简化开发"><span class="nav-number">1.5.7.</span> <span class="nav-text">自动生成bean mapper mapper.xml  简化开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成后list-变为selectByExample-Example-example-必须传参数-eg：id-desc-用于设置排序、设置根据id字段查询、、"><span class="nav-number">1.5.8.</span> <span class="nav-text">生成后list()变为selectByExample(Example example) 必须传参数(eg：id desc )用于设置排序、设置根据id字段查询、、</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis生成的项目-启动慢问题-一直不成功。"><span class="nav-number">1.5.9.</span> <span class="nav-text">mybatis生成的项目 启动慢问题 一直不成功。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven打包报错-No-sources-to-compile-等一下就好"><span class="nav-number">1.5.10.</span> <span class="nav-text">Maven打包报错 No sources to compile  等一下就好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux重启tomcat"><span class="nav-number">1.5.11.</span> <span class="nav-text">linux重启tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jar-nohup-永久运行-重启tomcat-对项目不影响。"><span class="nav-number">1.5.12.</span> <span class="nav-text">jar + nohup 永久运行  重启tomcat 对项目不影响。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#war部署-tomcat没有自动解压。一次可能没有-多重启几次tomcat。"><span class="nav-number">1.5.13.</span> <span class="nav-text">war部署 tomcat没有自动解压。一次可能没有 多重启几次tomcat。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven打包jar运行-报错-无主清单属性。"><span class="nav-number">1.5.14.</span> <span class="nav-text">maven打包jar运行  报错 无主清单属性。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-？"><span class="nav-number">1.5.14.1.</span> <span class="nav-text">what ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why"><span class="nav-number">1.5.14.2.</span> <span class="nav-text">why?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jar、war区别-区别"><span class="nav-number">1.5.15.</span> <span class="nav-text">jar、war区别 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#war-自动解压后-记得-运行startup-bat-linux：bin下-shutdown-sh-startup-sh"><span class="nav-number">1.5.16.</span> <span class="nav-text">war 自动解压后 记得 运行startup.bat (linux：bin下 ./shutdown.sh ./startup.sh)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql数据库-中文乱码问题-靠谱教程"><span class="nav-number">1.5.17.</span> <span class="nav-text">mysql数据库 中文乱码问题 靠谱教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what？"><span class="nav-number">1.5.17.1.</span> <span class="nav-text">what？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why？"><span class="nav-number">1.5.17.2.</span> <span class="nav-text">why？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how"><span class="nav-number">1.5.17.3.</span> <span class="nav-text">how?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理系统字符集层次-全部utf8-cmd乱码-软件客户端正常-项目jdbc数据正常"><span class="nav-number">1.5.17.4.</span> <span class="nav-text">数据管理系统字符集层次 (全部utf8 cmd乱码 软件客户端正常 项目jdbc数据正常)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSM-spring-springMVC-mybatis-demo-how2j"><span class="nav-number">1.</span> <span class="nav-text">SSM=spring+springMVC+mybatis demo how2j</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web-xml-项目启动第一个加载的配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">web.xml 项目启动第一个加载的配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applicationContext-xml"><span class="nav-number">1.2.</span> <span class="nav-text">applicationContext.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC-xml"><span class="nav-number">1.3.</span> <span class="nav-text">springMVC.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-xml-以上3个配置没问题-再报错-多半包没导"><span class="nav-number">1.4.</span> <span class="nav-text">pom.xml 以上3个配置没问题 再报错 多半包没导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题记录"><span class="nav-number">1.5.</span> <span class="nav-text">问题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jsp-中文乱码声明与c标签使用"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.jsp 中文乱码声明与c标签使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-后台没有收到form表单提交的数据"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.后台没有收到form表单提交的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-单独说一下文件上传-eg-图片"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.单独说一下文件上传 eg:图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文乱码问题"><span class="nav-number">1.5.4.</span> <span class="nav-text">中文乱码问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页如何实现的-limit函数方式-每点一次页标都会改变-start-，-count-再次从数据库-session-一级缓存-sessionFactory-二级缓存-查询数据"><span class="nav-number">1.5.5.</span> <span class="nav-text">分页如何实现的 limit函数方式(每点一次页标都会改变 #{start}，#{count} 再次从数据库/session(一级缓存) sessionFactory(二级缓存)查询数据)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-pageHelper分页插件来实现。"><span class="nav-number">1.5.6.</span> <span class="nav-text">使用 pageHelper分页插件来实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动生成bean-mapper-mapper-xml-简化开发"><span class="nav-number">1.5.7.</span> <span class="nav-text">自动生成bean mapper mapper.xml  简化开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成后list-变为selectByExample-Example-example-必须传参数-eg：id-desc-用于设置排序、设置根据id字段查询、、"><span class="nav-number">1.5.8.</span> <span class="nav-text">生成后list()变为selectByExample(Example example) 必须传参数(eg：id desc )用于设置排序、设置根据id字段查询、、</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis生成的项目-启动慢问题-一直不成功。At-least-one-JAR-was-scanned-for-TLDs-yet-contained-no-TLDs"><span class="nav-number">1.5.9.</span> <span class="nav-text">mybatis生成的项目 启动慢问题 一直不成功。At least one JAR was scanned for TLDs yet contained no TLDs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven打包报错-No-sources-to-compile-等一下就好"><span class="nav-number">1.5.10.</span> <span class="nav-text">Maven打包报错 No sources to compile  等一下就好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux重启tomcat"><span class="nav-number">1.5.11.</span> <span class="nav-text">linux重启tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jar-nohup-永久运行-重启tomcat-对项目不影响。"><span class="nav-number">1.5.12.</span> <span class="nav-text">jar + nohup 永久运行  重启tomcat 对项目不影响。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#war部署-tomcat没有自动解压。一次可能没有-多重启几次tomcat。"><span class="nav-number">1.5.13.</span> <span class="nav-text">war部署 tomcat没有自动解压。一次可能没有 多重启几次tomcat。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven打包jar运行-报错-无主清单属性。"><span class="nav-number">1.5.14.</span> <span class="nav-text">maven打包jar运行  报错 无主清单属性。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-？"><span class="nav-number">1.5.14.1.</span> <span class="nav-text">what ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why"><span class="nav-number">1.5.14.2.</span> <span class="nav-text">why?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jar、war区别-区别"><span class="nav-number">1.5.15.</span> <span class="nav-text">jar、war区别 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#war-自动解压后-记得-运行startup-bat-linux：bin下-shutdown-sh-startup-sh"><span class="nav-number">1.5.16.</span> <span class="nav-text">war 自动解压后 记得 运行startup.bat (linux：bin下 ./shutdown.sh ./startup.sh)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#win10下-mysql数据库-中文乱码问题-靠谱教程-linux默认utf8"><span class="nav-number">1.5.17.</span> <span class="nav-text">win10下 mysql数据库 中文乱码问题 靠谱教程 linux默认utf8</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what？"><span class="nav-number">1.5.17.1.</span> <span class="nav-text">what？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why？"><span class="nav-number">1.5.17.2.</span> <span class="nav-text">why？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how"><span class="nav-number">1.5.17.3.</span> <span class="nav-text">how?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理系统字符集层次-全部utf8-cmd乱码-软件客户端正常-项目jdbc数据正常"><span class="nav-number">1.5.17.4.</span> <span class="nav-text">数据管理系统字符集层次 (全部utf8 cmd乱码 软件客户端正常 项目jdbc数据正常)</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -746,7 +751,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
