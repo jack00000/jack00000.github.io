@@ -64,6 +64,7 @@
 
 
 
+  <meta name="keywords" content="java," />
 
 
 
@@ -73,16 +74,18 @@
 
 
 
-<meta name="description" content="死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错就算出错了也可以用命令行的可能是运行的应用内存占用太多，把系统内存挤没了用top查看当前内存情况运行ps -ef如何跳转到 输入命令的地方 ctrl c尝试一下kill *rootreboot无效吗  shutdown先关机 无效再用exitfsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev">
+
+<meta name="description" content="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程 update user set authentication_string = password(‘admin’)  //失败where user = &amp;apos;root&amp;apos; and Host = &amp;apos;localhos">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="deepin拯救教程">
-<meta property="og:url" content="http://yoursite.com/2018/07/13/deepin拯救教程/index.html">
+<meta property="og:title" content="deepin(linux) 报错及解决方法">
+<meta property="og:url" content="http://yoursite.com/2018/09/29/record2/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错就算出错了也可以用命令行的可能是运行的应用内存占用太多，把系统内存挤没了用top查看当前内存情况运行ps -ef如何跳转到 输入命令的地方 ctrl c尝试一下kill *rootreboot无效吗  shutdown先关机 无效再用exitfsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev">
-<meta property="og:updated_time" content="2018-08-15T06:20:19.834Z">
+<meta property="og:description" content="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程 update user set authentication_string = password(‘admin’)  //失败where user = &amp;apos;root&amp;apos; and Host = &amp;apos;localhos">
+<meta property="og:updated_time" content="2018-09-29T06:51:33.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="deepin拯救教程">
-<meta name="twitter:description" content="死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错就算出错了也可以用命令行的可能是运行的应用内存占用太多，把系统内存挤没了用top查看当前内存情况运行ps -ef如何跳转到 输入命令的地方 ctrl c尝试一下kill *rootreboot无效吗  shutdown先关机 无效再用exitfsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev">
+<meta name="twitter:title" content="deepin(linux) 报错及解决方法">
+<meta name="twitter:description" content="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程 update user set authentication_string = password(‘admin’)  //失败where user = &amp;apos;root&amp;apos; and Host = &amp;apos;localhos">
 
 
 
@@ -112,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/13/deepin拯救教程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/29/record2/"/>
 
 
 
 
 
-  <title>deepin拯救教程 | HEXO</title>
+  <title>deepin(linux) 报错及解决方法 | HEXO</title>
   
 
 
@@ -293,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/deepin拯救教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/record2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -310,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">deepin拯救教程</h1>
+          <h1 class="post-title" itemprop="name headline">deepin(linux) 报错及解决方法</h1>
         
 
         <div class="post-meta">
@@ -322,8 +325,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T20:13:10+08:00">
-                2018-07-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-29T20:13:10+08:00">
+                2018-09-29
               </time>
             
 
@@ -341,8 +344,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/13/deepin拯救教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/13/deepin拯救教程/" itemprop="commentCount"></span>
+                <a href="/2018/09/29/record2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/29/record2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,7 +373,15 @@
       
 
       
-        <h3 id="死机原因：应用开多，卡死，强制重启-提示：firware-bug-固件出错"><a href="#死机原因：应用开多，卡死，强制重启-提示：firware-bug-固件出错" class="headerlink" title="死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错"></a>死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错</h3><h3 id="就算出错了也可以用命令行的"><a href="#就算出错了也可以用命令行的" class="headerlink" title="就算出错了也可以用命令行的"></a>就算出错了也可以用命令行的</h3><h3 id="可能是运行的应用内存占用太多，把系统内存挤没了"><a href="#可能是运行的应用内存占用太多，把系统内存挤没了" class="headerlink" title="可能是运行的应用内存占用太多，把系统内存挤没了"></a>可能是运行的应用内存占用太多，把系统内存挤没了</h3><h3 id="用top查看当前内存情况"><a href="#用top查看当前内存情况" class="headerlink" title="用top查看当前内存情况"></a>用top查看当前内存情况</h3><h3 id="运行ps-ef"><a href="#运行ps-ef" class="headerlink" title="运行ps -ef"></a>运行ps -ef</h3><h3 id="如何跳转到-输入命令的地方-ctrl-c"><a href="#如何跳转到-输入命令的地方-ctrl-c" class="headerlink" title="如何跳转到 输入命令的地方 ctrl c"></a>如何跳转到 输入命令的地方 ctrl c</h3><h3 id="尝试一下kill"><a href="#尝试一下kill" class="headerlink" title="尝试一下kill *"></a>尝试一下kill *</h3><h3 id="root"><a href="#root" class="headerlink" title="root"></a>root</h3><h3 id="reboot无效吗-shutdown先关机-无效再用exit"><a href="#reboot无效吗-shutdown先关机-无效再用exit" class="headerlink" title="reboot无效吗  shutdown先关机 无效再用exit"></a>reboot无效吗  shutdown先关机 无效再用exit</h3><h3 id="fsck-y-dev-sdbn-试一下这个能不能修复或者fsck-y-dev-sda4-恢复文件系统-我的是sda4"><a href="#fsck-y-dev-sdbn-试一下这个能不能修复或者fsck-y-dev-sda4-恢复文件系统-我的是sda4" class="headerlink" title="fsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev/sda4 //恢复文件系统 (我的是sda4)"></a>fsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev/sda4 //恢复文件系统 (我的是sda4)</h3><h3 id="exit试一下"><a href="#exit试一下" class="headerlink" title="exit试一下"></a>exit试一下</h3><h3 id="成功-教程来自《鸟哥的linux私房菜》"><a href="#成功-教程来自《鸟哥的linux私房菜》" class="headerlink" title="成功 教程来自《鸟哥的linux私房菜》"></a>成功 教程来自《鸟哥的linux私房菜》</h3>
+        <h1 id="linux-mysql-access-denied-for-user-‘root’-’localhost’-using-password-YES-教程"><a href="#linux-mysql-access-denied-for-user-‘root’-’localhost’-using-password-YES-教程" class="headerlink" title="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程"></a>linux mysql access denied for user ‘root’@’localhost’(using password:YES)      <a href="https://www.cnblogs.com/swbzmx/p/5605798.html" target="_blank" rel="noopener">教程</a></h1><ul>
+<li>update user set authentication_string = password(‘admin’)  //失败<pre><code>where user = &apos;root&apos; and Host = &apos;localhost&apos;
+</code></pre></li>
+</ul>
+<h1 id="启动-mysqld会变成a-mysqld-process-already-exists"><a href="#启动-mysqld会变成a-mysqld-process-already-exists" class="headerlink" title="启动 mysqld会变成a mysqld process already exists"></a>启动 mysqld会变成a mysqld process already exists</h1><ul>
+<li>ps -ef | grep mysql</li>
+<li>kill -9</li>
+</ul>
+<h1 id="mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><a href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况" class="headerlink" title="mysqld-safe 是mysqld的父进程  用于监控数据库运行情况"></a>mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</h1><h1 id="scp-上传文件-教程"><a href="#scp-上传文件-教程" class="headerlink" title="scp 上传文件 教程"></a>scp 上传文件 <a href="https://www.cnblogs.com/magicc/p/6490566.html" target="_blank" rel="noopener">教程</a></h1>
       
     </div>
     
@@ -385,6 +396,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
 
       
       
@@ -394,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/12/无锡实训java_day9/" rel="next" title="无锡实训java_day9">
-                <i class="fa fa-chevron-left"></i> 无锡实训java_day9
+              <a href="/2018/09/29/record/" rel="next" title="deepin(linux) 报错及解决方法">
+                <i class="fa fa-chevron-left"></i> deepin(linux) 报错及解决方法
               </a>
             
           </div>
@@ -403,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/16/deepin安装tomcat/" rel="prev" title="deepin安装tomcat">
-                deepin安装tomcat <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">283</span>
+                  <span class="site-state-item-count">287</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -555,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#死机原因：应用开多，卡死，强制重启-提示：firware-bug-固件出错"><span class="nav-number">1.</span> <span class="nav-text">死机原因：应用开多，卡死，强制重启 提示：firware bug 固件出错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就算出错了也可以用命令行的"><span class="nav-number">2.</span> <span class="nav-text">就算出错了也可以用命令行的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可能是运行的应用内存占用太多，把系统内存挤没了"><span class="nav-number">3.</span> <span class="nav-text">可能是运行的应用内存占用太多，把系统内存挤没了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用top查看当前内存情况"><span class="nav-number">4.</span> <span class="nav-text">用top查看当前内存情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行ps-ef"><span class="nav-number">5.</span> <span class="nav-text">运行ps -ef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何跳转到-输入命令的地方-ctrl-c"><span class="nav-number">6.</span> <span class="nav-text">如何跳转到 输入命令的地方 ctrl c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试一下kill"><span class="nav-number">7.</span> <span class="nav-text">尝试一下kill *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root"><span class="nav-number">8.</span> <span class="nav-text">root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reboot无效吗-shutdown先关机-无效再用exit"><span class="nav-number">9.</span> <span class="nav-text">reboot无效吗  shutdown先关机 无效再用exit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsck-y-dev-sdbn-试一下这个能不能修复或者fsck-y-dev-sda4-恢复文件系统-我的是sda4"><span class="nav-number">10.</span> <span class="nav-text">fsck -y /dev/sdbn 试一下这个能不能修复或者fsck -y /dev/sda4 //恢复文件系统 (我的是sda4)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exit试一下"><span class="nav-number">11.</span> <span class="nav-text">exit试一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成功-教程来自《鸟哥的linux私房菜》"><span class="nav-number">12.</span> <span class="nav-text">成功 教程来自《鸟哥的linux私房菜》</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-mysql-access-denied-for-user-‘root’-’localhost’-using-password-YES-教程"><span class="nav-number">1.</span> <span class="nav-text">linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-mysqld会变成a-mysqld-process-already-exists"><span class="nav-number">2.</span> <span class="nav-text">启动 mysqld会变成a mysqld process already exists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><span class="nav-number">3.</span> <span class="nav-text">mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp-上传文件-教程"><span class="nav-number">4.</span> <span class="nav-text">scp 上传文件 教程</span></a></li></ol></div>
             
 
           </div>
