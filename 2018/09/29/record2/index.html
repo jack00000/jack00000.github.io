@@ -83,10 +83,13 @@
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程 update user set authentication_string = password(‘admin’)  //失败where user = &amp;apos;root&amp;apos; and Host = &amp;apos;localhos">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-29T06:51:33.337Z">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180930185650.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180930192154.png">
+<meta property="og:updated_time" content="2018-10-14T11:42:11.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deepin(linux) 报错及解决方法">
 <meta name="twitter:description" content="linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程 update user set authentication_string = password(‘admin’)  //失败where user = &amp;apos;root&amp;apos; and Host = &amp;apos;localhos">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180930185650.png">
 
 
 
@@ -382,7 +385,32 @@
 <li>ps -ef | grep mysql</li>
 <li>kill -9</li>
 </ul>
-<h1 id="mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><a href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况" class="headerlink" title="mysqld-safe 是mysqld的父进程  用于监控数据库运行情况"></a>mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</h1><h1 id="scp-上传文件-教程"><a href="#scp-上传文件-教程" class="headerlink" title="scp 上传文件 教程"></a>scp 上传文件 <a href="https://www.cnblogs.com/magicc/p/6490566.html" target="_blank" rel="noopener">教程</a></h1>
+<h1 id="mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><a href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况" class="headerlink" title="mysqld-safe 是mysqld的父进程  用于监控数据库运行情况"></a>mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</h1><h1 id="彻底删除mysql教程"><a href="#彻底删除mysql教程" class="headerlink" title="彻底删除mysql教程"></a>彻底删除mysql<a href="https://blog.csdn.net/u012329294/article/details/80561532" target="_blank" rel="noopener">教程</a></h1><ul>
+<li>成功标准：rpm -qa|grep mysql 不报错无信息</li>
+<li>在根据How2j的教程重装 不然一大堆问题。亲测 成功。<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180930185650.png" alt=""></li>
+<li>mysql的报错日志：vim etc/my.cnf(记住在根目录输)里面看。</li>
+</ul>
+<h1 id="scp-上传文件-教程"><a href="#scp-上传文件-教程" class="headerlink" title="scp 上传文件 教程"></a>scp 上传文件 <a href="https://www.cnblogs.com/magicc/p/6490566.html" target="_blank" rel="noopener">教程</a></h1><p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180930192154.png" alt=""></p>
+<h1 id="centos-yum安装mysql-root用户默认无密码。"><a href="#centos-yum安装mysql-root用户默认无密码。" class="headerlink" title="centos yum安装mysql root用户默认无密码。"></a>centos yum安装mysql root用户默认无密码。</h1><ul>
+<li>mysqladmin -u root password admin</li>
+</ul>
+<h1 id="mysqladmin-unable-to-change-password-error-‘Can’t-find-any-matching-row-in-the-user-table’"><a href="#mysqladmin-unable-to-change-password-error-‘Can’t-find-any-matching-row-in-the-user-table’" class="headerlink" title="mysqladmin: unable to change password; error: ‘Can’t find any matching row in the user table’"></a>mysqladmin: unable to change password; error: ‘Can’t find any matching row in the user table’</h1><ul>
+<li>mysqladmin -u root password admin   //给初安装无密码的mysql添加密码</li>
+<li>报错是因为没有user表的权限 进入mysql命令行</li>
+<li>解决方法：FLUSH PRIVILEGES</li>
+</ul>
+<h1 id="ERROR-1227-42000-Access-denied-you-need-at-least-one-of-the-RELOAD-privilege-s-for-this-operation"><a href="#ERROR-1227-42000-Access-denied-you-need-at-least-one-of-the-RELOAD-privilege-s-for-this-operation" class="headerlink" title="ERROR 1227 (42000): Access denied; you need (at least one of) the RELOAD privilege(s) for this operation"></a>ERROR 1227 (42000): Access denied; you need (at least one of) the RELOAD privilege(s) for this operation</h1><ul>
+<li><p>FLUSH PRIVILEGES;//更新权限表<br>-</p>
+</li>
+<li><p>UPDATE mysql.user SET password=password(‘admin’)<br>WHERE user=’root’ AND host=’localhost’;</p>
+</li>
+<li><p>2.加参数启动mysql：/usr/bin/mysqld_safe –skip-grant-tables &amp;<br>然后就可以无任何限制的访问mysql</p>
+</li>
+</ul>
+<h1 id="安装deepin后-记得设置自动代理"><a href="#安装deepin后-记得设置自动代理" class="headerlink" title="安装deepin后 记得设置自动代理"></a>安装deepin后 记得设置自动代理</h1><ul>
+<li>不然有些网页不能访问 特别是需翻墙与无需翻墙的网页交替时。</li>
+</ul>
+<h1 id="在app-json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。"><a href="#在app-json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。" class="headerlink" title="在app.json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。"></a>在app.json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。</h1>
       
     </div>
     
@@ -412,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/29/record/" rel="next" title="deepin(linux) 报错及解决方法">
-                <i class="fa fa-chevron-left"></i> deepin(linux) 报错及解决方法
+              <a href="/2018/09/22/deepin拯救教程/" rel="next" title="deepin安装/拯救教程">
+                <i class="fa fa-chevron-left"></i> deepin安装/拯救教程
               </a>
             
           </div>
@@ -421,6 +449,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/29/record/" rel="prev" title="deepin(linux) 报错及解决方法">
+                deepin(linux) 报错及解决方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -504,7 +536,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">287</span>
+                  <span class="site-state-item-count">288</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -515,7 +547,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -569,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-mysql-access-denied-for-user-‘root’-’localhost’-using-password-YES-教程"><span class="nav-number">1.</span> <span class="nav-text">linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-mysqld会变成a-mysqld-process-already-exists"><span class="nav-number">2.</span> <span class="nav-text">启动 mysqld会变成a mysqld process already exists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><span class="nav-number">3.</span> <span class="nav-text">mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp-上传文件-教程"><span class="nav-number">4.</span> <span class="nav-text">scp 上传文件 教程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-mysql-access-denied-for-user-‘root’-’localhost’-using-password-YES-教程"><span class="nav-number">1.</span> <span class="nav-text">linux mysql access denied for user ‘root’@’localhost’(using password:YES)      教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-mysqld会变成a-mysqld-process-already-exists"><span class="nav-number">2.</span> <span class="nav-text">启动 mysqld会变成a mysqld process already exists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysqld-safe-是mysqld的父进程-用于监控数据库运行情况"><span class="nav-number">3.</span> <span class="nav-text">mysqld-safe 是mysqld的父进程  用于监控数据库运行情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#彻底删除mysql教程"><span class="nav-number">4.</span> <span class="nav-text">彻底删除mysql教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp-上传文件-教程"><span class="nav-number">5.</span> <span class="nav-text">scp 上传文件 教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos-yum安装mysql-root用户默认无密码。"><span class="nav-number">6.</span> <span class="nav-text">centos yum安装mysql root用户默认无密码。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysqladmin-unable-to-change-password-error-‘Can’t-find-any-matching-row-in-the-user-table’"><span class="nav-number">7.</span> <span class="nav-text">mysqladmin: unable to change password; error: ‘Can’t find any matching row in the user table’</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ERROR-1227-42000-Access-denied-you-need-at-least-one-of-the-RELOAD-privilege-s-for-this-operation"><span class="nav-number">8.</span> <span class="nav-text">ERROR 1227 (42000): Access denied; you need (at least one of) the RELOAD privilege(s) for this operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装deepin后-记得设置自动代理"><span class="nav-number">9.</span> <span class="nav-text">安装deepin后 记得设置自动代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在app-json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。"><span class="nav-number">10.</span> <span class="nav-text">在app.json文件中，pages数组，设置在第一个的页面就是默认启动页面，所以你只需要调整你当前开发的页面顺序就好了。</span></a></li></ol></div>
             
 
           </div>

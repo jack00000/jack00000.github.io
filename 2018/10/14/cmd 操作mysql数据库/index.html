@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="skills java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="完整教程：how2j 1.在mysql安装目录bin下打开cmd  shift+右键 2.具体操作  登陆  mysql -u root -p   新建数据库 新建表 新建具体表项  select* from table;//查询表项 修改密码 导入数据库 .sql文件 先建数据库 然后 use 数据库名 ； source 路径（不需要；）路径最好是某盘的下面，不然会出稀奇古怪的错误 导出数据库">
+<meta name="keywords" content="skills java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cmd操作mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2018/10/14/cmd 操作mysql数据库/index.html">
+<meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="完整教程：how2j 1.在mysql安装目录bin下打开cmd  shift+右键 2.具体操作  登陆  mysql -u root -p   新建数据库 新建表 新建具体表项  select* from table;//查询表项 修改密码 导入数据库 .sql文件 先建数据库 然后 use 数据库名 ； source 路径（不需要；）路径最好是某盘的下面，不然会出稀奇古怪的错误 导出数据库">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_104324.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_092846.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_092910.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-19_094412.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-19_100700.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-28_234633.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-31_142930.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180725093258.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180725094817.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711191238.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711194842.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711195905.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711200304.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711202854.png">
+<meta property="og:updated_time" content="2018-08-15T06:20:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cmd操作mysql数据库">
+<meta name="twitter:description" content="完整教程：how2j 1.在mysql安装目录bin下打开cmd  shift+右键 2.具体操作  登陆  mysql -u root -p   新建数据库 新建表 新建具体表项  select* from table;//查询表项 修改密码 导入数据库 .sql文件 先建数据库 然后 use 数据库名 ； source 路径（不需要；）路径最好是某盘的下面，不然会出稀奇古怪的错误 导出数据库">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_104324.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/14/cmd 操作mysql数据库/"/>
+
+
+
+
+
+  <title>cmd操作mysql数据库 | HEXO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HEXO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/cmd 操作mysql数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cmd操作mysql数据库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T19:29:07+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/14/cmd 操作mysql数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/14/cmd 操作mysql数据库/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><h3>完整教程：<a href="http://how2j.cn/k/mysql/mysql-innodb/1064.html" target="_blank" rel="noopener">how2j</a><p></p>
+<p></p><h3>1.在mysql安装目录bin下打开cmd  shift+右键</h3><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_104324.png" alt=""><p></p>
+<p></p><h3>2.具体操作</h3><p></p>
+<ul>
+<li>登陆</li>
+<li><ul>
+<li>mysql -u root -p<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_092846.png" alt=""></li>
+</ul>
+</li>
+<li>新建数据库 新建表<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-18_092910.png" alt=""></li>
+<li>新建具体表项  select* from table;//查询表项<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-19_094412.png" alt=""></li>
+<li>修改密码<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-19_100700.png" alt=""></li>
+<li>导入数据库 .sql文件 先建数据库 然后 use 数据库名 ； source 路径（不需要；）<br>路径最好是某盘的下面，不然会出稀奇古怪的错误<br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-28_234633.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/2017-12-31_142930.png" alt=""></li>
+<li>导出数据库  mysqldump -u用户名 -p密码 数据库名 &gt; 数据库名.sql<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p Ticket &gt; Ticket.sql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180725093258.png" alt=""></p>
+<ul>
+<li>云服务器的数据库导入成功截图<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180725094817.png" alt=""></li>
+</ul>
+<ul>
+<li>多表查询</li>
+<li>inner join /left join 区别<h3 id="给表添加外键-alter-table-card-add-constraint-constraint-card-foreign-key-stuid-references-student-stuid"><a href="#给表添加外键-alter-table-card-add-constraint-constraint-card-foreign-key-stuid-references-student-stuid" class="headerlink" title="给表添加外键 alter table card add constraint constraint_card foreign key(stuid) references student(stuid);"></a>给表添加外键 alter table card add constraint constraint_card foreign key(stuid) references student(stuid);</h3></li>
+<li>这句sql语句意思是：在card表中添加名为dormitoryid的外键约束。<h3 id="删除表中的外键-alter-table-card-drop-foreign-key-constraint-card"><a href="#删除表中的外键-alter-table-card-drop-foreign-key-constraint-card" class="headerlink" title="删除表中的外键 alter table card  drop foreign key constraint_card;"></a>删除表中的外键 alter table card  drop foreign key constraint_card;</h3></li>
+<li>删除card表中的名为constraint_card的外键(表中的外键命名采用constraint_外键表名)<h3 id="外键不删除，不能删除表"><a href="#外键不删除，不能删除表" class="headerlink" title="外键不删除，不能删除表"></a>外键不删除，不能删除表</h3></li>
+</ul>
+<h3 id="删除表中所有数据-delete-from-tablename"><a href="#删除表中所有数据-delete-from-tablename" class="headerlink" title="删除表中所有数据 delete from tablename;"></a>删除表中所有数据 delete from tablename;</h3><h3 id="删除带有外键约束的表中的数据"><a href="#删除带有外键约束的表中的数据" class="headerlink" title="删除带有外键约束的表中的数据"></a>删除带有外键约束的表中的数据</h3><ul>
+<li>SET FOREIGN_KEY_CHECKS=0；</li>
+<li>delete from tablename;</li>
+<li>SET FOREIGN_KEY_CHECKS=1;<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711191238.png" alt=""></li>
+</ul>
+<h3 id="向有约束的表插入数据是有限制的-在无锡实训7有介绍。"><a href="#向有约束的表插入数据是有限制的-在无锡实训7有介绍。" class="headerlink" title="向有约束的表插入数据是有限制的 在无锡实训7有介绍。"></a>向有约束的表插入数据是有限制的 在无锡实训7有介绍。</h3><ul>
+<li>一对多关系 如：宿舍-学生  肯定先有宿舍信息再有学生。</li>
+<li>先插宿舍，再插学生。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">dormitory</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">dormitoryid varchar(<span class="number">10</span>)</span> primary key,</span></span><br><span class="line"><span class="function">drcnitorytype <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span> not <span class="keyword">null</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">stuid varchar(<span class="number">20</span>)</span> primary key,</span></span><br><span class="line"><span class="function">stuname <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">stuage <span class="keyword">int</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">dormitoryid <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">card</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">cardid varchar(<span class="number">10</span>)</span> primary key,</span></span><br><span class="line"><span class="function">cardtype <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">money  <span class="keyword">int</span> <span class="keyword">default</span> 0,</span></span><br><span class="line"><span class="function">stuid <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"><span class="comment">//在card表声明一个student外键</span></span><br><span class="line"><span class="function">alter table card add constraint constraint_card foreign <span class="title">key</span><span class="params">(stuid)</span> references <span class="title">student</span><span class="params">(stuid)</span></span>;</span><br><span class="line"><span class="comment">//在student表中声明一个dormitory外键 叫constraint_student （中文：约束学生）</span></span><br><span class="line"><span class="function">alter table student add constraint constraint_student foreign <span class="title">key</span><span class="params">(dormitoryid)</span> references</span></span><br><span class="line"><span class="function"> <span class="title">dormitory</span><span class="params">(dormitoryid)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><ul>
+<li>insert into dormitory values(‘A001’,’4persons’);</li>
+<li>insert into student values(‘S001’,’wangshicong’,28,’A001’);//相当于把Student放在A001房间。</li>
+<li>insert into card values(‘C001’,’ic_card’,800,’S001’);//相当于把卡放在学生S001中。<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711194842.png" alt=""></li>
+</ul>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul>
+<li>将三张表等值连接后查询<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.*,b.*,c.*from dormitory a inner join student b on a.dormitoryid=b.dormitoryid inner join card c on b.stuid=c.stuid;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711195905.png" alt=""></p>
+<ul>
+<li>left join与inner join与right join</li>
+<li>好奇怪：都一样  难道在一对多中无区别？<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711200304.png" alt=""></li>
+</ul>
+<h3 id="多对多关系的表-如何创建约束-如何进行多表查询"><a href="#多对多关系的表-如何创建约束-如何进行多表查询" class="headerlink" title="多对多关系的表 如何创建约束 如何进行多表查询"></a>多对多关系的表 如何创建约束 如何进行多表查询</h3><ul>
+<li>多对多关系：subject-student//student就用上面创的，注意：里面有个外键约束。</li>
+<li>通过业务表SelectSubject建立约束<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">student</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">stuid varchar(<span class="number">20</span>)</span> primary key,</span></span><br><span class="line"><span class="function">stuname <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">stuage <span class="keyword">int</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">dormitoryid <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">subject</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">subjectid varchar(<span class="number">20</span>)</span> primary key,</span></span><br><span class="line"><span class="function">subjectname <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">subjecttype <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span> not <span class="keyword">null</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">create table <span class="title">SelectSubject</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">id <span class="keyword">int</span>(<span class="number">5</span>)</span> primary key,</span></span><br><span class="line"><span class="function">subjectid <span class="title">varchar</span><span class="params">(<span class="number">10</span>)</span> ,</span></span><br><span class="line"><span class="function">stuid <span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line"><span class="comment">//建立外键约束</span></span><br><span class="line"><span class="function">alter table SelectSubject add constraint constraint_fk1 foreign <span class="title">key</span><span class="params">(subjectid)</span> references <span class="title">subject</span><span class="params">(subjectid)</span></span>;</span><br><span class="line"><span class="function">alter table SelectSubject add constraint constraint_fk2 foreign <span class="title">key</span><span class="params">(stuid)</span> references <span class="title">student</span><span class="params">(stuid)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="插入数据-先插student-再插subject-最后插SelectSuject"><a href="#插入数据-先插student-再插subject-最后插SelectSuject" class="headerlink" title="插入数据 先插student 再插subject 最后插SelectSuject"></a>插入数据 先插student 再插subject 最后插SelectSuject</h3><ul>
+<li>insert into dormitory values(‘A002’,’6persons’);</li>
+<li>insert student values(‘S002’,’wangjinglin’,35,’A002’);</li>
+<li>insert subject values(‘SB001’,’math’,’like’);</li>
+<li>insert into SelectSubject values(1,’SB001’,’S001’);</li>
+</ul>
+<h3 id="多表查询-多对多关系表"><a href="#多表查询-多对多关系表" class="headerlink" title="多表查询-多对多关系表"></a>多表查询-多对多关系表</h3><ul>
+<li><p>三张表left链接后查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.*,b.*,c.*from subject a left join SelectSubject b on a.subjectid=b.subjectid left join student c on b.stuid=c.stuid;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一条记录 left right inner  无差别  多条记录有差别<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180711202854.png" alt=""></p>
+</li>
+</ul>
+</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/skills-java/" rel="tag"># skills java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/atom插件sync-setting/" rel="next" title="sync-setting">
+                <i class="fa fa-chevron-left"></i> sync-setting
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/14/deepin安装myEclipse并运行web项目/" rel="prev" title="deepin安装myEclipse并运行web项目">
+                deepin安装myEclipse并运行web项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4"
+                alt="DEMO" />
+            
+              <p class="site-author-name" itemprop="name">DEMO</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">288</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jack00000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">完整教程：how2j
+1.在mysql安装目录bin下打开cmd  shift+右键
+2.具体操作
+
+登陆
+
+mysql -u root -p
+
+
+新建数据库 新建表
+新建具体表项  select* from table;//查询表项
+修改密码
+导入数据库 .sql文件 先建数据库 然后 use 数据库名 ； source 路径（不需要；）路径最好是某盘的下面，不然会出稀奇古怪的错误
+导出数据库  mysqldump -u用户名 -p密码 数据库名 &gt; 数据库名.sql1mysqldump -uroot -p Ticket &gt; Ticket.sql
+
+
+
+
+云服务器的数据库导入成功截图
+
+
+多表查询
+inner join /left join 区别给表添加外键 alter table card add constraint constraint_card foreign key(stuid) references student(stuid);
+这句sql语句意思是：在card表中添加名为dormitoryid的外键约束。删除表中的外键 alter table card  drop foreign key constraint_card;
+删除card表中的名为constraint_card的外键(表中的外键命名采用constraint_外键表名)外键不删除，不能删除表
+
+删除表中所有数据 delete from tablename;删除带有外键约束的表中的数据
+SET FOREIGN_KEY_CHECKS=0；
+delete from tablename;
+SET FOREIGN_KEY_CHECKS=1;
+
+向有约束的表插入数据是有限制的 在无锡实训7有介绍。
+一对多关系 如：宿舍-学生  肯定先有宿舍信息再有学生。
+先插宿舍，再插学生。123456789101112131415161718192021222324create table dormitory(dormitoryid varchar(10) primary key,drcnitorytype varchar(10) not null);create table student(stuid varchar(20) primary key,stuname varchar(20) not null,stuage int not null,dormitoryid varchar(10));create table card(cardid varchar(10) primary key,cardtype varchar(10) not null,money  int default 0,stuid varchar(20));//在card表声明一个student外键alter table card add constraint constraint_card foreign key(stuid) references student(stuid);//在student表中声明一个dormitory外键 叫constraint_student （中文：约束学生）alter table student add constraint constraint_student foreign key(dormitoryid) references dormitory(dormitoryid);
+
+
+插入数据
+insert into dormitory values(‘A001’,’4persons’);
+insert into student values(‘S001’,’wangshicong’,28,’A001’);//相当于把Student放在A001房间。
+insert into card values(‘C001’,’ic_card’,800,’S001’);//相当于把卡放在学生S001中。
+
+多表查询
+将三张表等值连接后查询1select a.*,b.*,c.*from dormitory a inner join student b on a.dormitoryid=b.dormitoryid inner join card c on b.stuid=c.stuid;
+
+
+
+
+left join与inner join与right join
+好奇怪：都一样  难道在一对多中无区别？
+
+多对多关系的表 如何创建约束 如何进行多表查询
+多对多关系：subject-student//student就用上面创的，注意：里面有个外键约束。
+通过业务表SelectSubject建立约束1234567891011121314151617181920212223create table student(stuid varchar(20) primary key,stuname varchar(20) not null,stuage int not null,dormitoryid varchar(10));create table subject(subjectid varchar(20) primary key,subjectname varchar(20) not null,subjecttype varchar(10) not null);create table SelectSubject(id int(5) primary key,subjectid varchar(10) ,stuid varchar(20));//建立外键约束alter table SelectSubject add constraint constraint_fk1 foreign key(subjectid) references subject(subjectid);alter table SelectSubject add constraint constraint_fk2 foreign key(stuid) references student(stuid);
+
+
+插入数据 先插student 再插subject 最后插SelectSuject
+insert into dormitory values(‘A002’,’6persons’);
+insert student values(‘S002’,’wangjinglin’,35,’A002’);
+insert subject values(‘SB001’,’math’,’like’);
+insert into SelectSubject values(1,’SB001’,’S001’);
+
+多表查询-多对多关系表
+三张表left链接后查询
+1select a.*,b.*,c.*from subject a left join SelectSubject b on a.subjectid=b.subjectid left join student c on b.stuid=c.stuid;
+
+一条记录 left right inner  无差别  多条记录有差别
+
+
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">1.在mysql安装目录bin下打开cmd  shift+右键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">2.具体操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给表添加外键-alter-table-card-add-constraint-constraint-card-foreign-key-stuid-references-student-stuid"><span class="nav-number">4.</span> <span class="nav-text">给表添加外键 alter table card add constraint constraint_card foreign key(stuid) references student(stuid);</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除表中的外键-alter-table-card-drop-foreign-key-constraint-card"><span class="nav-number">5.</span> <span class="nav-text">删除表中的外键 alter table card  drop foreign key constraint_card;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键不删除，不能删除表"><span class="nav-number">6.</span> <span class="nav-text">外键不删除，不能删除表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除表中所有数据-delete-from-tablename"><span class="nav-number">7.</span> <span class="nav-text">删除表中所有数据 delete from tablename;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除带有外键约束的表中的数据"><span class="nav-number">8.</span> <span class="nav-text">删除带有外键约束的表中的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向有约束的表插入数据是有限制的-在无锡实训7有介绍。"><span class="nav-number">9.</span> <span class="nav-text">向有约束的表插入数据是有限制的 在无锡实训7有介绍。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入数据"><span class="nav-number">10.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表查询"><span class="nav-number">11.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多关系的表-如何创建约束-如何进行多表查询"><span class="nav-number">12.</span> <span class="nav-text">多对多关系的表 如何创建约束 如何进行多表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入数据-先插student-再插subject-最后插SelectSuject"><span class="nav-number">13.</span> <span class="nav-text">插入数据 先插student 再插subject 最后插SelectSuject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表查询-多对多关系表"><span class="nav-number">14.</span> <span class="nav-text">多表查询-多对多关系表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEMO</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'oE8EtVBE3BRVVm3BrVTOfvEa-gzGzoHsz',
+        appKey: 'q0zNeBPiVHGUwVwXEsSwWxmn',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>
