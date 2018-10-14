@@ -79,6 +79,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/08/无锡实训java_day6/index.html">
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="大致内容 引入数据库 创建数据库和表 链接数据库 异常处理机制 什么是原子型操作 线程解决Servicedao 对原子型dao统一进行事务管理 为什么要用Servicedao  为什么在servicedao统一进行事务管理，为什么单个原子型dao要用代理类实现事务控制  注意：在lesson9向表user插入数据时  1.获得Connection对象conn=DriverManager.getCo">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710105249.png">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710200352.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20180710225848.png">
@@ -139,7 +140,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -185,7 +186,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-            Über
+            About
           </a>
         </li>
       
@@ -209,7 +210,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -217,7 +218,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -244,7 +245,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-            Suche
+            Search
           </a>
         </li>
       
@@ -329,7 +330,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-08T20:13:10+08:00">
                 2018-07-08
@@ -350,7 +351,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -601,10 +602,10 @@ statement.setInt(3, age);
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -629,7 +630,7 @@ statement.setInt(3, age);
                 <a href="/archives/">
               
                   <span class="site-state-item-count">287</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -640,7 +641,7 @@ statement.setInt(3, age);
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">19</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
@@ -651,7 +652,7 @@ statement.setInt(3, age);
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">19</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
@@ -723,7 +724,7 @@ statement.setInt(3, age);
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
