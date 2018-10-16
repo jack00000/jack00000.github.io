@@ -75,22 +75,22 @@
 
 
 
-<meta name="description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。solr安装 1.下载tomcat solr   2.在bin下运行 ./solr start 3.教程确认可行 导入数据库数据并查询  中文分词器123456789101112131415161718">
+<meta name="description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。 以前的solr，本质上是一组servlet，必须放进Tomcat才能运行，从solr5开始，它已经自带了jetty，配置的好，完全可以独立使用，并且应付大量并发请求，具体的架构我们后面会讲到，现在先来">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="solr服务器配置">
 <meta property="og:url" content="http://yoursite.com/2018/10/15/record3/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。solr安装 1.下载tomcat solr   2.在bin下运行 ./solr start 3.教程确认可行 导入数据库数据并查询  中文分词器123456789101112131415161718">
+<meta property="og:description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。 以前的solr，本质上是一组servlet，必须放进Tomcat才能运行，从solr5开始，它已经自带了jetty，配置的好，完全可以独立使用，并且应付大量并发请求，具体的架构我们后面会讲到，现在先来">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012140451.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144551.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144528.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144203.png">
-<meta property="og:updated_time" content="2018-10-14T11:53:11.555Z">
+<meta property="og:updated_time" content="2018-10-16T04:06:18.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="solr服务器配置">
-<meta name="twitter:description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。solr安装 1.下载tomcat solr   2.在bin下运行 ./solr start 3.教程确认可行 导入数据库数据并查询  中文分词器123456789101112131415161718">
+<meta name="twitter:description" content="solr 入门  教程solr是啥？ Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。 以前的solr，本质上是一组servlet，必须放进Tomcat才能运行，从solr5开始，它已经自带了jetty，配置的好，完全可以独立使用，并且应付大量并发请求，具体的架构我们后面会讲到，现在先来">
 <meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012140451.png">
 
 
@@ -380,7 +380,8 @@
 
       
         <h1 id="solr-入门-教程"><a href="#solr-入门-教程" class="headerlink" title="solr 入门  教程"></a>solr 入门  <a href="https://blog.csdn.net/bljbljbljbljblj/article/details/83023125" target="_blank" rel="noopener">教程</a></h1><h2 id="solr是啥？"><a href="#solr是啥？" class="headerlink" title="solr是啥？"></a>solr是啥？</h2><ul>
-<li>Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。<h2 id="solr安装"><a href="#solr安装" class="headerlink" title="solr安装"></a>solr安装</h2></li>
+<li>Solr是一个类似于Google或者Bing的全文检索引擎， Solr是与搜索引擎优化（SEO）相关联的。很多公司也使用elasticsearch作为搜索引擎。</li>
+<li>以前的solr，本质上是一组servlet，必须放进Tomcat才能运行，从solr5开始，它已经自带了jetty，配置的好，完全可以独立使用，并且应付大量并发请求，具体的架构我们后面会讲到，现在先来进行solr的安装配置。<h2 id="solr安装"><a href="#solr安装" class="headerlink" title="solr安装"></a>solr安装</h2></li>
 <li>1.下载tomcat solr  </li>
 <li>2.在bin下运行 ./solr start<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012140451.png" alt=""></li>
 <li>3.<a href="https://blog.csdn.net/bljbljbljbljblj/article/details/83023125" target="_blank" rel="noopener">教程</a>确认可行 导入数据库数据并查询<br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144551.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144528.png" alt=""><br><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181012144203.png" alt=""></li>
@@ -438,8 +439,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/16/使用solrj对solr索引库curd/" rel="prev" title="使用solrj对solr索引库curd">
-                使用solrj对solr索引库curd <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/16/Python_day1/" rel="prev" title="(廖雪峰)Python web实战day01">
+                (廖雪峰)Python web实战day01 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">289</span>
+                  <span class="site-state-item-count">292</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
