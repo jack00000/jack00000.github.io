@@ -80,10 +80,13 @@
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="只是个demo建表sql语句1234567891011121314151617181920212223242526272829303132333435363738394041424344drop database if exists robot;create database robot DEFAULT CHARACTER SET utf8;use robot;CREATE TABLE q_cat">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-18T08:39:53.131Z">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018020221.png">
+<meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181019101112.png">
+<meta property="og:updated_time" content="2018-10-19T06:36:34.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="亿信智能知识库表建立及solr表结构改变">
 <meta name="twitter:description" content="只是个demo建表sql语句1234567891011121314151617181920212223242526272829303132333435363738394041424344drop database if exists robot;create database robot DEFAULT CHARACTER SET utf8;use robot;CREATE TABLE q_cat">
+<meta name="twitter:image" content="http://oyj1fkfcr.bkt.clouddn.com/2018020221.png">
 
 
 
@@ -376,7 +379,21 @@
 <li>1.数据库的一个id对应10个question,而solr数据库一个sid对应一个question 对每个question建立索引 (最后还是通过主键索引找到 answer所在的行)</li>
 <li>2.要实现数据库和solr数据同步(配置schedule)</li>
 </ul>
-
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
+<li>solr 对每一条数据都有一个唯一的id  当你先后dataimport两张表(都有id字段)  后面的会覆盖前面的数据。</li>
+<li>要保留主键id  在solr新增sid作为唯一标识  在data.xml里面修改。</li>
+</ul>
+<h1 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h1><h2 id="1-lucene-和-solr-的区别-参考教程"><a href="#1-lucene-和-solr-的区别-参考教程" class="headerlink" title="1.lucene 和 solr 的区别 参考教程"></a>1.lucene 和 solr 的区别 <a href="https://blog.csdn.net/u010098331/article/details/51901272" target="_blank" rel="noopener">参考教程</a></h2><ul>
+<li>Lucene是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构</li>
+<li>Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。</li>
+</ul>
+<h2 id="2-数据在solr-lucene是如何存储的-参考教程"><a href="#2-数据在solr-lucene是如何存储的-参考教程" class="headerlink" title="2.数据在solr/lucene是如何存储的 参考教程"></a>2.数据在solr/lucene是如何存储的 <a href="http://www.cnblogs.com/mikehe1117/archive/2006/08/02/466264.html" target="_blank" rel="noopener">参考教程</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">定义：</span><br><span class="line">在lucene中最基本的概念是索引(index)，文档(document)，域(field)和项(term)，他们之间的基本关系是这样的：</span><br><span class="line">一个索引包含一系列的文档；</span><br><span class="line">一个文档是一系列域的集合</span><br><span class="line">一个域是一系列命了名称的项的集合</span><br><span class="line">一个项是一个字符串</span><br><span class="line">或者这样理解，如果把整个看作是一个数据表，那么域相当于这个数据表中的某一列，项则是对应某一列中的字符串关键字。也就是我们通常意义上的字符串分词以后的关键字，文档可以看成是一次插入到数据库中的所有数据的集合。</span><br><span class="line"></span><br><span class="line">所以说，如果相同的字符串在不同的域中肯定是作为不同的项来对待的，项(terms)被标成成为字符串对的形式：第一个字符串用来命名域(field)，第二个用来表示该域下文本的值</span><br></pre></td></tr></table></figure>
+<p><img src="http://oyj1fkfcr.bkt.clouddn.com/2018020221.png" alt=""></p>
+<h2 id="3-solr-查询默认分页-amp-10条一页"><a href="#3-solr-查询默认分页-amp-10条一页" class="headerlink" title="3.solr 查询默认分页 &amp; 10条一页"></a>3.solr 查询默认分页 &amp; 10条一页</h2><ul>
+<li>rows  指定返回结果最多有多少条记录，默认值为 10，配合start实现分页</li>
+</ul>
+<h2 id="4-field-dynamic-field-copy-field-unique-key-是什么？"><a href="#4-field-dynamic-field-copy-field-unique-key-是什么？" class="headerlink" title="4.field /dynamic field /copy field  /unique key 是什么？"></a>4.field /dynamic field /copy field  /unique key 是什么？</h2><p><img src="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_20181019101112.png" alt=""></p>
+<h2 id="5-检索关键字-fiels的type-”text-ik”"><a href="#5-检索关键字-fiels的type-”text-ik”" class="headerlink" title="5.检索关键字 fiels的type=”text_ik”"></a>5.检索关键字 fiels的type=”text_ik”</h2>
       
     </div>
     
@@ -496,7 +513,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">299</span>
+                  <span class="site-state-item-count">304</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -561,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#只是个demo"><span class="nav-number">1.</span> <span class="nav-text">只是个demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建表sql语句"><span class="nav-number">1.1.</span> <span class="nav-text">建表sql语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要达到的目的"><span class="nav-number">1.2.</span> <span class="nav-text">要达到的目的</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#只是个demo"><span class="nav-number">1.</span> <span class="nav-text">只是个demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建表sql语句"><span class="nav-number">1.1.</span> <span class="nav-text">建表sql语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要达到的目的"><span class="nav-number">1.2.</span> <span class="nav-text">要达到的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到问题"><span class="nav-number">1.3.</span> <span class="nav-text">遇到问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点补充"><span class="nav-number">2.</span> <span class="nav-text">知识点补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-lucene-和-solr-的区别-参考教程"><span class="nav-number">2.1.</span> <span class="nav-text">1.lucene 和 solr 的区别 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据在solr-lucene是如何存储的-参考教程"><span class="nav-number">2.2.</span> <span class="nav-text">2.数据在solr/lucene是如何存储的 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-solr-查询默认分页-amp-10条一页"><span class="nav-number">2.3.</span> <span class="nav-text">3.solr 查询默认分页 &amp; 10条一页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-field-dynamic-field-copy-field-unique-key-是什么？"><span class="nav-number">2.4.</span> <span class="nav-text">4.field /dynamic field /copy field  /unique key 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-检索关键字-fiels的type-”text-ik”"><span class="nav-number">2.5.</span> <span class="nav-text">5.检索关键字 fiels的type=”text_ik”</span></a></li></ol></li></ol></div>
             
 
           </div>

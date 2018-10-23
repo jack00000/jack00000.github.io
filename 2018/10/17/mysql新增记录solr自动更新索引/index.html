@@ -81,7 +81,7 @@
 <meta property="og:description" content="参考教程 靠谱教程 超靠谱教程1.爽哥提出问题：遇到单条记录插入，能否自动新增索引。 因为数据从数据库到solr 如果新增数据 又重新建立一遍索引。会很耗时。 结合[帆软智能客服文章] 数据流动(-&amp;gt;数据库-&amp;gt;solr)肯定不变，  2.索引是啥-&amp;gt;索引是一种数据结构(二叉树。。。) 索引的关键目的是为了加快检索速度而建立。 索引包含单个或多个字段的值(对单个字段的值进行排序，对">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/20140328183811312.png">
-<meta property="og:updated_time" content="2018-10-18T02:53:34.490Z">
+<meta property="og:updated_time" content="2018-10-19T06:36:14.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql新增记录solr自动更新索引">
 <meta name="twitter:description" content="参考教程 靠谱教程 超靠谱教程1.爽哥提出问题：遇到单条记录插入，能否自动新增索引。 因为数据从数据库到solr 如果新增数据 又重新建立一遍索引。会很耗时。 结合[帆软智能客服文章] 数据流动(-&amp;gt;数据库-&amp;gt;solr)肯定不变，  2.索引是啥-&amp;gt;索引是一种数据结构(二叉树。。。) 索引的关键目的是为了加快检索速度而建立。 索引包含单个或多个字段的值(对单个字段的值进行排序，对">
@@ -400,6 +400,9 @@
 <li>设置solr自带的scheduler 别忘啦到jar<br>更改tomcat\webapps\solr\WEB-INF下的web.xml文件,新增监听如下：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-<span class="class"><span class="keyword">class</span>&gt;</span></span><br><span class="line"><span class="class">	<span class="title">org</span>.<span class="title">apache</span>.<span class="title">solr</span>.<span class="title">handler</span>.<span class="title">dataimport</span>.<span class="title">scheduler</span>.<span class="title">ApplicationListener</span></span></span><br><span class="line"><span class="class">	&lt;/<span class="title">listener</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">listener</span>&gt;</span></span><br><span class="line"><span class="class">---------------------</span></span><br><span class="line"><span class="class">作者：<span class="title">white_ice</span></span></span><br><span class="line"><span class="class">来源：<span class="title">CSDN</span></span></span><br><span class="line">原文：https://blog.csdn.net/white_ice/article/details/79026546</span><br><span class="line">版权声明：本文为博主原创文章，转载请附上博文链接！</span><br></pre></td></tr></table></figure>
+<h2 id="7-solr-定时增量索引的配置-参考教程"><a href="#7-solr-定时增量索引的配置-参考教程" class="headerlink" title="7, solr 定时增量索引的配置 参考教程"></a>7, solr 定时增量索引的配置 <a href="https://blog.csdn.net/hfismyangel/article/details/79529098?utm_source=blogxgwz12" target="_blank" rel="noopener">参考教程</a></h2><h2 id="8-亿信智能知识库查询原理"><a href="#8-亿信智能知识库查询原理" class="headerlink" title="8.亿信智能知识库查询原理"></a>8.亿信智能知识库查询原理</h2><ul>
+<li>通过</li>
+</ul>
 
       
     </div>
@@ -520,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">299</span>
+                  <span class="site-state-item-count">304</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -585,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考教程-靠谱教程-超靠谱教程"><span class="nav-number">1.</span> <span class="nav-text">参考教程 靠谱教程 超靠谱教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-爽哥提出问题：遇到单条记录插入，能否自动新增索引。"><span class="nav-number">1.1.</span> <span class="nav-text">1.爽哥提出问题：遇到单条记录插入，能否自动新增索引。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-索引是啥-gt-索引是一种数据结构-二叉树。。。"><span class="nav-number">1.2.</span> <span class="nav-text">2.索引是啥-&gt;索引是一种数据结构(二叉树。。。)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-索引提高查询速度的原理-参考教程"><span class="nav-number">1.3.</span> <span class="nav-text">3.索引提高查询速度的原理 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-solr如何对数据库建立索引-参考教程"><span class="nav-number">1.4.</span> <span class="nav-text">4.solr如何对数据库建立索引 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-solr目前的情况以及要达到的目的"><span class="nav-number">1.5.</span> <span class="nav-text">5.solr目前的情况以及要达到的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-solr实现对数据库定时、实时增量索引-修改、删除和新增索引-参考教程"><span class="nav-number">1.6.</span> <span class="nav-text">6.solr实现对数据库定时、实时增量索引 - 修改、删除和新增索引 参考教程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考教程-靠谱教程-超靠谱教程"><span class="nav-number">1.</span> <span class="nav-text">参考教程 靠谱教程 超靠谱教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-爽哥提出问题：遇到单条记录插入，能否自动新增索引。"><span class="nav-number">1.1.</span> <span class="nav-text">1.爽哥提出问题：遇到单条记录插入，能否自动新增索引。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-索引是啥-gt-索引是一种数据结构-二叉树。。。"><span class="nav-number">1.2.</span> <span class="nav-text">2.索引是啥-&gt;索引是一种数据结构(二叉树。。。)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-索引提高查询速度的原理-参考教程"><span class="nav-number">1.3.</span> <span class="nav-text">3.索引提高查询速度的原理 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-solr如何对数据库建立索引-参考教程"><span class="nav-number">1.4.</span> <span class="nav-text">4.solr如何对数据库建立索引 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-solr目前的情况以及要达到的目的"><span class="nav-number">1.5.</span> <span class="nav-text">5.solr目前的情况以及要达到的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-solr实现对数据库定时、实时增量索引-修改、删除和新增索引-参考教程"><span class="nav-number">1.6.</span> <span class="nav-text">6.solr实现对数据库定时、实时增量索引 - 修改、删除和新增索引 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-solr-定时增量索引的配置-参考教程"><span class="nav-number">1.7.</span> <span class="nav-text">7, solr 定时增量索引的配置 参考教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-亿信智能知识库查询原理"><span class="nav-number">1.8.</span> <span class="nav-text">8.亿信智能知识库查询原理</span></a></li></ol></li></ol></div>
             
 
           </div>
