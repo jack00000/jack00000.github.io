@@ -80,7 +80,7 @@
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="how2j13.fetch.js 一般说来 Vue 不会直接使用原生的 Ajax 而是使用 ajax 框架。 而 fetch.js 就是眼下比较流行的一种 ajax 框架  13.1 代码实例 通过fetch.js获取云端数据  123456789101112131415161718&amp;lt;script src=&quot;http://how2j.cn/study/fetch.min.js&quot;&amp;gt;&amp;lt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-24T06:57:23.526Z">
+<meta property="og:updated_time" content="2018-10-24T07:17:38.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue.js学习2">
 <meta name="twitter:description" content="how2j13.fetch.js 一般说来 Vue 不会直接使用原生的 Ajax 而是使用 ajax 框架。 而 fetch.js 就是眼下比较流行的一种 ajax 框架  13.1 代码实例 通过fetch.js获取云端数据  123456789101112131415161718&amp;lt;script src=&quot;http://how2j.cn/study/fetch.min.js&quot;&amp;gt;&amp;lt">
@@ -405,6 +405,151 @@
 <li>vue-cli 是 vue 出来的一个脚手架，可以进行 组件式地开发。</li>
 <li>npm install -g @<a href="mailto:vue/cli@3.0.1" target="_blank" rel="noopener">vue/cli@3.0.1</a>  安装命令</li>
 </ul>
+<h2 id="17-纯vue-js-写curd"><a href="#17-纯vue-js-写curd" class="headerlink" title="17.纯vue.js 写curd"></a>17.纯vue.js 写curd</h2><ul>
+<li>粘贴过来方便看</li>
+</ul>
+<pre><code class="Java">&lt;html&gt;
+&lt;head&gt;
+    &lt;script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="http://how2j.cn/study/vue.min.js"&gt;&lt;/script&gt;
+    &lt;style type=<span class="string">"text/css"</span>&gt;
+        td{
+            border:<span class="number">1</span>px solid gray;
+        }
+
+        table{
+            border-collapse:collapse;
+        }
+
+        div#app{
+            margin:<span class="number">20</span>px auto;
+            width:<span class="number">400</span>px;
+            padding:<span class="number">20</span>px;
+        }      
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=<span class="string">"app"</span>&gt;
+            &lt;table id=<span class="string">"heroListTable"</span> &gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;英雄名称&lt;/th&gt;
+                        &lt;th&gt;血量&lt;/th&gt;
+                        &lt;th&gt;操作&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr v-<span class="keyword">for</span>=<span class="string">"hero in heros "</span>&gt;
+                        &lt;td&gt;{{hero.name}}&lt;/td&gt;
+                        &lt;td&gt;{{hero.hp}}&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;a href="#nowhere" @click="edit(hero)"&gt;编辑&lt;/a&gt;
+                            &lt;a href="#nowhere" @click="deleteHero(hero.id)"&gt;删除&lt;/a&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan=<span class="string">"3"</span>&gt;
+                            英雄名称:
+                            &lt;input type=<span class="string">"text"</span>    v-model=<span class="string">"hero4Add.name"</span> /&gt;
+                            &lt;br&gt;
+                            血量：
+                            &lt;input type=<span class="string">"number"</span>    v-model=<span class="string">"hero4Add.hp"</span> /&gt;
+                            &lt;br&gt;
+                            &lt;button type="button"  v-on:click="add"&gt;增加&lt;/button&gt;
+                         &lt;/td&gt;                  
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+
+            &lt;div id=<span class="string">"div4Update"</span>&gt;
+
+                            英雄名称:
+                            &lt;input type=<span class="string">"text"</span>    v-model=<span class="string">"hero4Update.name"</span> /&gt;
+                            &lt;br&gt;
+                            血量：
+                            &lt;input type=<span class="string">"number"</span>    v-model=<span class="string">"hero4Update.hp"</span> /&gt;                       
+                            &lt;input type=<span class="string">"hidden"</span>    v-model=<span class="string">"hero4Update.id"</span> /&gt;                       
+                            &lt;br&gt;
+                            &lt;button type="button"  v-on:click="update"&gt;修改&lt;/button&gt;                
+                            &lt;button type="button"  v-on:click="cancel"&gt;取消&lt;/button&gt;                
+
+            &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script type=<span class="string">"text/javascript"</span>&gt;
+        <span class="comment">//修改区域隐藏起来先</span>
+        $(<span class="string">"#div4Update"</span>).hide();
+
+        <span class="comment">//Model</span>
+        var data = {
+            heros: [
+            { id: <span class="number">1</span>, name: <span class="string">'盖伦'</span>, hp: <span class="number">318</span>},
+            { id: <span class="number">2</span>, name: <span class="string">'提莫'</span>, hp: <span class="number">320</span>},
+            { id: <span class="number">3</span>, name: <span class="string">'安妮'</span>, hp: <span class="number">419</span>},
+            { id: <span class="number">4</span>, name: <span class="string">'死歌'</span>, hp: <span class="number">325</span>},
+            { id: <span class="number">5</span>, name: <span class="string">'米波'</span>, hp: <span class="number">422</span>},
+            ],
+            hero4Add: { id: <span class="number">0</span>, name: <span class="string">''</span>, hp: <span class="string">'0'</span>},
+            hero4Update: { id: <span class="number">0</span>, name: <span class="string">''</span>, hp: <span class="string">'0'</span>}
+        };
+
+        <span class="comment">//用于记录最大id值</span>
+        var maxId = <span class="number">5</span>;
+        <span class="comment">//计算最大值</span>
+        <span class="keyword">for</span> (var i=<span class="number">0</span>;i&lt;data.heros.length;i++){
+            <span class="keyword">if</span> (data.heros[i].id &gt; maxId)
+                maxId=  <span class="keyword">this</span>.heros[i].id;
+        }      
+
+    <span class="comment">//ViewModel</span>
+    var vue = <span class="keyword">new</span> Vue({
+        el: <span class="string">'#app'</span>,
+        data: data,
+        methods: {
+            add: function (event) {
+                <span class="comment">//获取最大id</span>
+                maxId++;
+                <span class="comment">//赋予新id</span>
+                <span class="keyword">this</span>.hero4Add.id = maxId;
+                <span class="keyword">if</span>(<span class="keyword">this</span>.hero4Add.name.length==<span class="number">0</span>)
+                    <span class="keyword">this</span>.hero4Add.name = <span class="string">"Hero#"</span>+<span class="keyword">this</span>.hero4Add.id;
+                <span class="comment">//把对象加入到数组</span>
+                <span class="keyword">this</span>.heros.push(<span class="keyword">this</span>.hero4Add);
+                <span class="comment">//让 hero4Add 指向新的对象</span>
+                <span class="keyword">this</span>.hero4Add = { id: <span class="number">0</span>, name: <span class="string">''</span>, hp: <span class="string">'0'</span>}
+            },
+            deleteHero: function (id) {
+                console.log(<span class="string">"id"</span>+id);
+                <span class="keyword">for</span> (var i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.heros.length;i++){
+                    <span class="keyword">if</span> (<span class="keyword">this</span>.heros[i].id == id) {
+                        <span class="keyword">this</span>.heros.splice(i, <span class="number">1</span>);
+                        <span class="keyword">break</span>;
+                    }
+                }
+            },
+            edit: function (hero) {
+                $(<span class="string">"#heroListTable"</span>).hide();
+                $(<span class="string">"#div4Update"</span>).show();
+                <span class="keyword">this</span>.hero4Update = hero;
+            },
+            update:function(){
+                <span class="comment">//因为v-model，已经同步修改了，所以只需要进行恢复显示就行了</span>
+                $(<span class="string">"#heroListTable"</span>).show();
+                $(<span class="string">"#div4Update"</span>).hide();          
+            },
+            cancel:function(){
+                <span class="comment">//其实就是恢复显示</span>
+                $(<span class="string">"#heroListTable"</span>).show();
+                $(<span class="string">"#div4Update"</span>).hide();
+            }
+        }
+    });
+    &lt;/script&gt;
+&lt;div style="height:300px"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
       
     </div>
@@ -590,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#how2j"><span class="nav-number">1.</span> <span class="nav-text">how2j</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-fetch-js"><span class="nav-number">1.1.</span> <span class="nav-text">13.fetch.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-1-代码实例"><span class="nav-number">1.1.1.</span> <span class="nav-text">13.1 代码实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-axio-js"><span class="nav-number">1.2.</span> <span class="nav-text">14.axio.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-代码实例"><span class="nav-number">1.2.1.</span> <span class="nav-text">14.1 代码实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-ajax-fetch-js-axio-js"><span class="nav-number">1.3.</span> <span class="nav-text">15.ajax(fetch.js/axio.js)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-vue-cli"><span class="nav-number">1.4.</span> <span class="nav-text">16.vue-cli</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#how2j"><span class="nav-number">1.</span> <span class="nav-text">how2j</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-fetch-js"><span class="nav-number">1.1.</span> <span class="nav-text">13.fetch.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-1-代码实例"><span class="nav-number">1.1.1.</span> <span class="nav-text">13.1 代码实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-axio-js"><span class="nav-number">1.2.</span> <span class="nav-text">14.axio.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-代码实例"><span class="nav-number">1.2.1.</span> <span class="nav-text">14.1 代码实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-ajax-fetch-js-axio-js"><span class="nav-number">1.3.</span> <span class="nav-text">15.ajax(fetch.js/axio.js)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-vue-cli"><span class="nav-number">1.4.</span> <span class="nav-text">16.vue-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-纯vue-js-写curd"><span class="nav-number">1.5.</span> <span class="nav-text">17.纯vue.js 写curd</span></a></li></ol></li></ol></div>
             
 
           </div>
