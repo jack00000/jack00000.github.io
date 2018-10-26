@@ -83,7 +83,7 @@
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20181025114839.png">
 <meta property="og:image" content="http://oyj1fkfcr.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20181025134309.png">
 <meta property="og:image" content="http://pcf41wtdn.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20181025134309.png">
-<meta property="og:updated_time" content="2018-10-25T07:03:52.907Z">
+<meta property="og:updated_time" content="2018-10-26T05:42:45.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="solr 配置unique key id 自动增长">
 <meta name="twitter:description" content="通常情况数据库表与solr对应 但亿信智能知识库 表与solr结构不同 solr需要自动创建unique key id  how? 参考教程 参考教程21.配置文件schema.xml 用atom搜索工具(有相关配置就修改 没有就新增)  123&amp;lt;fieldType name=&quot;uuid&quot; class=&quot;solr.UUIDField&quot; indexed=&quot;true&quot; /&amp;gt;&amp;lt;fiel">
@@ -419,7 +419,32 @@
 <h2 id="4-Error-loading-class-‘solr-JsonUpdateRequestHandler"><a href="#4-Error-loading-class-‘solr-JsonUpdateRequestHandler" class="headerlink" title="4.Error loading class ‘solr.JsonUpdateRequestHandler"></a>4.Error loading class ‘solr.JsonUpdateRequestHandler</h2><ul>
 <li>改啦配置文件  忘啦怎么恢复   改之前先生成副本！！！！！！！！</li>
 </ul>
-
+<h1 id="总结之前失败经验-参考教程"><a href="#总结之前失败经验-参考教程" class="headerlink" title="总结之前失败经验 参考教程"></a>总结之前失败经验 <a href="https://www.solr.cc/blog/?p=212" target="_blank" rel="noopener">参考教程</a></h1><ul>
+<li><ol>
+<li>n篇教程都是修改两个配置文件 没一个成功的</li>
+</ol>
+</li>
+<li><ol>
+<li>大多报错Invalid UUID String: ‘10’</li>
+</ol>
+</li>
+<li>3.而且配置说的不详细 并没有 name=”/update”的ruquestHandle 只有name=”/update、elaxsc等”</li>
+<li>4.而且<em>root</em> 的type要和id的一致也没说</li>
+</ul>
+<h2 id="1-修改scheme-xml"><a href="#1-修改scheme-xml" class="headerlink" title="1.修改scheme.xml"></a>1.修改scheme.xml</h2><ul>
+<li>修改id字段 添加uuid字段类型 改变<em>root</em>字段类型</li>
+<li>记住不能有相同字段就行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;field name=<span class="string">"id"</span> type=<span class="string">"uuid"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"true"</span> multiValued=<span class="string">"false"</span> /&gt;</span><br><span class="line">&lt;fieldType name=<span class="string">"uuid"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"solr.UUIDField"</span> indexed=<span class="string">"true"</span> /&gt;</span><br><span class="line">&lt;field name=<span class="string">"_root_"</span> type=<span class="string">"uuid"</span> docValues=<span class="string">"false"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"false"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-修改solrconfig-xml"><a href="#2-修改solrconfig-xml" class="headerlink" title="2.修改solrconfig.xml"></a>2.修改solrconfig.xml</h2><ul>
+<li>修改name含update的requestHander</li>
+<li>增加updateRequestProcessorChain name=”uuid”</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;requestHandler name=<span class="string">"/update"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"solr.UpdateRequestHandler"</span>&gt;</span><br><span class="line"></span><br><span class="line">   &lt;lst name=<span class="string">"defaults"</span>&gt;</span><br><span class="line"></span><br><span class="line">   &lt;str name="update.chain"&gt;uuid&lt;/str&gt;</span><br><span class="line"></span><br><span class="line">   &lt;/lst&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/requestHandler&gt;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">```Java</span><br><span class="line">&lt;updateRequestProcessorChain name=<span class="string">"uuid"</span>&gt;</span><br><span class="line">&lt;processor <span class="class"><span class="keyword">class</span></span>=<span class="string">"solr.UUIDUpdateProcessorFactory"</span>&gt;</span><br><span class="line">&lt;str name="fieldName"&gt;id&lt;/str&gt;</span><br><span class="line">&lt;/processor&gt;</span><br><span class="line">&lt;processor <span class="class"><span class="keyword">class</span></span>=<span class="string">"solr.RunUpdateProcessorFactory"</span> /&gt;</span><br><span class="line">&lt;/updateRequestProcessorChain&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-idea新建maven项目-用slorj插入数据测试"><a href="#3-idea新建maven项目-用slorj插入数据测试" class="headerlink" title="3.idea新建maven项目 用slorj插入数据测试"></a>3.idea新建maven项目 用slorj插入数据测试</h2><ul>
+<li><a href="">源码</a></li>
+</ul>
+<h2 id="4-报错-Invalid-UUID-String-“0”"><a href="#4-报错-Invalid-UUID-String-“0”" class="headerlink" title="4.报错 Invalid UUID String “0”"></a>4.报错 Invalid UUID String “0”</h2>
       
     </div>
     
@@ -443,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/完善爽哥给亿信智能知识库的接口/" rel="next" title="完善爽哥给亿信智能知识库的接口">
-                <i class="fa fa-chevron-left"></i> 完善爽哥给亿信智能知识库的接口
+              <a href="/2018/10/24/解释一波restful风格/" rel="next" title="解释一波restful风格">
+                <i class="fa fa-chevron-left"></i> 解释一波restful风格
               </a>
             
           </div>
@@ -539,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">313</span>
+                  <span class="site-state-item-count">315</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -604,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通常情况数据库表与solr对应"><span class="nav-number">1.</span> <span class="nav-text">通常情况数据库表与solr对应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-参考教程-参考教程2"><span class="nav-number">1.1.</span> <span class="nav-text">how? 参考教程 参考教程2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-配置文件schema-xml"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.配置文件schema.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置文件solrconfig-xml-有相关配置就修改-没有就新增"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.配置文件solrconfig.xml(有相关配置就修改 没有就新增)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到问题"><span class="nav-number">2.</span> <span class="nav-text">遇到问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-root字段类型需要与id一致"><span class="nav-number">2.1.</span> <span class="nav-text">1.root字段类型需要与id一致</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Invalid-UUID-String-‘10’"><span class="nav-number">2.2.</span> <span class="nav-text">2.Invalid UUID String: ‘10’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-报错-Document-is-missing-mandatory-uniqueKey-field-id"><span class="nav-number">2.3.</span> <span class="nav-text">3. 报错 Document is missing mandatory uniqueKey field: id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Error-loading-class-‘solr-JsonUpdateRequestHandler"><span class="nav-number">2.4.</span> <span class="nav-text">4.Error loading class ‘solr.JsonUpdateRequestHandler</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通常情况数据库表与solr对应"><span class="nav-number">1.</span> <span class="nav-text">通常情况数据库表与solr对应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-参考教程-参考教程2"><span class="nav-number">1.1.</span> <span class="nav-text">how? 参考教程 参考教程2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-配置文件schema-xml"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.配置文件schema.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置文件solrconfig-xml-有相关配置就修改-没有就新增"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.配置文件solrconfig.xml(有相关配置就修改 没有就新增)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到问题"><span class="nav-number">2.</span> <span class="nav-text">遇到问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-root字段类型需要与id一致"><span class="nav-number">2.1.</span> <span class="nav-text">1.root字段类型需要与id一致</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Invalid-UUID-String-‘10’"><span class="nav-number">2.2.</span> <span class="nav-text">2.Invalid UUID String: ‘10’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-报错-Document-is-missing-mandatory-uniqueKey-field-id"><span class="nav-number">2.3.</span> <span class="nav-text">3. 报错 Document is missing mandatory uniqueKey field: id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Error-loading-class-‘solr-JsonUpdateRequestHandler"><span class="nav-number">2.4.</span> <span class="nav-text">4.Error loading class ‘solr.JsonUpdateRequestHandler</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结之前失败经验-参考教程"><span class="nav-number">3.</span> <span class="nav-text">总结之前失败经验 参考教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-修改scheme-xml"><span class="nav-number">3.1.</span> <span class="nav-text">1.修改scheme.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改solrconfig-xml"><span class="nav-number">3.2.</span> <span class="nav-text">2.修改solrconfig.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-idea新建maven项目-用slorj插入数据测试"><span class="nav-number">3.3.</span> <span class="nav-text">3.idea新建maven项目 用slorj插入数据测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-报错-Invalid-UUID-String-“0”"><span class="nav-number">3.4.</span> <span class="nav-text">4.报错 Invalid UUID String “0”</span></a></li></ol></li></ol></div>
             
 
           </div>
