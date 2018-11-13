@@ -75,7 +75,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="HEXO">
-<meta property="og:url" content="http://yoursite.com/categories/python/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/Python/index.html">
 <meta property="og:site_name" content="HEXO">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -109,13 +109,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/python/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/Python/"/>
 
 
 
 
 
-  <title>Category: python | HEXO</title>
+  <title>Category: Python | HEXO</title>
   
 
 
@@ -283,7 +283,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>python<small>Category</small>
+        <h1>Python<small>Category</small>
         </h1>
       </div>
 
@@ -295,9 +295,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/09/08/python精通/" itemprop="url">
+            <a class="post-title-link" href="/2017/11/11/pycharm使用/" itemprop="url">
               
-                <span itemprop="name">python精通学习路径</span>
+                <span itemprop="name">pycharm使用</span>
               
             </a>
         
@@ -305,9 +305,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T20:13:10+08:00"
-              content="2018-09-08" >
-          09-08
+              datetime="2017-11-11T20:13:10+08:00"
+              content="2017-11-11" >
+          11-11
         </time>
       </div>
 
@@ -323,37 +323,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/09/07/python连接访问数据/" itemprop="url">
+            <a class="post-title-link" href="/2017/10/11/python入门/" itemprop="url">
               
-                <span itemprop="name">廖雪峰python教程学习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T20:13:10+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/07/python实现飞机大战/" itemprop="url">
-              
-                <span itemprop="name">python实现飞机大战</span>
+                <span itemprop="name">python入门</span>
               
             </a>
         
@@ -361,9 +333,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T20:13:10+08:00"
-              content="2018-09-07" >
-          09-07
+              datetime="2017-10-11T20:13:10+08:00"
+              content="2017-10-11" >
+          10-11
         </time>
       </div>
 
@@ -428,7 +400,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">323</span>
+                  <span class="site-state-item-count">325</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -439,7 +411,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -450,7 +422,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -985,6 +957,50 @@
     $('.popup-trigger').click(function(e) {
       e.stopPropagation();
       if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>
+e) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();

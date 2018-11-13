@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/反射机制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/装饰模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -310,7 +310,169 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/反射机制/" itemprop="url">反射机制</a></h1>
+                <a class="post-title-link" href="/2017/11/11/装饰模式/" itemprop="url">装饰模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">java设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/装饰模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/装饰模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          装饰模式要达到的目的：装饰模式指的是在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。它是通过创建一个包装对象，也就是装饰来包裹真实的对象。
+
+1.类图
+2.具体实例
+2.1 Applicationpackage Decorator;12345678910111213141516171
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/装饰模式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/数字与字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/数字与字符串/" itemprop="url">数字与字符串</a></h1>
         
 
         <div class="post-meta">
@@ -363,8 +525,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/反射机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/反射机制/" itemprop="commentCount"></span>
+                <a href="/2017/11/11/数字与字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/数字与字符串/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,12 +561,17 @@
 备忘
 
 
-类对象 与未实例化对象有区别
-12345Hero c=null;//未实例化的类对象   Class c1=class.forname(className);//类对象Class c2=Hero.class;Class c3=new Hreo.getClass();
+封装类：所有的基本类型，都有对应的类类型。比如int对应的类是Integer 这种类就叫做封装类
+
+Number类：数字封装类有 Byte,Short,Integer,Long,Float,Double 这些类都是抽象类Number的子类
+
+数字与字符串互转
+
+Ma
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/反射机制/#more" rel="contents">
+            <a class="btn" href="/2017/11/11/数字与字符串/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -630,7 +797,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/busines letter/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/网络编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -649,7 +816,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/30/busines letter/" itemprop="url">busines letter</a></h1>
+                <a class="post-title-link" href="/2017/11/11/网络编程/" itemprop="url">网络编程 socket</a></h1>
         
 
         <div class="post-meta">
@@ -661,8 +828,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T20:13:10+08:00">
-                2017-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T20:13:10+08:00">
+                2017-11-11
               </time>
             
 
@@ -672,6 +839,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/how2j/" itemprop="url" rel="index">
+                    <span itemprop="name">how2j</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -680,8 +869,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/30/busines letter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/busines letter/" itemprop="commentCount"></span>
+                <a href="/2017/11/11/网络编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/网络编程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -711,17 +900,22 @@
       
         
           
-          Mr Wang Min
-Personnel Manager
-Viewtech Company
-Tiandi St
-Harbin
-January 24, 2002Mr Gao Junguang59 Liaoyuan StZhengzhouDear Mr Gao
-Your good office is 
-          ...
+          完整教程：how2j
+
+备忘
+
+
+单线程聊天
+多线程聊天
+
+带界面的聊天程序
+
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/30/busines letter/#more" rel="contents">
+            <a class="btn" href="/2017/11/11/网络编程/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -772,7 +966,7 @@ Your good office is
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/notice/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/reprot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -791,7 +985,7 @@ Your good office is
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/30/notice/" itemprop="url">notice</a></h1>
+                <a class="post-title-link" href="/2017/10/30/reprot/" itemprop="url">report</a></h1>
         
 
         <div class="post-meta">
@@ -822,8 +1016,8 @@ Your good office is
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/30/notice/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/notice/" itemprop="commentCount"></span>
+                <a href="/2017/10/30/reprot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/reprot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -853,11 +1047,13 @@ Your good office is
       
         
           
-          Sample Promissory NoteI, Jane Doe, residing at 111 Maple Dr., Los Angeles, CA 90435,hereby promise to pay back, in full, the borrowed amount of $1800p
+          National Day
+
+IntroductionThe aim of this report is to show people’s behavior in National Day.We call countries establish the anniversary of National 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/30/notice/#more" rel="contents">
+            <a class="btn" href="/2017/10/30/reprot/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1046,7 +1242,7 @@ Thanks
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/reprot/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/notice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DEMO">
@@ -1065,7 +1261,7 @@ Thanks
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/30/reprot/" itemprop="url">report</a></h1>
+                <a class="post-title-link" href="/2017/10/30/notice/" itemprop="url">notice</a></h1>
         
 
         <div class="post-meta">
@@ -1096,8 +1292,8 @@ Thanks
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/30/reprot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/reprot/" itemprop="commentCount"></span>
+                <a href="/2017/10/30/notice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/notice/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1127,13 +1323,153 @@ Thanks
       
         
           
-          National Day
-
-IntroductionThe aim of this report is to show people’s behavior in National Day.We call countries establish the anniversary of National 
+          Sample Promissory NoteI, Jane Doe, residing at 111 Maple Dr., Los Angeles, CA 90435,hereby promise to pay back, in full, the borrowed amount of $1800p
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/30/reprot/#more" rel="contents">
+            <a class="btn" href="/2017/10/30/notice/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/busines letter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEMO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HEXO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/30/busines letter/" itemprop="url">busines letter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T20:13:10+08:00">
+                2017-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/30/busines letter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/busines letter/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Mr Wang Min
+Personnel Manager
+Viewtech Company
+Tiandi St
+Harbin
+January 24, 2002Mr Gao Junguang59 Liaoyuan StZhengzhouDear Mr Gao
+Your good office is 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/30/busines letter/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1444,324 +1780,6 @@ IntroductionThe aim of this report is to show people’s behavior in National Da
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/22/简单的调查报告（英文）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DEMO">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HEXO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/22/简单的调查报告（英文）/" itemprop="url">调查报告</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-22T20:13:10+08:00">
-                2017-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT英语/" itemprop="url" rel="index">
-                    <span itemprop="name">IT英语</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/22/简单的调查报告（英文）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/22/简单的调查报告（英文）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          National Day
-IntroductionThe aim of this report is to show people’s behavior in National Day.We call countries establish the anniversary of National D
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/22/简单的调查报告（英文）/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/21/cv/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DEMO">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/18373908?s=400&u=026b7daa8652066dead5a989dd5e14fca44ee5dd&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HEXO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/21/cv/" itemprop="url">CV</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-21T20:13:10+08:00">
-                2017-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT英语/" itemprop="url" rel="index">
-                    <span itemprop="name">IT英语</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/21/cv/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/21/cv/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          C.V
-Personal informationName: jackAddress: Wuhan Institute of Technology ,Hubei province ,ChinaContact Number: (mobile)15272205643Email:jackj2629@gmai
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/21/cv/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1816,7 +1834,7 @@ Personal informationName: jackAddress: Wuhan Institute of Technology ,Hubei prov
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">323</span>
+                  <span class="site-state-item-count">325</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1827,7 +1845,7 @@ Personal informationName: jackAddress: Wuhan Institute of Technology ,Hubei prov
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1838,7 +1856,7 @@ Personal informationName: jackAddress: Wuhan Institute of Technology ,Hubei prov
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

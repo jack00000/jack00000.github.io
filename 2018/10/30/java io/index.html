@@ -80,7 +80,7 @@
 <meta property="og:site_name" content="HEXO">
 <meta property="og:description" content="先把how2j的io教程过一遍 how2j的io教程1.文件对象 文件和文件夹都用File1.1 创建文件对象&amp;amp;文件常用方法  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960File f = new File(&quot;d:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T09:28:03.544Z">
+<meta property="og:updated_time" content="2018-11-08T09:44:50.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java io">
 <meta name="twitter:description" content="先把how2j的io教程过一遍 how2j的io教程1.文件对象 文件和文件夹都用File1.1 创建文件对象&amp;amp;文件常用方法  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960File f = new File(&quot;d:">
@@ -405,7 +405,36 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//准备文件lol.txt其中的内容是AB，对应的ASCII分别是65 66</span></span><br><span class="line">           File f =<span class="keyword">new</span> File(<span class="string">"d:/lol.txt"</span>);</span><br><span class="line">           <span class="comment">//创建基于文件的输入流</span></span><br><span class="line">           FileInputStream fis =<span class="keyword">new</span> FileInputStream(f);</span><br><span class="line">           <span class="comment">//创建字节数组，其长度就是文件的长度</span></span><br><span class="line">           <span class="keyword">byte</span>[] all =<span class="keyword">new</span> <span class="keyword">byte</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">           <span class="comment">//以字节流的形式读取文件所有内容</span></span><br><span class="line">           fis.read(all);</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">byte</span> b : all) &#123;</span><br><span class="line">               <span class="comment">//打印出来是65 66</span></span><br><span class="line">               System.out.println(b);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//每次使用完流，都应该进行关闭</span></span><br><span class="line">           fis.close();</span><br><span class="line">```           </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 3.字符流</span><br><span class="line">- Reader字符输入流</span><br><span class="line">- Writer字符输出流</span><br><span class="line">- 专门用于字符的形式读取和写入数据</span><br><span class="line"></span><br><span class="line">```Java</span><br><span class="line"><span class="comment">// 准备文件lol.txt其中的内容是AB</span></span><br><span class="line">       File f = <span class="keyword">new</span> File(<span class="string">"d:/lol.txt"</span>);</span><br><span class="line">       <span class="comment">// 创建基于文件的Reader</span></span><br><span class="line">       <span class="keyword">try</span> (FileReader fr = <span class="keyword">new</span> FileReader(f)) &#123;</span><br><span class="line">           <span class="comment">// 创建字符数组，其长度就是文件的长度</span></span><br><span class="line">           <span class="keyword">char</span>[] all = <span class="keyword">new</span> <span class="keyword">char</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">           <span class="comment">// 以字符流的形式读取文件所有内容</span></span><br><span class="line">           fr.read(all);</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">char</span> b : all) &#123;</span><br><span class="line">               <span class="comment">// 打印出来是A B</span></span><br><span class="line">               System.out.println(b);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 准备文件lol2.txt</span></span><br><span class="line">                   File f = <span class="keyword">new</span> File(<span class="string">"d:/lol2.txt"</span>);</span><br><span class="line">                   <span class="comment">// 创建基于文件的Writer</span></span><br><span class="line">                   <span class="keyword">try</span> (FileWriter fr = <span class="keyword">new</span> FileWriter(f)) &#123;</span><br><span class="line">                       <span class="comment">// 以字符流的形式把数据写入到文件中</span></span><br><span class="line">                       String data=<span class="string">"abcdefg1234567890"</span>;</span><br><span class="line">                       <span class="keyword">char</span>[] cs = data.toCharArray();</span><br><span class="line">                       fr.write(cs);</span><br><span class="line"></span><br><span class="line">                   &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                       <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                       e.printStackTrace();</span><br><span class="line">                   &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4-中文问题-见how2j"><a href="#4-中文问题-见how2j" class="headerlink" title="4.中文问题 见how2j"></a>4.中文问题 见how2j</h2><h2 id="5-缓存字符输入流-BufferedReader"><a href="#5-缓存字符输入流-BufferedReader" class="headerlink" title="5.缓存字符输入流 BufferedReader"></a>5.缓存字符输入流 BufferedReader</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">File f = <span class="keyword">new</span> File(<span class="string">"d:/lol.txt"</span>);</span><br><span class="line">       <span class="comment">// 创建文件字符流</span></span><br><span class="line">       <span class="comment">// 缓存流必须建立在一个存在的流的基础上</span></span><br><span class="line">       <span class="keyword">try</span> (</span><br><span class="line">               FileReader fr = <span class="keyword">new</span> FileReader(f);</span><br><span class="line">               BufferedReader br = <span class="keyword">new</span> BufferedReader(fr);</span><br><span class="line">           )</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">               <span class="comment">// 一次读一行</span></span><br><span class="line">               String line = br.readLine();</span><br><span class="line">               <span class="keyword">if</span> (<span class="keyword">null</span> == line)</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               System.out.println(line);</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h2><h1 id="再学习入职培训的io-规定使用公司提供的工具"><a href="#再学习入职培训的io-规定使用公司提供的工具" class="headerlink" title="再学习入职培训的io(规定使用公司提供的工具)"></a>再学习入职培训的io(规定使用公司提供的工具)</h1>
+<h2 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h2><h1 id="再学习入职培训的io-规定使用公司提供的工具"><a href="#再学习入职培训的io-规定使用公司提供的工具" class="headerlink" title="再学习入职培训的io(规定使用公司提供的工具)"></a>再学习入职培训的io(规定使用公司提供的工具)</h1><h2 id="io常用类-BufferedWriter-BufferedReader-InputStream-OutputStream"><a href="#io常用类-BufferedWriter-BufferedReader-InputStream-OutputStream" class="headerlink" title="io常用类 BufferedWriter BufferedReader InputStream OutputStream"></a>io常用类 BufferedWriter BufferedReader InputStream OutputStream</h2><ul>
+<li>System.getProperty(“java.io.tmpdir”) java运行产生的临时文件目录</li>
+<li>File.separator 字符“/”</li>
+<li><p>再加文件名</p>
+<pre><code class="java">InputStream in = Test.class
+              .getResourceAsStream(<span class="string">"/com/fangjun/esensoft2/util/grade1.txt"</span>);
+OutputStream out=<span class="keyword">new</span> FileOutputStream(
+              <span class="keyword">new</span> File(System.getProperty(<span class="string">"java.io.tmpdir"</span>)+File.separator+<span class="string">"111.txt"</span>));
+
+      BufferedWriter bw=<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));
+                  bw.write(<span class="string">"+----------------------------------------------);</span>
+<span class="string"></span>
+<span class="string">      BufferedReader br = new BufferedReader(new InputStreamReader(</span>
+<span class="string">                            in, "</span>UTF-<span class="number">8</span><span class="string">"));    </span>
+<span class="string"></span>
+<span class="string">                try {</span>
+<span class="string">                              String line = br.readLine();</span>
+<span class="string">                              while (line != null) {</span>
+<span class="string">                                  Grade pGrade = line2Grade(line);</span>
+<span class="string">                                  list.add(pGrade);</span>
+<span class="string">                                  line = br.readLine();</span>
+<span class="string">                              }</span>
+<span class="string">                          } finally {</span>
+<span class="string">                              br.close();</span>
+<span class="string">                          }</span>
+</code></pre>
+</li>
+</ul>
+<p><a href="http://127.0.0.1:8080/test/welcome.do?cmd=" target="_blank" rel="noopener">http://127.0.0.1:8080/test/welcome.do?cmd=</a>                </p>
+
       
     </div>
     
@@ -429,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/vfs学习/" rel="next" title="vfs学习">
-                <i class="fa fa-chevron-left"></i> vfs学习
+              <a href="/2018/10/30/esenbase的使用练习/" rel="next" title="esenbase的使用练习">
+                <i class="fa fa-chevron-left"></i> esenbase的使用练习
               </a>
             
           </div>
@@ -439,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/30/esenbase的使用练习/" rel="prev" title="esenbase的使用练习">
-                esenbase的使用练习 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/31/入职训练题week1/" rel="prev" title="JDBC+io练习题">
+                JDBC+io练习题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +554,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">323</span>
+                  <span class="site-state-item-count">325</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -536,7 +565,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -547,7 +576,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -590,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#先把how2j的io教程过一遍-how2j的io教程"><span class="nav-number">1.</span> <span class="nav-text">先把how2j的io教程过一遍 how2j的io教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文件对象"><span class="nav-number">1.1.</span> <span class="nav-text">1.文件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-创建文件对象-amp-文件常用方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 创建文件对象&amp;文件常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-遍历文件夹"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 遍历文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-流就是一系列数据"><span class="nav-number">1.2.</span> <span class="nav-text">2.流就是一系列数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-中文问题-见how2j"><span class="nav-number">1.3.</span> <span class="nav-text">4.中文问题 见how2j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-缓存字符输入流-BufferedReader"><span class="nav-number">1.4.</span> <span class="nav-text">5.缓存字符输入流 BufferedReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6"><span class="nav-number">1.5.</span> <span class="nav-text">6.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#再学习入职培训的io-规定使用公司提供的工具"><span class="nav-number">2.</span> <span class="nav-text">再学习入职培训的io(规定使用公司提供的工具)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#先把how2j的io教程过一遍-how2j的io教程"><span class="nav-number">1.</span> <span class="nav-text">先把how2j的io教程过一遍 how2j的io教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文件对象"><span class="nav-number">1.1.</span> <span class="nav-text">1.文件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-创建文件对象-amp-文件常用方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 创建文件对象&amp;文件常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-遍历文件夹"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 遍历文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-流就是一系列数据"><span class="nav-number">1.2.</span> <span class="nav-text">2.流就是一系列数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-中文问题-见how2j"><span class="nav-number">1.3.</span> <span class="nav-text">4.中文问题 见how2j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-缓存字符输入流-BufferedReader"><span class="nav-number">1.4.</span> <span class="nav-text">5.缓存字符输入流 BufferedReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6"><span class="nav-number">1.5.</span> <span class="nav-text">6.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#再学习入职培训的io-规定使用公司提供的工具"><span class="nav-number">2.</span> <span class="nav-text">再学习入职培训的io(规定使用公司提供的工具)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#io常用类-BufferedWriter-BufferedReader-InputStream-OutputStream"><span class="nav-number">2.1.</span> <span class="nav-text">io常用类 BufferedWriter BufferedReader InputStream OutputStream</span></a></li></ol></li></ol></div>
             
 
           </div>
