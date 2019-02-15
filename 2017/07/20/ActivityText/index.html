@@ -75,25 +75,20 @@
 
 
 
-<meta name="description" content="学习目的：1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法   standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnCl">
+<meta name="description" content="学习目的： 1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式 5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法  standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnC">
 <meta name="keywords" content="CODE 2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ActivityText&lt;CODE 2 chaper2&gt;">
 <meta property="og:url" content="http://yoursite.com/2017/07/20/ActivityText/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="学习目的：1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法   standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnCl">
+<meta property="og:description" content="学习目的： 1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式 5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法  standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnC">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://i2.tiimg.com/595109/f9bcece3e67deff6.png">
-<meta property="og:image" content="http://i2.tiimg.com/595109/637e7ddfe3d6e7c7.png">
-<meta property="og:image" content="http://i2.tiimg.com/595109/6eaebe571f0f124b.png">
-<meta property="og:image" content="http://i2.tiimg.com/595109/eef8749d34f27304.png">
-<meta property="og:image" content="http://i2.tiimg.com/595109/9ccd294fcd557c76.png">
 <meta property="og:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-04-23_234916.png">
-<meta property="og:updated_time" content="2018-08-15T06:20:19.000Z">
+<meta property="og:updated_time" content="2019-02-15T09:06:51.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ActivityText&lt;CODE 2 chaper2&gt;">
-<meta name="twitter:description" content="学习目的：1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法   standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnCl">
-<meta name="twitter:image" content="http://i2.tiimg.com/595109/f9bcece3e67deff6.png">
+<meta name="twitter:description" content="学习目的： 1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式 5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法  standard启动模式123456789Android是利用返回栈来管理活动的！在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：button1.setOnC">
+<meta name="twitter:image" content="http://oxz3x2njl.bkt.clouddn.com/2018-04-23_234916.png">
 
 
 
@@ -381,14 +376,17 @@
       
 
       
-        <h3>学习目的：1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式<br>5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法</h3>
-
-
+        <h2 id="学习目的："><a href="#学习目的：" class="headerlink" title="学习目的："></a>学习目的：</h2><ul>
+<li>1.了解standard启动模式</li>
+<li>2.singleTop启动模式</li>
+<li>3.singleTask启动模式</li>
+<li>4.singleInstance启动模式</li>
+<li>5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法</li>
+</ul>
 <p></p><h3>standard启动模式</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Android是利用返回栈来管理活动的！</span><br><span class="line">在standard模式下，每启用一个新活动就会在返回栈入栈并置于栈顶。如：</span><br><span class="line">button1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">Intent intent = new Intent(FirstActivity.this, SecondActivity.class);</span><br><span class="line">startActivity(intent);</span><br><span class="line">&#125;</span><br><span class="line">按三次返回键才能退出！</span><br></pre></td></tr></table></figure><p></p>
 <p></p><h3>singleTop启动模式</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当栈顶是该活动不创建新实例（与standard的不同之处）</span><br><span class="line">android:launchMode=&quot;singleTop&quot;//需要在活动先声明</span><br><span class="line"></span><br><span class="line">代码同上</span><br><span class="line">仅一次back可退出程序</span><br></pre></td></tr></table></figure><p></p>
 <p></p><h3>singleTask启动模式</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决重复创建栈顶活动的问题！使某个活动在上下文之存在一个实例。</span><br><span class="line">android:launchMode=&quot;singleTask&quot;//需要在活动先声明</span><br></pre></td></tr></table></figure><p></p>
 <p></p><h3>singleInstance启动模式</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">启用一个新的返回栈管理这个活动，解决共享活动实例的问题！</span><br><span class="line">android:launchMode=&quot;singleInstance&quot;//需要在活动先声明</span><br></pre></td></tr></table></figure><p></p>
-<p><img src="http://i2.tiimg.com/595109/f9bcece3e67deff6.png" alt="Markdown"><br><img src="http://i2.tiimg.com/595109/637e7ddfe3d6e7c7.png" alt="Markdown"><br><img src="http://i2.tiimg.com/595109/6eaebe571f0f124b.png" alt="Markdown"><br><img src="http://i2.tiimg.com/595109/eef8749d34f27304.png" alt="Markdown"><br><img src="http://i2.tiimg.com/595109/9ccd294fcd557c76.png" alt="Markdown"></p>
 <p></p><h3>知晓当前活动</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class BaseActivity extends AppCompatActivity &#123;//无需注册，TM就是个java类</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(&quot;BaseActivity&quot;, getClass().getSimpleName());</span><br><span class="line">        //需要让BaseActivity成为所有类的父类，因其继承AppCompatActivity,所以其他类功能不变</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p>
 <p></p><h3>随时退出程序(思路：创建一个集合类对所有活动进行管理)</h3><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class ActivityCollector &#123;</span><br><span class="line"></span><br><span class="line">    public static List&lt;Activity&gt; activities = new ArrayList&lt;&gt;();//用List存储活动</span><br><span class="line"></span><br><span class="line">    public static void addActivity(Activity activity) &#123;//添加活动</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void removeActivity(Activity activity) &#123;//不多说，看来add remove finish方法都写好啦</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void finishAll() &#123;</span><br><span class="line">        for (Activity activity : activities) &#123;//销毁全部活动</span><br><span class="line">            if (!activity.isFinishing()) &#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">随时退出举例：</span><br><span class="line">Button button3 = (Button) findViewById(R.id.button_3);</span><br><span class="line">        button3.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                ActivityCollector.finishAll();&#125;&#125;</span><br></pre></td></tr></table></figure><p></p>
 <p></p><h3>启动活动最佳写法</h3><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">为了解决 如secondActivity不是你开发的，但你需要知道启动这个活动需要传递那些数据 等问题</span><br><span class="line">原写法：</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FristActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">        intent.putExtra(<span class="string">"param1"</span>, data1);</span><br><span class="line">        intent.putExtra(<span class="string">"param2"</span>, data2);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">改进写法：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(context, SecondActivity.class);</span><br><span class="line">        intent.putExtra(<span class="string">"param1"</span>, data1);<span class="comment">//intent传递的数据</span></span><br><span class="line">        intent.putExtra(<span class="string">"param2"</span>, data2);</span><br><span class="line">        context.startActivity(intent);<span class="comment">//context 上下文</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">只需一行代码启动SecondActivity</span><br><span class="line"> SecondActivity.actionStart(FirstActivity.<span class="keyword">this</span>, <span class="string">"data1"</span>, <span class="string">"data2"</span>);</span><br></pre></td></tr></table></figure><p></p>
@@ -426,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/20/logcat及log/" rel="next" title="logcat及log<CODE 2 chaper2>">
-                <i class="fa fa-chevron-left"></i> logcat及log<CODE 2 chaper2>
+              <a href="/2017/07/13/为学会不损坏文件而恢复deepin写的linux教程/" rel="next" title="为修理deepin而学的linux">
+                <i class="fa fa-chevron-left"></i> 为修理deepin而学的linux
               </a>
             
           </div>
@@ -436,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/20/ListView/" rel="prev" title="ListView<CODE 2 chaper3>">
-                ListView<CODE 2 chaper3> <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/20/logcat及log/" rel="prev" title="logcat及log<CODE 2 chaper2>">
+                logcat及log<CODE 2 chaper2> <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,7 +520,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">343</span>
+                  <span class="site-state-item-count">344</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -533,7 +531,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -587,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">学习目的：1.了解standard启动模式 2.singleTop启动模式 3.singleTask启动模式 4.singleInstance启动模式5.实用技巧：知晓当前活动 随时退出程序 启动活动最佳写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">standard启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">singleTop启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">singleTask启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">singleInstance启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">知晓当前活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">随时退出程序(思路：创建一个集合类对所有活动进行管理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">启动活动最佳写法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习目的："><span class="nav-number">1.</span> <span class="nav-text">学习目的：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">standard启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">singleTop启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">singleTask启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">singleInstance启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">知晓当前活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.</span> <span class="nav-text">随时退出程序(思路：创建一个集合类对所有活动进行管理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.7.</span> <span class="nav-text">启动活动最佳写法</span></a></li></ol></li></ol></div>
             
 
           </div>

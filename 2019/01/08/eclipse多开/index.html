@@ -73,17 +73,17 @@
 
 
 
-<meta name="description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件  D:\esen">
+<meta name="description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件 D:\esend">
 <meta property="og:type" content="article">
 <meta property="og:title" content="eclipse多开">
 <meta property="og:url" content="http://yoursite.com/2019/01/08/eclipse多开/index.html">
 <meta property="og:site_name" content="HEXO">
-<meta property="og:description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件  D:\esen">
+<meta property="og:description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件 D:\esend">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-08T03:14:46.300Z">
+<meta property="og:updated_time" content="2019-02-15T02:51:40.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="eclipse多开">
-<meta name="twitter:description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件  D:\esen">
+<meta name="twitter:description" content="1.复制.metadata文件到work文件夹(work为新开的工程目录) .metadata文件夹来源:都是一样的可以直接复制  2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径 eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc  3.bi读取jdbc.conf文件 D:\esend">
 
 
 
@@ -399,11 +399,12 @@
 <h1 id="2-发送eclipse快捷方式到桌面-配置其属性-加上-data-work的路径"><a href="#2-发送eclipse快捷方式到桌面-配置其属性-加上-data-work的路径" class="headerlink" title="2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径"></a>2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径</h1><ul>
 <li>eg:D:\esendev\eclipse4git\eclipse.exe -data D:\esendev\work\gxdc</li>
 </ul>
-<h1 id="3-bi读取jdbc-conf文件-D-esendev-work6-bi47-conf-jdbc-conf配置数据库链接池"><a href="#3-bi读取jdbc-conf文件-D-esendev-work6-bi47-conf-jdbc-conf配置数据库链接池" class="headerlink" title="3.bi读取jdbc.conf文件  D:\esendev\work6\bi47\conf\jdbc.conf配置数据库链接池"></a>3.bi读取jdbc.conf文件  D:\esendev\work6\bi47\conf\jdbc.conf配置数据库链接池</h1><ul>
+<h1 id="3-bi读取jdbc-conf文件"><a href="#3-bi读取jdbc-conf文件" class="headerlink" title="3.bi读取jdbc.conf文件"></a>3.bi读取jdbc.conf文件</h1><ul>
+<li>D:\esendev\work6\bi47\conf\jdbc.conf配置数据库链接池</li>
 <li>在run configure中设置参数</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Xms256m -Xmx1024m  -Duser.timezone=Asia/Shanghai -Dbiworkdir=D:\esendev\work6\bi47 -Dorg.mortbay.jetty.Request.maxFormContentSize=-1</span><br></pre></td></tr></table></figure>
-<h1 id="orcal-jdbc-conf-链接别人的数据库"><a href="#orcal-jdbc-conf-链接别人的数据库" class="headerlink" title="orcal jdbc.conf 链接别人的数据库"></a>orcal jdbc.conf 链接别人的数据库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#charset UTF-8</span><br><span class="line">#Tue Dec 04 15:33:36 CST 2018</span><br><span class="line">logLevel=ERROR</span><br><span class="line">catalog=</span><br><span class="line">maxWait=10000</span><br><span class="line">maxActive=20</span><br><span class="line">password=1</span><br><span class="line">url=jdbc\:oracle\:thin\:@172.21.11.41\:1521\:orcl</span><br><span class="line">driverClassName=oracle.jdbc.driver.OracleDriver</span><br><span class="line">username=whgxdc</span><br></pre></td></tr></table></figure>
+<h1 id="orcal-jdbc-conf-链接别人的-数据库-配置文件"><a href="#orcal-jdbc-conf-链接别人的-数据库-配置文件" class="headerlink" title="orcal jdbc.conf 链接别人的 数据库 配置文件"></a>orcal jdbc.conf 链接别人的 数据库 配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#charset UTF-8</span><br><span class="line">#Tue Dec 04 15:33:36 CST 2018</span><br><span class="line">logLevel=ERROR</span><br><span class="line">catalog=</span><br><span class="line">maxWait=10000</span><br><span class="line">maxActive=20</span><br><span class="line">password=1</span><br><span class="line">url=jdbc\:oracle\:thin\:@172.21.11.41\:1521\:orcl</span><br><span class="line">driverClassName=oracle.jdbc.driver.OracleDriver</span><br><span class="line">username=whgxdc</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">logLevel=ERROR</span><br><span class="line">catalog=</span><br><span class="line">maxWait=10000</span><br><span class="line">maxActive=20</span><br><span class="line">password=es123</span><br><span class="line">url=jdbc\:mysql\://localhost/esenface?useUnicode\=true&amp;characterEncoding\=utf8</span><br><span class="line">driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">username=es</span><br></pre></td></tr></table></figure>
 
       
@@ -525,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">343</span>
+                  <span class="site-state-item-count">344</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -536,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -590,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-复制-metadata文件到work文件夹-work为新开的工程目录"><span class="nav-number">1.</span> <span class="nav-text">1.复制.metadata文件到work文件夹(work为新开的工程目录)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-发送eclipse快捷方式到桌面-配置其属性-加上-data-work的路径"><span class="nav-number">2.</span> <span class="nav-text">2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-bi读取jdbc-conf文件-D-esendev-work6-bi47-conf-jdbc-conf配置数据库链接池"><span class="nav-number">3.</span> <span class="nav-text">3.bi读取jdbc.conf文件  D:\esendev\work6\bi47\conf\jdbc.conf配置数据库链接池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#orcal-jdbc-conf-链接别人的数据库"><span class="nav-number">4.</span> <span class="nav-text">orcal jdbc.conf 链接别人的数据库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-复制-metadata文件到work文件夹-work为新开的工程目录"><span class="nav-number">1.</span> <span class="nav-text">1.复制.metadata文件到work文件夹(work为新开的工程目录)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-发送eclipse快捷方式到桌面-配置其属性-加上-data-work的路径"><span class="nav-number">2.</span> <span class="nav-text">2.发送eclipse快捷方式到桌面 配置其属性 加上 -data work的路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-bi读取jdbc-conf文件"><span class="nav-number">3.</span> <span class="nav-text">3.bi读取jdbc.conf文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#orcal-jdbc-conf-链接别人的-数据库-配置文件"><span class="nav-number">4.</span> <span class="nav-text">orcal jdbc.conf 链接别人的 数据库 配置文件</span></a></li></ol></div>
             
 
           </div>
