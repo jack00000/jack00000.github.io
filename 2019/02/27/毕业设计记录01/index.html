@@ -73,14 +73,17 @@
 
 
 
+<meta name="description" content="@RequestMapping(“/UserMana”)    public String UserMana(Model model,HttpSession session,Page page) {        int total=UserMapper.getTotal();        page.caculateLast(total);        java.util.Listcs=Use">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HEXO">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/毕业设计记录01/index.html">
 <meta property="og:site_name" content="HEXO">
+<meta property="og:description" content="@RequestMapping(“/UserMana”)    public String UserMana(Model model,HttpSession session,Page page) {        int total=UserMapper.getTotal();        page.caculateLast(total);        java.util.Listcs=Use">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T09:01:57.620Z">
+<meta property="og:updated_time" content="2019-03-15T01:59:48.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HEXO">
+<meta name="twitter:description" content="@RequestMapping(“/UserMana”)    public String UserMana(Model model,HttpSession session,Page page) {        int total=UserMapper.getTotal();        page.caculateLast(total);        java.util.Listcs=Use">
 
 
 
@@ -368,7 +371,38 @@
       
 
       
-        
+        <p>@RequestMapping(“/UserMana”)<br>    public String UserMana(Model model,HttpSession session,Page page) {<br>        int total=UserMapper.getTotal();<br>        page.caculateLast(total);<br>        java.util.List<user>cs=UserMapper.listByPage(page.getStart(),page.getStart()+page.getCount());<br>        model.addAttribute(“cs”, cs);<br>        session.getAttribute(“user2”);<br>        session.setAttribute(“page”, page);<br>        return “mana/UserMana/listUser”;</user></p>
+<pre><code>}
+@RequestMapping(&quot;/addUser&quot;)
+public String addUser(User User,HttpSession session) {
+    UserMapper.add(User);
+    //重定向是mappingURL再到具体页面    转发是具体页面
+    return &quot;redirect:UserMana&quot;;
+
+}
+@RequestMapping(&quot;/deleteUser&quot;)
+public String delUser(User User) {
+    UserMapper.delete(User.getId());;
+    //重定向是mappingURL再到具体页面    转发是具体页面
+    return &quot;redirect:UserMana&quot;;
+
+}
+@RequestMapping(&quot;/editUser&quot;)
+public String editUser(User User,HttpSession session) {
+    User c=UserMapper.get(User.getId());;
+    session.setAttribute(&quot;c&quot;, c);
+    return &quot;mana/UserMana/editUser&quot;;
+
+}
+@RequestMapping(&quot;updateUser&quot;)
+public String updateUser(User User){
+    UserMapper.update(User);
+    return &quot;redirect:UserMana&quot;;
+
+}    
+
+3300-1500=1800-1300=500
+</code></pre>
       
     </div>
     
@@ -402,8 +436,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/28/毕业设计记录4/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/28/毕业设计记录4/" rel="prev" title="毕业设计记录">
+                毕业设计记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
